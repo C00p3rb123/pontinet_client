@@ -1,8 +1,9 @@
-import { StyleSheet, Text, TextInput, View, Button } from 'react-native'
+import { StyleSheet, Text, TextInput, View, Button, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import { login } from '../apis/api';
 import { emailValidator, passwordValidator } from '../utils/formatting';
 import Error from './Error';
+import { Colours } from '../utils/colours';
 
 const LoginForm = () => {
   const [email, setEmail] = useState();
@@ -39,17 +40,20 @@ const LoginForm = () => {
   }
 
   return (
-    <View>      
+    <View style={styles.con}>
+
         <View>
-            <Text>Email</Text>
-            <TextInput style={{ borderWidth: 1, padding: 5 }} onChangeText={setEmail}/>
+            <Text style={styles.formText}>Email</Text>
+            <TextInput style={{ borderWidth: 1, padding: 5 }} onChangeText={setEmail} placeholder='Enter email address'/>
         </View>
         <View>
-        <Text>Password</Text>
-            <TextInput style={{ borderWidth: 1, padding: 5 }} onChangeText={setPassword}/>
+        <Text style={styles.formText}>Password</Text>
+            <TextInput style={{ borderWidth: 1, padding: 5 }} onChangeText={setPassword} placeholder='Enter password'/>
         </View>
       {error && <Error message={error} />}
-      <Button title="Confirm" onPress={onSubmit} />
+      <TouchableOpacity style={styles.button} onPress={onSubmit}>
+        <Text style={styles.buttonText}>Confirm</Text>
+      </TouchableOpacity>
     </View>
   )
 }
@@ -57,5 +61,27 @@ const LoginForm = () => {
 export default LoginForm
 
 const styles = StyleSheet.create({
+  container:{
+    maxWidth: '80%',
+  },
+  button: {
+    backgroundColor: Colours.pontinetPrimary,
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 20,
+    width: '50%',
+    alignSelf: 'center'
+    
+
+  },
+  buttonText: {
+    color: 'white',
+    textAlign: 'center'
+
+  },
+  formText: {
+    color: Colours.pontinetAccent,
+    fontWeight: 'bold'
+  }
 
 })

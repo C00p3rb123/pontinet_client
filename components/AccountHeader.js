@@ -4,7 +4,7 @@ import React from 'react'
 const AccountHeader = () => {
   return (
    
-       <View>
+       <View style={styles.container}>
             <Image source={require('../assets/pontinet_logo.png')}>
             </Image>
         </View>
@@ -15,6 +15,10 @@ const AccountHeader = () => {
 export default AccountHeader
 
 const styles = StyleSheet.create({
-
- 
+  container: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop:10
+  }
+  
 })
