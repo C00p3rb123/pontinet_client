@@ -1,14 +1,15 @@
 import { StyleSheet, Text, TextInput, View, Button, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
-import { login } from '../apis/api';
 import { emailValidator, passwordValidator } from '../utils/formatting';
 import Error from './Error';
 import { Colours } from '../utils/colours';
+import { useAuth } from '../AuthContext';
 
 const LoginForm = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState();
+  const { login } = useAuth()
 
 
   const data = {
@@ -31,8 +32,8 @@ const LoginForm = () => {
       return
     }
     try{
-      const token = await login(data);
-      console.log(token);
+      await login(data);
+  
     }catch(err) {
       setError(err.message);
     }
@@ -41,7 +42,6 @@ const LoginForm = () => {
 
   return (
     <View style={styles.con}>
-
         <View>
             <Text style={styles.formText}>Email</Text>
             <TextInput style={{ borderWidth: 1, padding: 5 }} onChangeText={setEmail} placeholder='Enter email address'/>
