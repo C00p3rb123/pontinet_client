@@ -47,11 +47,11 @@ const LoginForm = () => {
 
   return (
     
-    <View style={styles.con}>
+    <View style={styles.container}>
       <View>
-        <Text style={styles.formText}>Email</Text>
+        <Text style={styles.formText}>Email Address</Text>
         <TextInput
-          style={{ borderWidth: 1, padding: 5 }}
+          style={{ borderWidth: 1, padding: 15, borderRadius: 10, borderColor: Colours.pontinetInputContainer}}
           onChangeText={setEmail}
           placeholder="Enter email address"
         />
@@ -60,15 +60,17 @@ const LoginForm = () => {
         <Text style={styles.formText}>Password</Text>
         <TextInput
           secureTextEntry={true}
-          style={{ borderWidth: 1, padding: 5 }}
+          style={{ borderWidth: 1, padding: 15, borderRadius: 10, borderColor: Colours.pontinetInputContainer}}
           onChangeText={setPassword}
           placeholder="Enter password"
         />
       </View>
       {error && <Error message={error} />}
-      <TouchableOpacity style={styles.button} onPress={onSubmit}>
-        <Text style={styles.buttonText}>Confirm</Text>
-      </TouchableOpacity>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.button} onPress={onSubmit}>
+          <Text style={styles.buttonText}>Confirm</Text>
+        </TouchableOpacity>
+      </View>
     </View>
     
   );
@@ -78,22 +80,28 @@ export default LoginForm;
 
 const styles = StyleSheet.create({
   container: {
-    maxWidth: "80%",
+    maxWidth: "100%",
+  },
+  buttonContainer: {
+    paddingVertical: 20,
   },
   button: {
     backgroundColor: Colours.pontinetPrimary,
-    paddingVertical: 12,
+    paddingVertical: 10,
     paddingHorizontal: 20,
-    borderRadius: 20,
-    width: "50%",
+    borderRadius: 45,
+    width: "55%",
     alignSelf: "center",
   },
   buttonText: {
     color: "white",
     textAlign: "center",
+    fontSize: 20,
   },
   formText: {
     color: Colours.pontinetAccent,
     fontWeight: "bold",
+    fontSize: 16,
+    paddingVertical: 12,
   },
 });

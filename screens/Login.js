@@ -27,14 +27,16 @@ const Login = () => {
     <SafeAreaView>
       <View style={[styles.container, {height: screenHeight}]}>
         <AccountHeader />
-        {!isKeyboardVisible && <Image styles={styles.image} source={require('../assets/login.png')}></Image> }        
+        {!isKeyboardVisible && <Image source={require('../assets/login.png')}></Image> }
         <Text style={styles.headerText}>Account Login</Text>
         <Text style={styles.subHeaderText}>Bridging gaps together, bringing medical excellence everywhere</Text>
         <View style={styles.form}>
-          <Form titles={formHeaders} styles={width=100}/>
+          <Form titles={formHeaders}/>
+        </View>
+        <View style={styles.footer}>
+          <Text style={styles.footerText}>Don't have an account?</Text>
+          <Text style={styles.footerText}>Sign up now</Text>
         </View>        
-        <Text>Don't have an account?</Text>
-        <Text>Sign up now</Text>
       </View>
     </SafeAreaView>
   );
@@ -44,23 +46,31 @@ export default Login;
 
 const styles = StyleSheet.create({
   container:{
-    alignItems:"center",
+    alignItems:'center',
   },
   headerText:{
     color: Colours.pontinetPrimary,
-    fontSize: 30,
-    fontWeight: 'bold'
-
-
+    fontSize: 32,
+    fontWeight: 'bold',
+    paddingTop: 15,
+    paddingBottom: 15
   },
   subHeaderText:{
     color: Colours.pontinetSeconday,
-    textAlign: 'center'
+    fontSize: 16,
+    textAlign: 'center',
+    paddingHorizontal: 20,
   },
   form:{
-    width: '80%'
+    width: '75%',
+    paddingVertical: 20
   },
-
-
-
+  footer: {
+    paddingVertical: 20,
+  },
+  footerText: {
+    textAlign: 'center',
+    fontSize: 16,
+    paddingVertical: 3,
+  }
 });
