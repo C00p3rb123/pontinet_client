@@ -3,12 +3,14 @@ import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NavigationContainer } from "@react-navigation/native";
 import Login from "./screens/Login";
+import SignUp from "./screens/SignUp";
 
 export default function App() {
   return (
     <NavigationContainer>
       <SafeAreaProvider>
-        <Login />
+        {/* <Login /> */}
+        <SignUp />
       </SafeAreaProvider>
     </NavigationContainer>   
   );
