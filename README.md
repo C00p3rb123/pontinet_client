@@ -1,4 +1,4 @@
-# Pontinet_AppJ
+# Pontinet_App
 
 ## Run the app
 
