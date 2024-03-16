@@ -4,20 +4,25 @@ import AccountHeader from "../components/AccountHeader";
 import Form from "../components/LoginForm";
 import { Colours } from "../utils/colours";
 
+/**
+ * 
+ * @returns The login screen which includes the AccountHeader and Account Form components. 
+ */
 const Login = () => {
-    const formHeaders = ["Email", "Password"]; 
     const screenHeight = Dimensions.get('window').height
     //TODO: Wire up server & store JWT
     //TODO: Style
     const [isKeyboardVisible, setKeyboardVisible] = useState(false)
     useEffect(() => {
+      // When the login screen mounts two listeners are initiated
       const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', () => {
         setKeyboardVisible(true);
       });
       const keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', () => {
         setKeyboardVisible(false);
       });
-  
+      
+      //Upon exit of this screen the listeners are removed. 
       return () => {
         keyboardDidShowListener.remove();
         keyboardDidHideListener.remove();
