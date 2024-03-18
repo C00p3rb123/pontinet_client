@@ -5,6 +5,10 @@ import Form from "../components/LoginForm";
 import { Colours } from "../utils/colours";
 import { useNavigation } from '@react-navigation/native';
 
+/**
+ * 
+ * @returns The login screen which includes the AccountHeader and Account Form components. 
+ */
 const Login = () => {
     const navigation = useNavigation();
     const formHeaders = ["Email", "Password"];
@@ -12,13 +16,15 @@ const Login = () => {
     const [isKeyboardVisible, setKeyboardVisible] = useState(false);
 
     useEffect(() => {
+      // When the login screen mounts two listeners are initiated
       const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', () => {
         setKeyboardVisible(true);
       });
       const keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', () => {
         setKeyboardVisible(false);
       });
-
+      
+      //Upon exit of this screen the listeners are removed. 
       return () => {
         keyboardDidShowListener.remove();
         keyboardDidHideListener.remove();
