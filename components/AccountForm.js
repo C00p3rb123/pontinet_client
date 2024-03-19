@@ -1,24 +1,15 @@
-import {
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-  Button,
-  TouchableOpacity,
-  KeyboardAvoidingView,
-} from "react-native";
-import React, { useState } from "react";
-import { login } from "../apis/api";
-import { emailValidator, passwordValidator } from "../utils/formatting";
-import Error from "./Error";
-import { Colours } from "../utils/colours";
+import { StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-native'
+import React, { useState } from 'react'
+import { emailValidator, passwordValidator } from '../utils/formatting';
+import Error from './Error';
+import { Colours } from '../utils/colours';
 
 /**
  * 
  * @returns LoginForm returns the form for logging in and handles the. 
  */
 
-const LoginForm = () => {
+const AccountForm = ({handleSubmit}) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState();
@@ -45,25 +36,21 @@ const LoginForm = () => {
       setError(isPassword.message);
       return;
     }
-    try {
-      const token = await login(data);
-    } catch (err) {
+    try{
+      await handleSubmit(data);
+  
+    }catch(err) {
       setError(err.message);
     }
   };
 
   return (
-    
-    <View style={styles.container}>
-      <View>
-        <Text style={styles.formText}>Email Address</Text>
-        <TextInput
-          style={{ borderWidth: 1, padding: 15, borderRadius: 10, borderColor: Colours.pontinetInputContainer}}
-          onChangeText={setEmail}
-          placeholder="Enter email address"
-        />
-      </View>
-      <View>
+    <View style={styles.con}>
+        <View>
+            <Text style={styles.formText}>Email</Text>
+            <TextInput style={{ borderWidth: 1, padding: 15, borderRadius: 10, borderColor: Colours.pontinetInputContainer}} onChangeText={setEmail} placeholder='Enter email address'/>
+        </View>
+        <View>
         <Text style={styles.formText}>Password</Text>
         <TextInput
           secureTextEntry={true}
@@ -83,7 +70,7 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default AccountForm;
 
 const styles = StyleSheet.create({
   container: {
