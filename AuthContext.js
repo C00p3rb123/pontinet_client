@@ -10,7 +10,7 @@ export const AuthProvider = ({children}) => {
         authenticated: false,
     });
 
-    //login
+   
     const login = async (data) => {
         const url = process.env.EXPO_PUBLIC_LOGIN_URL;
         try {
@@ -55,7 +55,7 @@ export const AuthProvider = ({children}) => {
     };
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 
-    //logout
+    
 };
 
 export const useAuth = () => {
