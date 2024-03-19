@@ -1,7 +1,7 @@
 import React from 'react';
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createStackNavigator } from '@react-navigation/stack';
 import Login from "./screens/Login";
 import Signup from "./screens/SignUp"; // Ensure this matches the export name
@@ -20,9 +20,15 @@ export default function App() {
   );
 }
 export const Layout = () => {
-  const {authState, logout} = useAuth();
+  const MyTheme = {
+    ...DefaultTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      background: 'white'
+    },
+  };
   return(
-    <NavigationContainer>
+    <NavigationContainer theme={MyTheme}>
     <SafeAreaProvider>
       <Stack.Navigator
         initialRouteName="Login"

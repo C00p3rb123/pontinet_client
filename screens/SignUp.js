@@ -4,11 +4,13 @@ import AccountHeader from "../components/AccountHeader";
 import Form from "../components/LoginForm";
 import { Colours } from "../utils/colours";
 import CheckBox from "expo-checkbox";
+import { useAuth } from "../AuthContext";
 
 const Signup = () => {
     const [isSelected, setSelection] = useState(false);
     const screenHeight = Dimensions.get('window').height;
     const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+    const {authState} = useAuth();
 
     useEffect(() => {
       const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', () => {
@@ -35,7 +37,7 @@ const Signup = () => {
         // Implement your navigation or link handling logic here
     };
     const template = () => {
-        console.log("Register not implement");
+        console.log(`${authState.token}`);
     }
 
     return (

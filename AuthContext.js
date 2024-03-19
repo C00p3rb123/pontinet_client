@@ -15,20 +15,19 @@ export const AuthProvider = ({children}) => {
         const url = process.env.EXPO_PUBLIC_LOGIN_URL;
         try {
             const response = await axios.post(url, data);
-            setAuthState({
+            await setAuthState({
                 token: response.data.token,
                 authenticated: true,
                 
             });
+            console.log(authState);
             axios.defaults.headers.common[
                 "Authorization"
             ] = `Bearer ${response.data.token}`;
             await SecureStore.setItemAsync(
                 process.env.EXPO_PUBLIC_TOKEN_KEY,
                 response.data.token
-            );
-            console.log(authState);
-            
+            );            
             return response;
         } catch (err) {
             console.log(err);
