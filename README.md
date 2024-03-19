@@ -2,7 +2,7 @@
 
 ## Run the app
 
-1. Copy env example to a .env
+1. Copy env example to a .env: cp .env.example .env
 2. yarn in the root folder
 3. npx expo start in the root folder
 4. Make sure you have downloaded the expo app
