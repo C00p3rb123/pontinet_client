@@ -47,18 +47,3 @@ export const Layout = () => {
 const styles = StyleSheet.create({
 
 });
-
-
-//   <NavigationContainer>
-      // <SafeAreaProvider>
-        {/* <Stack.Navigator */}
-          // initialRouteName="Login"
-          // screenOptions={{
-            // headerShown: false, // This line hides the header
-          // }}
-        // >
-          {/* <Stack.Screen name="Login" component={Login} /> */}
-          {/* <Stack.Screen name="SignUp" component={Signup} /> */}
-        {/* </Stack.Navigator> */}
-      {/* </SafeAreaProvider> */}
-    // </NavigationContainer>   

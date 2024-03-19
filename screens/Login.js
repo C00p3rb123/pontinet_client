@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, SafeAreaView, Image, Dimensions, Keyboard, TouchableOpacity } from "react-native";
 import React, { useEffect, useState } from "react";
 import AccountHeader from "../components/AccountHeader";
-import Form from "../components/LoginForm";
+import Form from "../components/AccountForm";
 import { Colours } from "../utils/colours";
 import { useNavigation } from '@react-navigation/native';
 import { useAuth } from "../AuthContext";
