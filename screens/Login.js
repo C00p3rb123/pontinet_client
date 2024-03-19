@@ -4,6 +4,7 @@ import AccountHeader from "../components/AccountHeader";
 import Form from "../components/LoginForm";
 import { Colours } from "../utils/colours";
 import { useNavigation } from '@react-navigation/native';
+import { useAuth } from "../AuthContext";
 
 /**
  * 
@@ -14,6 +15,7 @@ const Login = () => {
     const formHeaders = ["Email", "Password"];
     const screenHeight = Dimensions.get('window').height;
     const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+    const {login} = useAuth()
 
     useEffect(() => {
       // When the login screen mounts two listeners are initiated
@@ -39,7 +41,7 @@ const Login = () => {
                 <Text style={styles.headerText}>Account Login</Text>
                 <Text style={styles.subHeaderText}>Bridging gaps together, bringing medical excellence everywhere</Text>
                 <View style={styles.form}>
-                    <Form titles={formHeaders} />
+                    <Form handleSubmit={login} />
                 </View>
                 <View style={styles.footer}>
                     <Text style={styles.footerText}>Don't have an account?</Text>

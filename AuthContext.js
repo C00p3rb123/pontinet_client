@@ -27,6 +27,7 @@ export const AuthProvider = ({children}) => {
                 process.env.EXPO_PUBLIC_TOKEN_KEY,
                 response.data.token
             );
+            console.log(authState);
             
             return response;
         } catch (err) {

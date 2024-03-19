@@ -34,6 +34,9 @@ const Signup = () => {
         console.log("Privacy Policy Pressed");
         // Implement your navigation or link handling logic here
     };
+    const template = () => {
+        console.log("Register not implement");
+    }
 
     return (
         <SafeAreaView>
@@ -43,7 +46,7 @@ const Signup = () => {
                 <Text style={styles.headerText}>Account Details</Text>
                 <Text style={styles.subHeaderText}>This will be your login details when you need to login at a later date</Text>
                 <View style={styles.form}>
-                    <Form />
+                    <Form handleSubmit={template} />
                 </View>
                 <View style={styles.termsContainer}>
                     <Text style={styles.footerText}>

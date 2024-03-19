@@ -1,34 +1,18 @@
-import { StyleSheet, Text, TextInput, View, Button, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import { emailValidator, passwordValidator } from '../utils/formatting';
 import Error from './Error';
 import { Colours } from '../utils/colours';
-import { useAuth } from '../AuthContext';
-import {
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-  Button,
-  TouchableOpacity,
-  KeyboardAvoidingView,
-} from "react-native";
-import React, { useState } from "react";
-import { login } from "../apis/api";
-import { emailValidator, passwordValidator } from "../utils/formatting";
-import Error from "./Error";
-import { Colours } from "../utils/colours";
 
 /**
  * 
  * @returns LoginForm returns the form for logging in and handles the. 
  */
 
-const LoginForm = () => {
+const AccountForm = (handleSubmit) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState();
-  const { login } = useAuth()
 
   const data = {
     email: email,
@@ -53,7 +37,7 @@ const LoginForm = () => {
       return;
     }
     try{
-      await login(data);
+      await handleSubmit(data);
   
     }catch(err) {
       setError(err.message);
@@ -86,7 +70,7 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default AccountForm;
 
 const styles = StyleSheet.create({
   container: {
