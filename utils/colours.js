@@ -6,7 +6,8 @@ export const Colours = {
     pontinetCaseBackground: '#E6F2ED',
     greenDot: '#03C95E',
     amberDot: 'orange',
-    redDot: '#DE1919'
+    redDot: '#DE1919',
+    black: '#474747',
 }
 
 export const caseUrgencyStyle = (submittedDate) =>{
