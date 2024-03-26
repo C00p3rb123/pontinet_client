@@ -10,20 +10,26 @@ import React from "react";
 import { Colours } from "../utils/colours";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import PaitentInformationCard from "../components/PaitentInformationCard";
+import AccountHeader from "../components/AccountHeader";
+import PageTitle from "../components/PageTitle";
 
-const CaseInformation = () => {
+const CaseInformation = ({route}) => {
 
   const screenHeight = Dimensions.get("window").height;
-
+  const caseDetails  = route.params;
+  const title = `Open Case`
+  
   return (
     <SafeAreaView>
       <View style={[styles.container, { height: screenHeight }]}>
         <View style={styles.header}>
-          <Text>HEADER</Text>
+          <AccountHeader />
+          <PageTitle title={title} />
+          <Text style={{paddingLeft: 15, fontWeight: '300', fontSize: 18}}>Case - {caseDetails.paitentInformation.illnessDescription.mechanism}</Text>
         </View>
-        <View style={styles.caseInformation}>
+        <View style={styles.caseInformation}>          
             <View style={styles.paitnentInformation}>
-                <PaitentInformationCard />
+                <PaitentInformationCard caseDetails={caseDetails} />
             </View>
           
         </View>
@@ -38,6 +44,8 @@ const styles = StyleSheet.create({
   container: {},
   header: {
     flex: 1,
+    gap: 15
+
   },
   caseInformation: {
     flex: 4,

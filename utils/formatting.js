@@ -72,3 +72,13 @@ export const convertTime = (submittedDate) => {
 
   return "< 1 hour ago";
 };
+
+export const convertDate = (submittedDate) => {
+    const date = new Date(submittedDate);
+    const day = date.getUTCDate();
+    const month = date.getUTCMonth();
+    const year = date.getUTCFullYear();
+
+    const formattedDate = `${day} - ${month} - ${year}`;
+    return formattedDate
+}

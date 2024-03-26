@@ -1,25 +1,42 @@
 import { StyleSheet, Text, View, TouchableWithoutFeedback } from "react-native";
 import React, { useState } from "react";
+import { convertDate } from "../utils/formatting";
 
-const PaitentInformationCard = () => {
+const PaitentInformationCard = ({caseDetails}) => {
   const [isExpaned, setIsExpanded] = useState(false);
-  const caseDetails = {
-    age: 24,
-    segment: "Hand",
-    mechanism: "Wrist Sprain",
-    createdAt: "2024-03-22T05:44:34.008+00:00",
-  };
+  const date = convertDate(caseDetails.paitentInformation.referalDate);
   return (
     <TouchableWithoutFeedback onPress={() => setIsExpanded(!isExpaned)}>
       <View style={styles.paitentInformation}>
         <View style={styles.column}>
-          <Text>Paitent Information</Text>
-          <Text>Referral Date: {caseDetails.createdAt}</Text>
+          <Text style={styles.title}>Paitent Information</Text>
+          <Text style={styles.date}>
+            <Text style={styles.title}>Referral Date: </Text>
+            {date}
+          </Text>
           {isExpaned && (
-            <View>
-              <Text>Age: {caseDetails.age} years old </Text>
-              <Text>Segment: {caseDetails.segment}</Text>
-              <Text>Mechanism: {caseDetails.mechanism}</Text>
+            <View style={styles.column}>
+              <Text style={styles.subTitle}>
+                Segment:{" "}
+                {caseDetails.paitentInformation.illnessDescription.segment}
+              </Text>
+              <Text style={styles.information}>
+              {
+                  caseDetails.paitentInformation.illnessDescription
+                    .segment_details
+                } {" "}
+              </Text>
+              <Text style={styles.subTitle}>Mechanism Details</Text>
+              <Text style={styles.information}>
+              {
+                  caseDetails.paitentInformation.illnessDescription
+                    .mechanism_details
+                }
+              </Text>
+              <Text style={styles.subTitle}>General Practioner</Text>
+              <Text style={styles.information}>
+                {caseDetails.paitentInformation.gp}
+              </Text>
             </View>
           )}
         </View>
@@ -37,14 +54,30 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingLeft: 8,
     paddingBottom: 8,
-    width: '100%'
+    width: "100%",
   },
   arrow: {
     fontSize: 20,
     paddingRight: 5,
-    justifyContent: 'flex-start'
+    justifyContent: "flex-start",
   },
   column: {
-    paddingTop: 8
+    paddingTop: 8,
+    gap: 8,
   },
+  title: {
+    fontSize: 16,
+    fontWeight: "500",
+  },
+  date: {
+    fontSize: 16,
+  },
+  subTitle: {
+    fontSize: 16,
+    fontWeight: "300"
+  },
+  information:{
+    fontSize: 15,
+    paddingLeft: 10
+  }
 });

@@ -9,13 +9,15 @@ import React, { useState } from "react";
 import { caseUrgencyStyle } from "../utils/colours";
 import { convertTime } from "../utils/formatting";
 import { Colours } from "../utils/colours";
+import { useNavigation } from '@react-navigation/native';
 
 const CaseCard = ({ caseDetails }) => {
   const caseColour = caseUrgencyStyle(caseDetails.paitentInformation.referalDate);
   const formattedCreatedAt = convertTime(caseDetails.paitentInformation.referalDate);
   const [expanded, setExpanded] = useState(false);
+  const navigation = useNavigation();
   
-
+  
   return (
     <TouchableWithoutFeedback onPress={() => setExpanded(!expanded)}>
       <View
@@ -49,13 +51,13 @@ const CaseCard = ({ caseDetails }) => {
               <Text style={styles.header}>Mechanism Details</Text>
               <Text>{caseDetails.paitentInformation.illnessDescription.mechanism_details}</Text>
               <Text style={styles.header}>General Practioner</Text>
-              <Text>{caseDetails.paitentInformation.illnessDescription.gp}</Text>
+              <Text>{caseDetails.paitentInformation.gp}</Text>
               <Text style={styles.header}>Practice</Text>
-              <Text>{caseDetails.paitentInformation.illnessDescription.practice}</Text>
+              <Text>{caseDetails.paitentInformation.clinic}</Text>
             </View>
             <View>
               <View>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={() =>{navigation.navigate('CaseInformation', caseDetails)}}>
                   <Text style={styles.buttonText}>Open Case</Text>
                 </TouchableOpacity>
               </View>
