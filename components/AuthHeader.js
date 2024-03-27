@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, SafeAreaView, Image } from "react-native";
 import React from "react";
 
-const AccountHeader = () => {
+const AuthHeader = () => {
   return (
     <SafeAreaView>
       <View style={styles.container}>
@@ -18,7 +18,7 @@ const AccountHeader = () => {
   );
 };
 
-export default AccountHeader;
+export default AuthHeader;
 
 const styles = StyleSheet.create({
     container:{
@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         width:'100%',
         paddingVertical: 5,
-        paddingHorizontal: 15
     },
     profile:{
         flexDirection: 'row',

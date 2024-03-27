@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, Children } from "react";
+import React, { createContext, useState, useContext, Children, useEffect } from "react";
 import axios from "axios";
 import * as SecureStore from "expo-secure-store";
 
@@ -10,23 +10,47 @@ export const AuthProvider = ({children}) => {
         authenticated: false,
     });
 
-   
+   useEffect(() => {
+    const retrieveTokenFromStorage = async () => {
+        try {
+            const token = await SecureStore.getItemAsync(process.env.EXPO_PUBLIC_TOKEN_KEY);
+            if (token) {
+
+                axios.defaults.headers.common[
+                    "Authorization"
+                ] = `Bearer ${token}`;
+                setAuthState({
+                    token: token,
+                    authenticated: true,
+                });               
+            }
+        } catch (err) {
+            console.error(err);
+            throw new Error("Unable to retrieve token from storage");
+        }
+    };
+    retrieveTokenFromStorage()    
+  
+    
+   },[])
     const login = async (data) => {
         const url = process.env.EXPO_PUBLIC_LOGIN_URL;
         try {
+            
             const response = await axios.post(url, data);
-            setAuthState({
-                token: response.data.token,
-                authenticated: true,
-                
-            });
             axios.defaults.headers.common[
                 "Authorization"
             ] = `Bearer ${response.data.token}`;
             await SecureStore.setItemAsync(
                 process.env.EXPO_PUBLIC_TOKEN_KEY,
                 response.data.token
-            );      
+            );  
+            setAuthState({
+                token: response.data.token,
+                authenticated: true,
+                
+            });
+               
             return response;
         } catch (err) {
             console.log(err);
@@ -34,9 +58,10 @@ export const AuthProvider = ({children}) => {
         }
         
     };
+
     const logout = async () => {
         try {
-            await SecureStore.deleteItemAsync(EXPO_PUBLIC_TOKEN_KEY);
+            await SecureStore.deleteItemAsync(process.env.EXPO_PUBLIC_TOKEN_KEY);
             axios.defaults.headers.common["Authorization"] = "";
             setAuthState({
                 token: null,

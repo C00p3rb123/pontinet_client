@@ -1,7 +1,7 @@
 import { StyleSheet, View, Image } from 'react-native'
 import React from 'react'
 
-const InitialHeader = () => {
+const UnAuthHeader = () => {
   return (
    
        <View style={styles.container}>
@@ -11,7 +11,7 @@ const InitialHeader = () => {
   )
 }
 
-export default InitialHeader
+export default UnAuthHeader
 
 const styles = StyleSheet.create({
   container: {

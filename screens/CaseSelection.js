@@ -10,7 +10,7 @@ import React from "react";
 import CaseCard from "../components/CaseCard";
 import { useFetchCases } from "../hooks/useFetchCases";
 import Loader from "../components/Loader";
-import AccountHeader from "../components/AccountHeader";
+import AuthHeader from "../components/AuthHeader";
 import PageTitle from "../components/PageTitle";
 
 const CaseSelecton = () => {
@@ -23,11 +23,13 @@ const CaseSelecton = () => {
     <SafeAreaView>
       <View style={[styles.container, { height: screenHeight }]}>
         <View style={styles.top}>
-          <AccountHeader />
+          
           <PageTitle title={title} />
         </View>
         {isLoading ? (
+          <View style={styles.caseList}>
           <Loader />
+          </View>
         ) : (
           <View style={styles.caseList}>
             <Text style={styles.title}>Cases</Text>
@@ -58,7 +60,8 @@ const styles = StyleSheet.create({
   },
   top: {
     flex: 1,
-    gap: 15
+    width: "100%",
+    justifyContent: 'center'
   },
   title: {
     textAlign: "center",

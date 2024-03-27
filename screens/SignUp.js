@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, SafeAreaView, Image, Dimensions, Keyboard, TouchableOpacity } from "react-native";
 import React, { useEffect, useState } from "react";
-import AccountHeader from "../components/InitialHeader";
+import UnAuthHeader from "../components/UnAuthHeader";
 import Form from "../components/AccountForm";
 import { Colours } from "../utils/colours";
 import CheckBox from "expo-checkbox";
@@ -41,7 +41,6 @@ const Signup = () => {
     return (
         <SafeAreaView>
             <View style={[styles.container, {height: screenHeight}]}>
-                <AccountHeader />
                 {!isKeyboardVisible && <Image source={require('../assets/medical_professionals.png')} />}
                 <Text style={styles.headerText}>Account Details</Text>
                 <Text style={styles.subHeaderText}>This will be your login details when you need to login at a later date</Text>
