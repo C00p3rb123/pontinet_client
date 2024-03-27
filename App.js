@@ -46,7 +46,7 @@ export const Layout = () => {
               <Stack.Screen
                 name="CaseInformation"
                 component={CaseInformation}
-                options={{headerLeft: ()=> null}}
+                options={{ headerLeft: () => null }}
               />
             </Stack.Group>
           ) : (

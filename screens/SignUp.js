@@ -1,6 +1,5 @@
 import { StyleSheet, Text, View, SafeAreaView, Image, Dimensions, Keyboard, TouchableOpacity } from "react-native";
 import React, { useEffect, useState } from "react";
-import UnAuthHeader from "../components/UnAuthHeader";
 import Form from "../components/AccountForm";
 import { Colours } from "../utils/colours";
 import CheckBox from "expo-checkbox";

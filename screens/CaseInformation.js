@@ -4,13 +4,10 @@ import {
   View,
   SafeAreaView,
   Dimensions,
-  TouchableOpacity,
 } from "react-native";
 import React from "react";
 import { Colours } from "../utils/colours";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import PaitentInformationCard from "../components/PaitentInformationCard";
-import AuthHeader from "../components/AuthHeader";
 import PageTitle from "../components/PageTitle";
 
 const CaseInformation = ({route}) => {

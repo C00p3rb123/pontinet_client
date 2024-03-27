@@ -10,25 +10,23 @@ import React from "react";
 import CaseCard from "../components/CaseCard";
 import { useFetchCases } from "../hooks/useFetchCases";
 import Loader from "../components/Loader";
-import AuthHeader from "../components/AuthHeader";
 import PageTitle from "../components/PageTitle";
 
 const CaseSelecton = () => {
   const screenHeight = Dimensions.get("window").height;
   const url = `${process.env.EXPO_PUBLIC_CASES_URL}/retrieve`;
-  const title = `View New Cases`
+  const title = `View New Cases`;
   const { isLoading, data } = useFetchCases(url);
 
   return (
     <SafeAreaView>
       <View style={[styles.container, { height: screenHeight }]}>
         <View style={styles.top}>
-          
           <PageTitle title={title} />
         </View>
         {isLoading ? (
           <View style={styles.caseList}>
-          <Loader />
+            <Loader />
           </View>
         ) : (
           <View style={styles.caseList}>
@@ -61,7 +59,7 @@ const styles = StyleSheet.create({
   top: {
     flex: 1,
     width: "100%",
-    justifyContent: 'center'
+    justifyContent: "center",
   },
   title: {
     textAlign: "center",
