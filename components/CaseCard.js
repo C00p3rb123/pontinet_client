@@ -30,6 +30,7 @@ const CaseCard = ({ caseDetails }) => {
             shadowRadius: 3,
             shadowColor: "#171717",
             borderTopColor: Colours.pontinetPrimary,
+            paddingRight: 10,
           },
         ]}
         key={Date.now()}
@@ -38,22 +39,22 @@ const CaseCard = ({ caseDetails }) => {
           {caseDetails.paitentInformation.age} yrs old | {caseDetails.paitentInformation.illnessDescription.segment} |{" "}
           {caseDetails.paitentInformation.illnessDescription.mechanism}
         </Text>
-        <Text>
+        <Text style={{fontSize: 16}}>
           <Text style={caseColour}>{`\u25cf`}</Text>{" "}
-          <Text style={{ fontWeight: "bold" }}>Submitted:</Text>{" "}
+          <Text style={{ fontWeight: "bold", fontSize: 16 }}>Submitted:</Text>{" "}
           {formattedCreatedAt}
         </Text>
         {expanded && (
           <View style={styles.expanded} >
             <View>
               <Text style={styles.header}>Segment Details</Text>
-              <Text>{caseDetails.paitentInformation.illnessDescription.segment_details}</Text>
+              <Text style={styles.text}>{caseDetails.paitentInformation.illnessDescription.segment_details}</Text>
               <Text style={styles.header}>Mechanism Details</Text>
-              <Text>{caseDetails.paitentInformation.illnessDescription.mechanism_details}</Text>
+              <Text style={styles.text}>{caseDetails.paitentInformation.illnessDescription.mechanism_details}</Text>
               <Text style={styles.header}>General Practioner</Text>
-              <Text>{caseDetails.paitentInformation.gp}</Text>
+              <Text style={styles.text}>{caseDetails.paitentInformation.gp}</Text>
               <Text style={styles.header}>Practice</Text>
-              <Text>{caseDetails.paitentInformation.clinic}</Text>
+              <Text style={styles.text}>{caseDetails.paitentInformation.clinic}</Text>
             </View>
             <View>
               <View>
@@ -78,9 +79,11 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     paddingTop: 5,
     borderRadius: 10,
+    margin: 5,
   },
   description: {
     paddingBottom: 5,
+    fontSize: 16,
   },
   button: {
     backgroundColor: Colours.pontinetPrimary,
@@ -92,9 +95,15 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   expanded: {
-    paddingTop: 5
+    paddingTop: 5,
   },
   header: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontSize: 16,
+    paddingBottom: 2
+  },
+  text: {
+    fontSize: 16,
+    paddingBottom: 8
   }
 });

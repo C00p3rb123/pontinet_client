@@ -33,7 +33,7 @@ const CaseSelecton = () => {
             <Text style={styles.title}>Cases</Text>
             <FlatList
               data={data}
-              contentContainerStyle={{ gap: 10 }}
+              contentContainerStyle={{ gap: 2 }}
               renderItem={(caseDetails) => (
                 <CaseCard caseDetails={caseDetails.item} />
               )}
@@ -51,19 +51,19 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
   },
-
   caseList: {
-    width: "90%",
+    width: "97%",
     flex: 3,
   },
   top: {
-    flex: 1,
+    flex: 0.5,
     width: "100%",
-    justifyContent: "center",
+    justifyContent: "space-around",
   },
   title: {
     textAlign: "center",
     paddingBottom: 10,
-    fontWeight: "bold",
+    fontWeight: '500',
+    fontSize: 20
   },
 });

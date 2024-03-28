@@ -41,19 +41,17 @@ const styles = StyleSheet.create({
   header: {
     flex: 1,
     gap: 15,
-    justifyContent: 'center'
-
+    justifyContent: 'center',
   },
   caseInformation: {
     flex: 4,
     backgroundColor: Colours.pontinetCaseBackground,
     alignItems: "flex-start",
-    paddingLeft: 10,
+    paddingHorizontal: 10,
   },
   paitnentInformation: {
     backgroundColor: "white",
     marginTop: 20,
-    width: "95%",
     borderRadius: 10,
     flexDirection: "row",
   }

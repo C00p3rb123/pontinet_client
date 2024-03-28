@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
         gap: 8
     },
     title: {
-        fontSize: 20,
+        fontSize: 26,
         fontWeight: '500',
         color: Colours.black,
     }
