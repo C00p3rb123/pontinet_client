@@ -4,12 +4,14 @@ import { emailValidator, passwordValidator } from '../utils/formatting';
 import Error from './Error';
 import { Colours } from '../utils/colours';
 import CheckBox from 'expo-checkbox';
+import { useLanguage } from "../LanguageContext";
 
 const SignUpForm = ({handleSubmit}) => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [error, setError] = useState();
     const [isSelected, setSelection] = useState(false);
+    const {translation} = useLanguage();
   
     const data = {
       email: email,
@@ -53,39 +55,39 @@ const SignUpForm = ({handleSubmit}) => {
     };
 
     return (
-        <View style={styles.con}>
-            <View>
-                <Text style={styles.formText}>Email</Text>
-                <TextInput style={{ borderWidth: 1, padding: 15, borderRadius: 10, borderColor: Colours.pontinetInputContainer}} onChangeText={setEmail} placeholder='Enter email address'/>
-            </View>
-            <View>
-            <Text style={styles.formText}>Password</Text>
-            <TextInput
-            secureTextEntry={true}
-            style={{ borderWidth: 1, padding: 15, borderRadius: 10, borderColor: Colours.pontinetInputContainer}}
-            onChangeText={setPassword}
-            placeholder="Enter password"
-            />
+      <View style={styles.con}>
+        <View>
+            <Text style={styles.formText}>{translation.screens.unAuthScreens.general.email}</Text>
+            <TextInput style={{ borderWidth: 1, padding: 15, borderRadius: 10, borderColor: Colours.pontinetInputContainer}} onChangeText={setEmail} placeholder={translation.screens.unAuthScreens.general.emailPlaceholder}/>
+        </View>
+        <View>
+          <Text style={styles.formText}>{translation.screens.unAuthScreens.general.password}</Text>
+          <TextInput
+          secureTextEntry={true}
+          style={{ borderWidth: 1, padding: 15, borderRadius: 10, borderColor: Colours.pontinetInputContainer}}
+          onChangeText={setPassword}
+          placeholder={translation.screens.unAuthScreens.general.passwordPlaceholder}
+          />
         </View>
         {error && <Error message={error} />}
         <View style={styles.termsContainer}>
-            <Text style={styles.footerText}>
-                By signing up, you agree to
-                <Text style={styles.linkText} onPress={handleTermsOfServicePress}> Terms of Service </Text>
-                and
-                <Text style={styles.linkText} onPress={handlePrivacyPolicyPress}> View Privacy Policy</Text>
-            </Text>
+          <Text style={styles.footerText}>
+            {translation.screens.unAuthScreens.signup.agreement} {}
+            <Text style={styles.linkText} onPress={handleTermsOfServicePress}>{translation.screens.unAuthScreens.signup.terms}</Text>
+            {} {translation.screens.unAuthScreens.general.and} {}
+            <Text style={styles.linkText} onPress={handlePrivacyPolicyPress}>{translation.screens.unAuthScreens.signup.privacyPolicy}</Text>
+          </Text>
         </View>
         <View style={styles.checkboxContainer}>
             <CheckBox value={isSelected} onValueChange={setSelection} style={styles.checkbox} />
-            <Text style={styles.checkboxLabel}>I agree to the Pontinet’s Terms of services</Text>
+            <Text style={styles.checkboxLabel}>{translation.screens.unAuthScreens.signup.check}</Text>
         </View>
         <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.button} onPress={onSubmit}>
-            <Text style={styles.buttonText}>Confirm</Text>
-            </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={onSubmit}>
+            <Text style={styles.buttonText}>{translation.screens.unAuthScreens.general.button}</Text>
+          </TouchableOpacity>
         </View>
-        </View>
+      </View>
     );
 }
 

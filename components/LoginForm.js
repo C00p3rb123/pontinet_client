@@ -58,7 +58,7 @@ const LoginForm = ({handleSubmit}) => {
           secureTextEntry={true}
           style={{ borderWidth: 1, padding: 15, borderRadius: 10, borderColor: Colours.pontinetInputContainer}}
           onChangeText={setPassword}
-          placeholder={translation.screens.unAuthScreens.general.passwordPalceholder}
+          placeholder={translation.screens.unAuthScreens.general.passwordPlaceholder}
         />
       </View>
       {error && <Error message={error} />}

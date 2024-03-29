@@ -6,7 +6,7 @@
                 "email": "Email",
                 "password": "Password",
                 "emailPlaceholder": "Enter email address",
-                "passwordPalceholder": "Enter password",
+                "passwordPlaceholder": "Enter password",
                 "and": "and",
                 "button": "Confirm",
                 "selectOption": "Please Select an Option"
@@ -23,7 +23,7 @@
                 "accountDetails": "Account Details",
                 "memo": "This will be your login details when you need to login at a later date",
                 "button": "Confirm",
-                "agreement": "By singing up, you agree to",
+                "agreement": "By signing up, you agree to",
                 "terms": "Terms of Service",
                 "privacyPolicy": "Privacy Policy",
                 "check": "I agree to the Pontinet's Terms of services"
