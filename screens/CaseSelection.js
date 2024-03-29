@@ -56,20 +56,20 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
   },
-
   caseList: {
-    width: "90%",
+    width: "93%",
     flex: 3,
   },
   top: {
-    flex: 1,
+    flex: 0.5,
     width: "100%",
-    justifyContent: "center",
+    justifyContent: "space-around",
   },
   title: {
     textAlign: "center",
     paddingBottom: 10,
-    fontWeight: "bold",
+    fontWeight: '500',
+    fontSize: 20
   },
   noCases: {
     alignSelf: 'center',

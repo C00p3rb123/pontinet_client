@@ -52,15 +52,15 @@ const styles = StyleSheet.create({
   paitentInformation: {
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingLeft: 8,
+    paddingHorizontal: 8,
     paddingBottom: 8,
     width: "100%",
   },
   arrow: {
     fontSize: 20,
+    paddingTop: 5,
     paddingRight: 5,
-    justifyContent: "flex-start",
-  },
+    },
   column: {
     paddingTop: 8,
     gap: 8,
