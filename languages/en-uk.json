@@ -9,8 +9,9 @@
                 "passwordPlaceholder": "Enter password",
                 "and": "and",
                 "button": "Confirm",
-                "selectOption": "Please Select an Option"
-                
+                "selectOption": "Please Select an Option",
+                "continueButton": "Continue",
+                "dropdownPlaceholder": "Select an option"
             },
             "login": {
                 "accountlogin": "Account Login",
@@ -27,6 +28,14 @@
                 "terms": "Terms of Service",
                 "privacyPolicy": "Privacy Policy",
                 "check": "I agree to the Pontinet's Terms of services"
+            },
+            "clinicRegistration": {
+                "clinicDetails": "Your Clinic Details",
+                "memo": "You are nearly there, please let us know your clinic details",
+                "clinicName": "Clinic Name",
+                "clinicCountry": "Clinic Country",
+                "clinicCity": "Clinic City",
+                "clinicSuburb": "Clinic Suburb"
             }
         },
         "authScreens": {

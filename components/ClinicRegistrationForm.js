@@ -2,13 +2,14 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity } from "react-nativ
 import { useState } from "react";
 import Dropdown from 'react-native-input-select';
 import { Colours } from "../utils/colours";
-import { color } from "@rneui/base";
+import { useLanguage } from "../LanguageContext";
 
 const ClinicRegistrationForm = () => {
     const [clinicName, setClinicName] = useState();
     const [clinicCountry, setClinicCountry] = useState();
     const [clinicCity, setClinicCity] = useState();
     const [clinicSuburb, setClinicSuburb] = useState();
+    const {translation} = useLanguage();
 
     const countries = [
         { label: 'Nigeria', value: 'NG' },
@@ -41,13 +42,14 @@ const ClinicRegistrationForm = () => {
     return (
         <View style={styles.container}>
             <View style={{paddingBottom: 20}}>
-                <Text style={styles.formText}>Clinic Name</Text>
+                <Text style={styles.formText}>{translation.screens.unAuthScreens.clinicRegistration.clinicName}</Text>
                 <TextInput style={{ borderWidth: 1, padding: 20, borderRadius: 10, borderColor: Colours.pontinetInputContainer}} onChangeText={setClinicName}/>
             </View>
             <View>
-                <Text style={styles.formText}>Clinic Country</Text>
+                <Text style={styles.formText}>{translation.screens.unAuthScreens.clinicRegistration.clinicCountry}</Text>
                 <Dropdown
                     dropdownStyle={styles.dropdown}
+                    placeholder={translation.screens.unAuthScreens.general.dropdownPlaceholder}
                     placeholderStyle={{fontSize: 16}}
                     options={countries}
                     selectedValue={clinicCountry}
@@ -57,9 +59,10 @@ const ClinicRegistrationForm = () => {
                 />
             </View>
             <View>
-                <Text style={styles.formText}>Clinic City</Text>
+                <Text style={styles.formText}>{translation.screens.unAuthScreens.clinicRegistration.clinicCity}</Text>
                 <Dropdown
                     dropdownStyle={styles.dropdown}
+                    placeholder={translation.screens.unAuthScreens.general.dropdownPlaceholder}
                     placeholderStyle={{fontSize: 16}}
                     options={cities}
                     selectedValue={clinicCity}
@@ -69,9 +72,10 @@ const ClinicRegistrationForm = () => {
                 />
             </View>
             <View>
-                <Text style={styles.formText}>Clinic Suburb</Text>
+                <Text style={styles.formText}>{translation.screens.unAuthScreens.clinicRegistration.clinicSuburb}</Text>
                 <Dropdown
                     dropdownStyle={styles.dropdown}
+                    placeholder={translation.screens.unAuthScreens.general.dropdownPlaceholder}
                     placeholderStyle={{fontSize: 16}}
                     options={suburbs}
                     selectedValue={clinicSuburb}
@@ -82,7 +86,7 @@ const ClinicRegistrationForm = () => {
             </View>
             <View style={styles.buttonContainer}>
                 <TouchableOpacity style={styles.button} onPress={onSubmit}>
-                <Text style={styles.buttonText}>Continue</Text>
+                <Text style={styles.buttonText}>{translation.screens.unAuthScreens.general.continueButton}</Text>
                 </TouchableOpacity>
             </View>
         </View>

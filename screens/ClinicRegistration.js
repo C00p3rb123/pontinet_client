@@ -2,16 +2,18 @@ import { StyleSheet, Text, View, SafeAreaView, Image, Dimensions, Keyboard, Scro
 import React, { useEffect, useState } from "react";
 import { Colours } from "../utils/colours";
 import ClinicRegistrationForm from "../components/ClinicRegistrationForm";
+import { useLanguage } from "../LanguageContext";
 
 const ClinicRegistration = () => {
     const screenHeight = Dimensions.get('window').height;
+    const {translation} = useLanguage();
 
     return (
         <SafeAreaView>
             <ScrollView contentContainerStyle={[styles.scrollView, {height: screenHeight}]} contentInset={styles.inset}>
                 <Image source={require('../assets/clinic.png')} />
-                <Text style={styles.headerText}>Your Clinic Details</Text>
-                <Text style={styles.subHeaderText}>You are nearly there, please let us know your clinic details</Text>
+                <Text style={styles.headerText}>{translation.screens.unAuthScreens.clinicRegistration.clinicDetails}</Text>
+                <Text style={styles.subHeaderText}>{translation.screens.unAuthScreens.clinicRegistration.memo}</Text>
                 <View style={styles.form}>
                     <ClinicRegistrationForm />
                 </View>
@@ -49,6 +51,6 @@ const styles = StyleSheet.create({
     },
     inset: {
         top: 0,
-        bottom: 100
+        bottom: 130
     }
 });
