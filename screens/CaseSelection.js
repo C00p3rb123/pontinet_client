@@ -19,7 +19,6 @@ const CaseSelecton = () => {
   const url = `${process.env.EXPO_PUBLIC_CASES_URL}/retrieve`;
   const { isLoading, data, refresh, onRefresh} = useFetchCases(url);
   const {translation } = useLanguage();
-  console.log(translation)
 
   return (
     <SafeAreaView>

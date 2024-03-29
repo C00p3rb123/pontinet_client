@@ -8,13 +8,15 @@
                 "emailPlaceholder": "Enter email address",
                 "passwordPalceholder": "Enter password",
                 "and": "and",
-                "button": "Confirm"
+                "button": "Confirm",
+                "selectOption": "Please Select an Option"
+                
             },
             "login": {
                 "accountlogin": "Account Login",
                 "memo": "Bridging gaps together, bringing medical excellence everywhere",               
                 "button": "Confirm",
-                "noAccount": "Don't have an account",
+                "noAccount": "Don't have an account?",
                 "signupNow": "Sign up now"
             },
             "signup": {

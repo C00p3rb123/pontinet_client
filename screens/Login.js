@@ -17,7 +17,6 @@ const Login = () => {
     const [isKeyboardVisible, setKeyboardVisible] = useState(false);
     const {login} = useAuth()
     const {translation} = useLanguage();
-    
 
     useEffect(() => {
       // When the login screen mounts two listeners are initiated

@@ -7,7 +7,9 @@
                 "password": "Contraseña",
                 "emailPlaceholder": "Introduzca la dirección de correo electrónico",
                 "passwordPalceholder": "Introducir la contraseña",
-                "and": "y"
+                "and": "y",
+                "button": "Confirme",
+                "selectOption": "Seleccione una opción"
             },
             "login": {
                 "accountlogin": "Acceso a la cuenta",
@@ -16,7 +18,7 @@
                 "noAccount": "¿No tiene cuenta?",
                 "signupNow": "Inscríbete ahora"
             },
-            "Signup": {
+            "signup": {
                 "accountDetails": "Detalles de la cuenta",
                 "memo": "Estos serán tus datos de acceso cuando necesites conectarte más adelante.",
                 "button": "Confirme",

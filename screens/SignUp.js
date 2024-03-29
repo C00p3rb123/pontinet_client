@@ -10,7 +10,7 @@ const Signup = () => {
     const screenHeight = Dimensions.get('window').height;
     const [isKeyboardVisible, setKeyboardVisible] = useState(false);
     const {translation} = useLanguage();
- 
+    
     useEffect(() => {
       const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', () => {
         setKeyboardVisible(true);

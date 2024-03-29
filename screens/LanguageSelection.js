@@ -1,62 +1,87 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import {
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  Dimensions,
+  Image,
+  TouchableOpacity,
+} from "react-native";
+import React, { useState } from "react";
+import { Colours } from "../utils/colours";
+import { useLanguage } from "../LanguageContext";
+import { useNavigation } from "@react-navigation/native";
+import CountryFlag from "react-native-country-flag";
 
 const LanguageSelection = () => {
+  const { manageTranslation, translation } = useLanguage();
+  const screenHeight = Dimensions.get("window").height;
+  const navigation = useNavigation();
+  const english = "en";
+  const spanish = "esp";
+
+  const onSubmit = (language) => {
+    manageTranslation(language);
+    navigation.navigate("Login");
+  };
   return (
     <SafeAreaView>
-    <View style={[styles.container, {height: screenHeight}]}>
-        <Image source={require('../assets/medical_professionals.png')} />
-        <Text style={styles.headerText}>Please Select and Option</Text>
-        
-    </View>
-</SafeAreaView>
-  )
-}
+      <View style={[styles.container, { height: screenHeight }]}>
+        <View style={styles.topContainer}>
+          <Image source={require("../assets/medical_professionals.png")} />
+          <Text style={styles.headerText}>{translation.screens.unAuthScreens.general.selectOption}</Text>
+        </View>
+        <View style={styles.selection}>
+          <TouchableOpacity style={{width: "50%"}} onPress={() => onSubmit(english)}>
+            <View style={styles.button}>
+              <CountryFlag isoCode="gb" size={25} />
+              <Text style={styles.buttonText}>English</Text>
+            </View>
+          </TouchableOpacity>
 
-export default LanguageSelection
+          <Text>or</Text>
+          <TouchableOpacity style={{width: "50%"}} onPress={() => onSubmit(spanish)}>
+            <View style={styles.button}>
+              <CountryFlag isoCode="es" size={25} />
+              <Text style={styles.buttonText}>Español</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </SafeAreaView>
+  );
+};
+
+export default LanguageSelection;
 const styles = StyleSheet.create({
-    container:{
-        alignItems:'center',
-    },
-    headerText:{
-        color: Colours.pontinetPrimary,
-        fontSize: 32,
-        fontWeight: 'bold',
-        paddingTop: 15,
-        paddingBottom: 15
-    },
-    subHeaderText:{
-        color: Colours.pontinetSeconday,
-        fontSize: 16,
-        textAlign: 'center',
-        paddingHorizontal: 20,
-    },
-    form:{
-        width: '75%',
-        paddingVertical: 20
-    },
-    termsContainer: {
-        paddingVertical: 20,
-        alignItems: 'center',
-        textAlign: 'center',
-    },
-    footerText: {
-        fontSize: 16,
-        paddingVertical: 3,
-        textAlign: 'center',
-    },
-    linkText: {
-        color: 'blue',
-        textDecorationLine: 'underline',
-    },
-    checkboxContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-    },
-    checkbox: {
-        marginRight: 8,
-    },
-    checkboxLabel: {
-        fontSize: 16,
-    }
+  container: {
+    alignItems: "center",
+  },
+  headerText: {
+    color: Colours.pontinetPrimary,
+    fontSize: 26,
+    fontWeight: "bold",
+    paddingTop: 15,
+    paddingBottom: 15,
+  },
+  selection: {
+    width: "100%",
+    alignItems: "center",
+    height: "40%",
+    justifyContent: "center",
+    gap: 10,
+  },
+  button: {
+    backgroundColor: Colours.pontinetPrimary,
+    borderRadius: 45,
+    width: "100%",
+    flexDirection: 'row',
+    paddingVertical: 10,
+    justifyContent: "flex-start",
+    paddingHorizontal: 10,
+    gap: 10
+  },
+  topContainer: {
+    alignItems: "center",
+  },
 });
