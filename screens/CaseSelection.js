@@ -5,6 +5,7 @@ import {
   SafeAreaView,
   Dimensions,
   FlatList,
+  RefreshControl,
 } from "react-native";
 import React from "react";
 import CaseCard from "../components/CaseCard";
@@ -16,7 +17,8 @@ const CaseSelecton = () => {
   const screenHeight = Dimensions.get("window").height;
   const url = `${process.env.EXPO_PUBLIC_CASES_URL}/retrieve`;
   const title = `View New Cases`;
-  const { isLoading, data } = useFetchCases(url);
+  const { isLoading, data, refresh, onRefresh} = useFetchCases(url);
+  const noCases = data.length === 0;
 
   return (
     <SafeAreaView>
@@ -34,10 +36,13 @@ const CaseSelecton = () => {
             <FlatList
               data={data}
               contentContainerStyle={{ gap: 10 }}
+              ListEmptyComponent={<Text style={styles.noCases}>No cases to display</Text>}
               renderItem={(caseDetails) => (
                 <CaseCard caseDetails={caseDetails.item} />
-              )}
-            />
+              )               
+            }
+            refreshControl ={<RefreshControl refreshing={refresh} onRefresh={onRefresh}/>}
+            />           
           </View>
         )}
       </View>
@@ -66,4 +71,8 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     fontWeight: "bold",
   },
+  noCases: {
+    alignSelf: 'center',
+    paddingTop: 15
+  }
 });

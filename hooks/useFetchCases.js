@@ -5,11 +5,12 @@ import { useAuth } from '../AuthContext';
 export const useFetchCases = (url) => {
     const [data, setData] = useState("");
     const [isLoading, setIsLoading] = useState(true);
+    const [refresh, setrefresh] = useState(false);
+
     const {logout} = useAuth()
     const getCases = async () => {
         try{
             const cases = await axios.get(url);
-            
             setData(cases.data);
             setIsLoading(false);            
             return cases
@@ -22,9 +23,16 @@ export const useFetchCases = (url) => {
 
         }
     }
+    const onRefresh = async () => {
+        setrefresh(true);
+        await getCases();
+        setrefresh(false);
+
+    }
     useEffect(() => {
         getCases()
-    },[])
-    return {getCases, data, isLoading}
+    },[refresh])
+
+    return {getCases, data, isLoading, refresh, onRefresh}
     
 }
