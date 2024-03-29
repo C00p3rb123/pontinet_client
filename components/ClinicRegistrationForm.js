@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TextInput } from "react-native";
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from "react-native";
 import { useState } from "react";
 import Dropdown from 'react-native-input-select';
 import { Colours } from "../utils/colours";
@@ -33,6 +33,10 @@ const ClinicRegistrationForm = () => {
         { label: 'American Samoa', value: 'AS' },
         { label: 'Andorra', value: 'AD' },
     ];
+
+    const onSubmit = () => {
+
+    }
 
     return (
         <View style={styles.container}>
@@ -75,6 +79,11 @@ const ClinicRegistrationForm = () => {
                     isSearchable={true}
                     selectedItemStyle={{ fontSize: 16 }}
                 />
+            </View>
+            <View style={styles.buttonContainer}>
+                <TouchableOpacity style={styles.button} onPress={onSubmit}>
+                <Text style={styles.buttonText}>Continue</Text>
+                </TouchableOpacity>
             </View>
         </View>
     );
