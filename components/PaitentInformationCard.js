@@ -1,17 +1,19 @@
 import { StyleSheet, Text, View, TouchableWithoutFeedback } from "react-native";
 import React, { useState } from "react";
 import { convertDate } from "../utils/formatting";
+import { useLanguage } from "../LanguageContext";
 
 const PaitentInformationCard = ({caseDetails}) => {
   const [isExpaned, setIsExpanded] = useState(false);
   const date = convertDate(caseDetails.paitentInformation.referalDate);
+  const {translation} = useLanguage()
   return (
     <TouchableWithoutFeedback onPress={() => setIsExpanded(!isExpaned)}>
       <View style={styles.paitentInformation}>
         <View style={styles.column}>
-          <Text style={styles.title}>Paitent Information</Text>
+          <Text style={styles.title}>{translation.screens.authScreens.caseInformation.paitentInformation}</Text>
           <Text style={styles.date}>
-            <Text style={styles.title}>Referral Date: </Text>
+            <Text style={styles.title}>{translation.screens.authScreens.caseInformation.referralDate}</Text>
             {date}
           </Text>
           {isExpaned && (

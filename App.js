@@ -13,16 +13,21 @@ const Stack = createStackNavigator();
 import { AuthProvider, useAuth } from "./AuthContext";
 import UnAuthHeader from "./components/UnAuthHeader";
 import AuthHeader from "./components/AuthHeader";
+import { LanguageProvider, useLanguage } from "./LanguageContext";
+import LanguageSelection from "./screens/LanguageSelection";
 
 export default function App() {
   return (
     <AuthProvider>
-      <Layout></Layout>
+      <LanguageProvider>
+        <Layout></Layout>
+      </LanguageProvider>
     </AuthProvider>
   );
 }
 export const Layout = () => {
   const { authState } = useAuth();
+  const { isLanguageSet } = useLanguage();
 
   const MyTheme = {
     ...DefaultTheme,
@@ -56,6 +61,21 @@ export const Layout = () => {
                 headerShadowVisible: false,
               }}
             >
+              {!isLanguageSet && (
+                <Stack.Screen
+                  name="LanguageSelection"
+                  component={LanguageSelection}
+                  options={{
+                    headerBackImage: () => (
+                      <Image
+                        source={require("./assets/BackButton.png")}
+                        style={{ marginLeft: 15 }}
+                      />
+                    ),
+                    headerBackTitleVisible: false,
+                  }}
+                />
+              )}
               <Stack.Screen name="Login" component={Login} />
               <Stack.Screen
                 name="SignUp"

@@ -3,12 +3,14 @@ import React, { useEffect, useState } from "react";
 import Form from "../components/AccountForm";
 import { Colours } from "../utils/colours";
 import CheckBox from "expo-checkbox";
+import { useLanguage } from "../LanguageContext";
 
 const Signup = () => {
     const [isSelected, setSelection] = useState(false);
     const screenHeight = Dimensions.get('window').height;
     const [isKeyboardVisible, setKeyboardVisible] = useState(false);
-
+    const {translation} = useLanguage();
+    
     useEffect(() => {
       const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', () => {
         setKeyboardVisible(true);
@@ -41,22 +43,22 @@ const Signup = () => {
         <SafeAreaView>
             <View style={[styles.container, {height: screenHeight}]}>
                 {!isKeyboardVisible && <Image source={require('../assets/medical_professionals.png')} />}
-                <Text style={styles.headerText}>Account Details</Text>
-                <Text style={styles.subHeaderText}>This will be your login details when you need to login at a later date</Text>
+                <Text style={styles.headerText}>{translation.screens.unAuthScreens.signup.accountDetails}</Text>
+                <Text style={styles.subHeaderText}>{translation.screens.unAuthScreens.signup.memo}</Text>
                 <View style={styles.form}>
                     <Form handleSubmit={template} />
                 </View>
                 <View style={styles.termsContainer}>
                     <Text style={styles.footerText}>
-                        By signing up, you agree to
-                        <Text style={styles.linkText} onPress={handleTermsOfServicePress}> Terms of Service </Text>
-                        and
-                        <Text style={styles.linkText} onPress={handlePrivacyPolicyPress}> View Privacy Policy</Text>
+                    {translation.screens.unAuthScreens.signup.agreement}
+                        <Text style={styles.linkText} onPress={handleTermsOfServicePress}> {translation.screens.unAuthScreens.signup.terms} </Text>
+                        {translation.screens.unAuthScreens.general.and}
+                        <Text style={styles.linkText} onPress={handlePrivacyPolicyPress}> {translation.screens.unAuthScreens.signup.privacyPolicy}</Text>
                     </Text>
                 </View>
                 <View style={styles.checkboxContainer}>
                     <CheckBox value={isSelected} onValueChange={setSelection} style={styles.checkbox} />
-                    <Text style={styles.checkboxLabel}>I agree to the Pontinet’s Terms of services</Text>
+                    <Text style={styles.checkboxLabel}>{translation.screens.unAuthScreens.signup.check}</Text>
                 </View>
             </View>
         </SafeAreaView>

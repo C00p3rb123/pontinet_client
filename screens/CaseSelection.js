@@ -12,19 +12,19 @@ import CaseCard from "../components/CaseCard";
 import { useFetchCases } from "../hooks/useFetchCases";
 import Loader from "../components/Loader";
 import PageTitle from "../components/PageTitle";
+import { useLanguage } from "../LanguageContext";
 
 const CaseSelecton = () => {
   const screenHeight = Dimensions.get("window").height;
   const url = `${process.env.EXPO_PUBLIC_CASES_URL}/retrieve`;
-  const title = `View New Cases`;
   const { isLoading, data, refresh, onRefresh} = useFetchCases(url);
-  const noCases = data.length === 0;
+  const {translation } = useLanguage();
 
   return (
     <SafeAreaView>
       <View style={[styles.container, { height: screenHeight }]}>
         <View style={styles.top}>
-          <PageTitle title={title} />
+          <PageTitle title={translation.screens.authScreens.caseSelection.title}/>
         </View>
         {isLoading ? (
           <View style={styles.caseList}>
@@ -32,11 +32,11 @@ const CaseSelecton = () => {
           </View>
         ) : (
           <View style={styles.caseList}>
-            <Text style={styles.title}>Cases</Text>
+            <Text style={styles.title}>{translation.screens.authScreens.caseSelection.cases}</Text>
             <FlatList
               data={data}
               contentContainerStyle={{ gap: 10 }}
-              ListEmptyComponent={<Text style={styles.noCases}>No cases to display</Text>}
+              ListEmptyComponent={<Text style={styles.noCases}>{translation.screens.authScreens.caseSelection.noCases}</Text>}
               renderItem={(caseDetails) => (
                 <CaseCard caseDetails={caseDetails.item} />
               )               
