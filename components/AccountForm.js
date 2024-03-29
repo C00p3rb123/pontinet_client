@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { emailValidator, passwordValidator } from '../utils/formatting';
 import Error from './Error';
 import { Colours } from '../utils/colours';
+import { useLanguage } from '../LanguageContext';
 
 /**
  * 
@@ -13,6 +14,7 @@ const AccountForm = ({handleSubmit}) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState();
+  const {translation} = useLanguage();
 
   const data = {
     email: email,
@@ -48,21 +50,21 @@ const AccountForm = ({handleSubmit}) => {
     <View style={styles.con}>
         <View>
             <Text style={styles.formText}>Email</Text>
-            <TextInput style={{ borderWidth: 1, padding: 15, borderRadius: 10, borderColor: Colours.pontinetInputContainer}} onChangeText={setEmail} placeholder='Enter email address'/>
+            <TextInput style={{ borderWidth: 1, padding: 15, borderRadius: 10, borderColor: Colours.pontinetInputContainer}} onChangeText={setEmail} placeholder={translation.screens.unAuthScreens.general.emailPlaceholder}/>
         </View>
         <View>
-        <Text style={styles.formText}>Password</Text>
+        <Text style={styles.formText}>{translation.screens.unAuthScreens.general.password}</Text>
         <TextInput
           secureTextEntry={true}
           style={{ borderWidth: 1, padding: 15, borderRadius: 10, borderColor: Colours.pontinetInputContainer}}
           onChangeText={setPassword}
-          placeholder="Enter password"
+          placeholder={translation.screens.unAuthScreens.general.passwordPalceholder}
         />
       </View>
       {error && <Error message={error} />}
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button} onPress={onSubmit}>
-          <Text style={styles.buttonText}>Confirm</Text>
+          <Text style={styles.buttonText}>{translation.screens.unAuthScreens.general.button}</Text>
         </TouchableOpacity>
       </View>
     </View>

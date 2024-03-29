@@ -1,7 +1,9 @@
 import { StyleSheet, Text, View, SafeAreaView, Image } from "react-native";
 import React from "react";
+import { useLanguage } from "../LanguageContext";
 
 const AuthHeader = () => {
+  const {translation} = useLanguage()
   return (
     <SafeAreaView>
       <View style={styles.container}>
@@ -10,7 +12,7 @@ const AuthHeader = () => {
         </View>
         <View style ={styles.profile}>
           <Image source={require("../assets/Vector.png")} />
-          <Text> Hello, Rachel </Text>
+          <Text> {translation.screens.authScreens.hello}, Rachel </Text>
           <Image source={require("../assets/profile_pic.png")} />
         </View>
       </View>

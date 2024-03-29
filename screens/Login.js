@@ -4,6 +4,7 @@ import Form from "../components/AccountForm";
 import { Colours } from "../utils/colours";
 import { useNavigation } from '@react-navigation/native';
 import { useAuth } from "../AuthContext";
+import { useLanguage } from "../LanguageContext";
 
 /**
  * 
@@ -15,6 +16,8 @@ const Login = () => {
     const screenHeight = Dimensions.get('window').height;
     const [isKeyboardVisible, setKeyboardVisible] = useState(false);
     const {login} = useAuth()
+    const {translation} = useLanguage();
+    
 
     useEffect(() => {
       // When the login screen mounts two listeners are initiated
@@ -36,15 +39,15 @@ const Login = () => {
         <SafeAreaView>
             <View style={[styles.container, {height: screenHeight}]}>
                 {!isKeyboardVisible && <Image source={require('../assets/login.png')} />}
-                <Text style={styles.headerText}>Account Login</Text>
-                <Text style={styles.subHeaderText}>Bridging gaps together, bringing medical excellence everywhere</Text>
+                <Text style={styles.headerText}>{translation.screens.unAuthScreens.login.accountlogin}</Text>
+                <Text style={styles.subHeaderText}>{translation.screens.unAuthScreens.login.memo}</Text>
                 <View style={styles.form}>
                     <Form handleSubmit={login} />
                 </View>
                 <View style={styles.footer}>
-                    <Text style={styles.footerText}>Don't have an account?</Text>
+                    <Text style={styles.footerText}>{translation.screens.unAuthScreens.login.noAccount}</Text>
                     <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-                        <Text style={[styles.footerText, {color: 'blue'}]}>Sign up now</Text>
+                        <Text style={[styles.footerText, {color: 'blue'}]}>{translation.screens.unAuthScreens.login.signupNow}</Text>
                     </TouchableOpacity>
                 </View>
             </View>

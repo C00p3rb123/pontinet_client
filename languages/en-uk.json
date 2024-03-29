@@ -1,0 +1,51 @@
+{
+    "language": "English",
+    "screens": {
+        "unAuthScreens": {
+            "general": {
+                "email": "Email",
+                "password": "Password",
+                "emailPlaceholder": "Enter email address",
+                "passwordPalceholder": "Enter password",
+                "and": "and",
+                "button": "Confirm"
+            },
+            "login": {
+                "accountlogin": "Account Login",
+                "memo": "Bridging gaps together, bringing medical excellence everywhere",               
+                "button": "Confirm",
+                "noAccount": "Don't have an account",
+                "signupNow": "Sign up now"
+            },
+            "signup": {
+                "accountDetails": "Account Details",
+                "memo": "This will be your login details when you need to login at a later date",
+                "button": "Confirm",
+                "agreement": "By singing up, you agree to",
+                "terms": "Terms of Service",
+                "privacyPolicy": "Privacy Policy",
+                "check": "I agree to the Pontinet's Terms of services"
+            }
+        },
+        "authScreens": {
+            "hello": "Hello",
+            "caseSelection": {
+                "title": "View New Cases",
+                "cases": "Cases",
+                "submitted": "Submitted",
+                "hour": "hour/s ago",
+                "hourSingle": "hour ago" ,
+                "day": "day/s ago",
+                "openCase": "Open Case",
+                "noCases": "No cases to display"
+            },
+            "caseInformation": {
+                "title": "Open Case",
+                "case": "Case",
+                "paitentInformation": "Paitent Information",
+                "referralDate": "Referral Date"
+            }           
+        }
+        
+    }
+}

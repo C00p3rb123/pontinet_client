@@ -9,19 +9,20 @@ import React from "react";
 import { Colours } from "../utils/colours";
 import PaitentInformationCard from "../components/PaitentInformationCard";
 import PageTitle from "../components/PageTitle";
+import { useLanguage } from "../LanguageContext";
 
 const CaseInformation = ({route}) => {
 
   const screenHeight = Dimensions.get("window").height;
   const caseDetails  = route.params;
-  const title = `Open Case`
+  const {translation } = useLanguage();
   
   return (
     <SafeAreaView>
       <View style={[styles.container, { height: screenHeight }]}>
         <View style={styles.header}>
-          <PageTitle title={title} />
-          <Text style={{paddingLeft: 15, fontWeight: '300', fontSize: 18}}>Case - {caseDetails.paitentInformation.illnessDescription.mechanism}</Text>
+          <PageTitle title={translation.screens.authScreens.caseInformation.title} />
+          <Text style={{paddingLeft: 15, fontWeight: '300', fontSize: 18}}>{translation.screens.authScreens.caseInformation.case} - {caseDetails.paitentInformation.illnessDescription.mechanism}</Text>
         </View>
         <View style={styles.caseInformation}>          
             <View style={styles.paitnentInformation}>

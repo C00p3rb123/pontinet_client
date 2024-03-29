@@ -13,11 +13,14 @@ const Stack = createStackNavigator();
 import { AuthProvider, useAuth } from "./AuthContext";
 import UnAuthHeader from "./components/UnAuthHeader";
 import AuthHeader from "./components/AuthHeader";
+import { LanguageProvider } from "./LanguageContext";
 
 export default function App() {
   return (
     <AuthProvider>
-      <Layout></Layout>
+      <LanguageProvider>
+        <Layout></Layout>
+      </LanguageProvider>
     </AuthProvider>
   );
 }

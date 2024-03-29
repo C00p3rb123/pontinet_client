@@ -10,12 +10,14 @@ import { caseUrgencyStyle } from "../utils/colours";
 import { convertTime } from "../utils/formatting";
 import { Colours } from "../utils/colours";
 import { useNavigation } from '@react-navigation/native';
+import { useLanguage } from "../LanguageContext";
 
 const CaseCard = ({ caseDetails }) => {
   const caseColour = caseUrgencyStyle(caseDetails.paitentInformation.referalDate);
   const formattedCreatedAt = convertTime(caseDetails.paitentInformation.referalDate);
   const [expanded, setExpanded] = useState(false);
   const navigation = useNavigation();
+  const {translation } = useLanguage();
   
   
   return (
@@ -40,7 +42,7 @@ const CaseCard = ({ caseDetails }) => {
         </Text>
         <Text>
           <Text style={caseColour}>{`\u25cf`}</Text>{" "}
-          <Text style={{ fontWeight: "bold" }}>Submitted:</Text>{" "}
+          <Text style={{ fontWeight: "bold" }}>{translation.screens.authScreens.caseSelection.submitted}</Text>{" "}
           {formattedCreatedAt}
         </Text>
         {expanded && (
