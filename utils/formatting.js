@@ -1,3 +1,7 @@
+import { useLanguage } from "../LanguageContext";
+
+
+
 export const emailValidator = (email) => {
   const emailRegex = /\S+@\S+\.\S+/;
   if (!emailRegex.test(email)) {
@@ -52,6 +56,7 @@ export const passwordValidator = (password) => {
 };
 
 export const convertTime = (submittedDate) => {
+  const {translation} = useLanguage();
   //TODO unit tests for this
 
   const day = 1000 * 60 * 60 * 24;
@@ -63,14 +68,14 @@ export const convertTime = (submittedDate) => {
   
   if (difference >= day) {
     const differenceInDays = Math.round(difference / (1000 * 3600 * 24));
-    return `${differenceInDays} day/s ago`;
+    return `${differenceInDays} ${translation.screens.authScreens.caseSelection.day} ago`;
   }
   if (difference >= hour) {
     const differenceInHours = Math.round(difference / (1000 * 3600));
-    return `${differenceInHours} hour/s ago`;
+    return `${differenceInHours} ${translation.screens.authScreens.caseSelection.hour} ago`;
   }
 
-  return "< 1 hour ago";
+  return `< 1 ${translation.screens.authScreens.caseSelection.single} ago`;
 };
 
 export const convertDate = (submittedDate) => {

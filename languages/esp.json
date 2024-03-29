@@ -1,0 +1,51 @@
+{
+    "language": "Spanish",
+    "screens": {
+        "unAuthScreens": {
+            "general": {
+                "email": "Email",
+                "password": "Contraseña",
+                "emailPlaceholder": "Introduzca la dirección de correo electrónico",
+                "passwordPalceholder": "Introducir la contraseña",
+                "and": "y",
+                "button": "Confirme",
+                "selectOption": "Seleccione una opción"
+            },
+            "login": {
+                "accountlogin": "Acceso a la cuenta",
+                "memo": "Unir fuerzas para llevar la excelencia médica a todas partes",               
+                "button": "Confirme",
+                "noAccount": "¿No tiene cuenta?",
+                "signupNow": "Inscríbete ahora"
+            },
+            "signup": {
+                "accountDetails": "Detalles de la cuenta",
+                "memo": "Estos serán tus datos de acceso cuando necesites conectarte más adelante.",
+                "button": "Confirme",
+                "agreement": "Al inscribirse, acepta",
+                "terms": "Condiciones de uso",
+                "privacyPolicy": "Política de privacidad",
+                "check": "Acepto las Condiciones de servicio de Pontinet"
+            }
+        },
+        "authScreens": {
+            "hello": "Hola",
+            "caseSelection": {
+                "title": "Ver nuevos casos",
+                "cases": "Casos",
+                "submitted": "Enviado",
+                "hour": "hace hora/s",
+                "hourSingle": "hace hora",
+                "day": "hace día/s",
+                "openCase": "Caso abierto"
+            },
+            "caseInformation": {
+                "title": "Caso abierto",
+                "case": "Caso",
+                "paitentInformation": "Información para pacientes",
+                "referralDate": "Fecha de remisión"
+            }           
+        }
+        
+    }
+}

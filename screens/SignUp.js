@@ -3,12 +3,14 @@ import React, { useEffect, useState } from "react";
 import SignUpForm from "../components/SignUpForm";
 import { Colours } from "../utils/colours";
 import { useNavigation } from '@react-navigation/native';
+import { useLanguage } from "../LanguageContext";
 
 const SignUp = () => {
     const navigation = useNavigation();
     const screenHeight = Dimensions.get('window').height;
     const [isKeyboardVisible, setKeyboardVisible] = useState(false);
-
+    const {translation} = useLanguage();
+    
     useEffect(() => {
       const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', () => {
         setKeyboardVisible(true);
@@ -32,8 +34,8 @@ const SignUp = () => {
         <SafeAreaView>
             <View style={[styles.container, {height: screenHeight}]}>
                 {!isKeyboardVisible && <Image source={require('../assets/medical_professionals.png')} />}
-                <Text style={styles.headerText}>Account Details</Text>
-                <Text style={styles.subHeaderText}>This will be your login details when you need to login at a later date</Text>
+                <Text style={styles.headerText}>{translation.screens.unAuthScreens.signup.accountDetails}</Text>
+                <Text style={styles.subHeaderText}>{translation.screens.unAuthScreens.signup.memo}</Text>
                 <View style={styles.form}>
                     <SignUpForm handleSubmit={handleSubmitPress} />
                 </View>
