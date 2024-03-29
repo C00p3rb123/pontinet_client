@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, SafeAreaView, Image, Dimensions, Keyboard, TouchableOpacity } from "react-native";
 import React, { useEffect, useState } from "react";
-import Form from "../components/AccountForm";
+import LoginForm from "../components/LoginForm";
 import { Colours } from "../utils/colours";
 import { useNavigation } from '@react-navigation/native';
 import { useAuth } from "../AuthContext";
@@ -39,7 +39,7 @@ const Login = () => {
                 <Text style={styles.headerText}>Account Login</Text>
                 <Text style={styles.subHeaderText}>Bridging gaps together, bringing medical excellence everywhere</Text>
                 <View style={styles.form}>
-                    <Form handleSubmit={login} />
+                    <LoginForm handleSubmit={login} />
                 </View>
                 <View style={styles.footer}>
                     <Text style={styles.footerText}>Don't have an account?</Text>

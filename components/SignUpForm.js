@@ -1,0 +1,144 @@
+import { StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-native';
+import React, { useMemo, useState } from 'react';
+import { emailValidator, passwordValidator } from '../utils/formatting';
+import Error from './Error';
+import { Colours } from '../utils/colours';
+import CheckBox from 'expo-checkbox';
+
+const SignUpForm = ({handleSubmit}) => {
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+    const [error, setError] = useState();
+    const [isSelected, setSelection] = useState(false);
+  
+    const data = {
+      email: email,
+      password: password,
+    };
+  
+  /**
+   * 
+   * @returns 
+   */
+    const onSubmit = async () => {
+      const isEmail = emailValidator(email);
+      const isPassword = passwordValidator(password);
+      setError(null);
+      if (!isEmail) {
+        
+        setError(`Email not properly formatted`);
+        return;
+      }
+      if (!isPassword.valid) {
+        setError(isPassword.message);
+        return;
+      }
+      try{
+        await handleSubmit(data);
+    
+      }catch(err) {
+        setError(err.message);
+      }
+    };
+
+    // Dummy handlers for your links
+    const handleTermsOfServicePress = () => {
+        console.log("Terms of Service Pressed");
+        // Implement your navigation or link handling logic here
+    };
+
+    const handlePrivacyPolicyPress = () => {
+        console.log("Privacy Policy Pressed");
+        // Implement your navigation or link handling logic here
+    };
+
+    return (
+        <View style={styles.con}>
+            <View>
+                <Text style={styles.formText}>Email</Text>
+                <TextInput style={{ borderWidth: 1, padding: 15, borderRadius: 10, borderColor: Colours.pontinetInputContainer}} onChangeText={setEmail} placeholder='Enter email address'/>
+            </View>
+            <View>
+            <Text style={styles.formText}>Password</Text>
+            <TextInput
+            secureTextEntry={true}
+            style={{ borderWidth: 1, padding: 15, borderRadius: 10, borderColor: Colours.pontinetInputContainer}}
+            onChangeText={setPassword}
+            placeholder="Enter password"
+            />
+        </View>
+        {error && <Error message={error} />}
+        <View style={styles.termsContainer}>
+            <Text style={styles.footerText}>
+                By signing up, you agree to
+                <Text style={styles.linkText} onPress={handleTermsOfServicePress}> Terms of Service </Text>
+                and
+                <Text style={styles.linkText} onPress={handlePrivacyPolicyPress}> View Privacy Policy</Text>
+            </Text>
+        </View>
+        <View style={styles.checkboxContainer}>
+            <CheckBox value={isSelected} onValueChange={setSelection} style={styles.checkbox} />
+            <Text style={styles.checkboxLabel}>I agree to the Pontinet’s Terms of services</Text>
+        </View>
+        <View style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.button} onPress={onSubmit}>
+            <Text style={styles.buttonText}>Confirm</Text>
+            </TouchableOpacity>
+        </View>
+        </View>
+    );
+}
+
+export default SignUpForm;
+
+const styles = StyleSheet.create({
+    container: {
+      maxWidth: "100%",
+    },
+    buttonContainer: {
+      paddingVertical: 20,
+    },
+    button: {
+      backgroundColor: Colours.pontinetPrimary,
+      paddingVertical: 10,
+      paddingHorizontal: 20,
+      borderRadius: 45,
+      width: "55%",
+      alignSelf: "center",
+    },
+    buttonText: {
+      color: "white",
+      textAlign: "center",
+      fontSize: 20,
+    },
+    formText: {
+      color: Colours.pontinetAccent,
+      fontWeight: "bold",
+      fontSize: 16,
+      paddingVertical: 12,
+    },
+    termsContainer: {
+        paddingVertical: 20,
+        alignItems: 'center',
+        textAlign: 'center',
+    },
+    footerText: {
+        fontSize: 16,
+        paddingVertical: 3,
+        textAlign: 'center',
+    },
+    linkText: {
+        color: 'blue',
+        textDecorationLine: 'underline',
+    },
+    checkboxContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    checkbox: {
+        marginRight: 8,
+    },
+    checkboxLabel: {
+        fontSize: 16,
+    }
+  });

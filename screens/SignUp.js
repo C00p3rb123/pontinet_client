@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View, SafeAreaView, Image, Dimensions, Keyboard, TouchableOpacity } from "react-native";
 import React, { useEffect, useState } from "react";
-import Form from "../components/AccountForm";
+import SignUpForm from "../components/SignUpForm";
 import { Colours } from "../utils/colours";
-import CheckBox from "expo-checkbox";
+import { useNavigation } from '@react-navigation/native';
 
-const Signup = () => {
-    const [isSelected, setSelection] = useState(false);
+const SignUp = () => {
+    const navigation = useNavigation();
     const screenHeight = Dimensions.get('window').height;
     const [isKeyboardVisible, setKeyboardVisible] = useState(false);
 
@@ -23,18 +23,9 @@ const Signup = () => {
       };
     }, []);
 
-    // Dummy handlers for your links
-    const handleTermsOfServicePress = () => {
-        console.log("Terms of Service Pressed");
-        // Implement your navigation or link handling logic here
-    };
-
-    const handlePrivacyPolicyPress = () => {
-        console.log("Privacy Policy Pressed");
-        // Implement your navigation or link handling logic here
-    };
-    const template = () => {
-        console.log(`Not implemented`);
+    
+    const handleSubmitPress = () => {
+        navigation.navigate('ClinicRegistration');
     }
 
     return (
@@ -44,26 +35,14 @@ const Signup = () => {
                 <Text style={styles.headerText}>Account Details</Text>
                 <Text style={styles.subHeaderText}>This will be your login details when you need to login at a later date</Text>
                 <View style={styles.form}>
-                    <Form handleSubmit={template} />
-                </View>
-                <View style={styles.termsContainer}>
-                    <Text style={styles.footerText}>
-                        By signing up, you agree to
-                        <Text style={styles.linkText} onPress={handleTermsOfServicePress}> Terms of Service </Text>
-                        and
-                        <Text style={styles.linkText} onPress={handlePrivacyPolicyPress}> View Privacy Policy</Text>
-                    </Text>
-                </View>
-                <View style={styles.checkboxContainer}>
-                    <CheckBox value={isSelected} onValueChange={setSelection} style={styles.checkbox} />
-                    <Text style={styles.checkboxLabel}>I agree to the Pontinet’s Terms of services</Text>
+                    <SignUpForm handleSubmit={handleSubmitPress} />
                 </View>
             </View>
         </SafeAreaView>
     );
 };
 
-export default Signup;
+export default SignUp;
 
 const styles = StyleSheet.create({
     container:{
@@ -86,28 +65,4 @@ const styles = StyleSheet.create({
         width: '75%',
         paddingVertical: 20
     },
-    termsContainer: {
-        paddingVertical: 20,
-        alignItems: 'center',
-        textAlign: 'center',
-    },
-    footerText: {
-        fontSize: 16,
-        paddingVertical: 3,
-        textAlign: 'center',
-    },
-    linkText: {
-        color: 'blue',
-        textDecorationLine: 'underline',
-    },
-    checkboxContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-    },
-    checkbox: {
-        marginRight: 8,
-    },
-    checkboxLabel: {
-        fontSize: 16,
-    }
 });

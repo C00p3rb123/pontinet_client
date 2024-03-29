@@ -4,7 +4,8 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Login from "./screens/Login";
-import Signup from "./screens/SignUp";
+import SignUp from "./screens/SignUp";
+import ClinicRegistration from "./screens/ClinicRegistration";
 import CaseSelecton from "./screens/CaseSelection";
 import CaseInformation from "./screens/CaseInformation";
 import { StyleSheet, Image } from "react-native";
@@ -59,7 +60,20 @@ export const Layout = () => {
               <Stack.Screen name="Login" component={Login} />
               <Stack.Screen
                 name="SignUp"
-                component={Signup}
+                component={SignUp}
+                options={{
+                  headerBackImage: () => (
+                    <Image
+                      source={require("./assets/BackButton.png")}
+                      style={{ marginLeft: 15 }}
+                    />
+                  ),
+                  headerBackTitleVisible: false,
+                }}
+              />
+              <Stack.Screen
+                name="ClinicRegistration"
+                component={ClinicRegistration}
                 options={{
                   headerBackImage: () => (
                     <Image

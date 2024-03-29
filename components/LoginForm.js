@@ -9,7 +9,7 @@ import { Colours } from '../utils/colours';
  * @returns LoginForm returns the form for logging in and handles the. 
  */
 
-const AccountForm = ({handleSubmit}) => {
+const LoginForm = ({handleSubmit}) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState();
@@ -45,7 +45,7 @@ const AccountForm = ({handleSubmit}) => {
   };
 
   return (
-    <View style={styles.con}>
+    <View style={styles.container}>
         <View>
             <Text style={styles.formText}>Email</Text>
             <TextInput style={{ borderWidth: 1, padding: 15, borderRadius: 10, borderColor: Colours.pontinetInputContainer}} onChangeText={setEmail} placeholder='Enter email address'/>
@@ -70,7 +70,7 @@ const AccountForm = ({handleSubmit}) => {
   );
 };
 
-export default AccountForm;
+export default LoginForm;
 
 const styles = StyleSheet.create({
   container: {
