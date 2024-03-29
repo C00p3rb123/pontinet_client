@@ -1,6 +1,5 @@
 import { StyleSheet, Text, View, SafeAreaView, Image, Dimensions, Keyboard, TouchableOpacity } from "react-native";
 import React, { useEffect, useState } from "react";
-import AccountHeader from "../components/AccountHeader";
 import Form from "../components/AccountForm";
 import { Colours } from "../utils/colours";
 import { useNavigation } from '@react-navigation/native';
@@ -36,7 +35,6 @@ const Login = () => {
     return (
         <SafeAreaView>
             <View style={[styles.container, {height: screenHeight}]}>
-                <AccountHeader />
                 {!isKeyboardVisible && <Image source={require('../assets/login.png')} />}
                 <Text style={styles.headerText}>Account Login</Text>
                 <Text style={styles.subHeaderText}>Bridging gaps together, bringing medical excellence everywhere</Text>
