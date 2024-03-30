@@ -10,7 +10,7 @@ const ClinicRegistration = () => {
 
     return (
         <SafeAreaView>
-            <ScrollView contentContainerStyle={[styles.scrollView, {height: screenHeight}]} contentInset={styles.inset}>
+            <ScrollView contentContainerStyle={styles.scrollView} contentInset={styles.inset}>
                 <Image source={require('../assets/clinic.png')} />
                 <Text style={styles.headerText}>{translation.screens.unAuthScreens.clinicRegistration.clinicDetails}</Text>
                 <Text style={styles.subHeaderText}>{translation.screens.unAuthScreens.clinicRegistration.memo}</Text>
@@ -51,6 +51,6 @@ const styles = StyleSheet.create({
     },
     inset: {
         top: 0,
-        bottom: 130
+        bottom: 10
     }
 });
