@@ -16,6 +16,7 @@ import UnAuthHeader from "./components/UnAuthHeader";
 import AuthHeader from "./components/AuthHeader";
 import { LanguageProvider, useLanguage } from "./LanguageContext";
 import LanguageSelection from "./screens/LanguageSelection";
+import MedicalRegistration from "./screens/MedicalRegistration";
 
 export default function App() {
   return (
@@ -86,6 +87,17 @@ export const Layout = () => {
                     <Image
                       source={require("./assets/BackButton.png")}
                       style={{ marginLeft: 15 }}
+                    />
+                  ),
+                  headerBackTitleVisible: false,
+                }}
+              />
+              <Stack.Screen
+                name="MedicalRegistration"
+                component={MedicalRegistration}
+                options={{
+                  headerBackImage: () => (
+                    <Image source={require("./assets/BackButton.png")} style={{ marginLeft: 15 }}
                     />
                   ),
                   headerBackTitleVisible: false,

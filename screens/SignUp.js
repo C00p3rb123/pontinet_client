@@ -27,7 +27,7 @@ const SignUp = () => {
 
     
     const handleSubmitPress = () => {
-        navigation.navigate('ClinicRegistration');
+        navigation.navigate('MedicalRegistration');
     }
 
     return (
