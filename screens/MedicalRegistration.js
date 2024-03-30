@@ -56,6 +56,6 @@ const styles = StyleSheet.create({
   },
   inset: {
       top: 0,
-      bottom: 300
+      bottom: 350
   }
 });

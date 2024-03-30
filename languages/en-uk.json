@@ -46,7 +46,8 @@
               "subSpecialisation": "Sub Specialisation",
               "registrationId": "Registration ID",
               "registrationCouncil": "Registration Council",
-              "whatsAppMobileNumber": "WhatsApp Mobile Number"
+              "whatsAppMobileNumber": "WhatsApp Mobile Number",
+              "whatsAppDescription": "Please ensure that this number is connected to a WhatsApp account"
             }
         },
         "authScreens": {

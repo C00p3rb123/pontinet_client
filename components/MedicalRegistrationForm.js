@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert } from "react-native";
 import { useState } from "react";
 import Dropdown from 'react-native-input-select';
 import { Colours } from "../utils/colours";
@@ -12,6 +12,7 @@ const MedicalRegistrationForm = ({ onSubmit })  => {
     const [registrationCouncil, setRegistrationCouncil] = useState();
     const [whatsAppMobileNumber, setWhatsAppMobileNumber] = useState();
     const { translation } = useLanguage();
+    
 
     // Placeholder data for dropdowns, replace with your actual data
     const specialisationsOptions = [
@@ -33,8 +34,15 @@ const MedicalRegistrationForm = ({ onSubmit })  => {
     ];
 
     const handleSubmit = () => {
-        onSubmit(); 
-           
+        // Check if all fields are filled
+        if (!drName || !specialisation || !subSpecialisation || !registrationId || !registrationCouncil || !whatsAppMobileNumber) {
+            // Alert the user that all fields are required
+            Alert.alert("Form Incomplete", "Please fill out all the fields.");
+            return;
+        }
+
+        // If validation passes, navigate to the next screen
+        onSubmit();
     };
 
     return (
@@ -93,10 +101,12 @@ const MedicalRegistrationForm = ({ onSubmit })  => {
             <View style={{ paddingBottom: 20 }}>
                 <Text style={styles.formText}>{translation.screens.unAuthScreens.medicalRegistration.whatsAppMobileNumber}</Text>
                 <TextInput  style={{ borderWidth: 1, padding: 20, borderRadius: 10, borderColor: Colours.pontinetInputContainer}} onChangeText={setWhatsAppMobileNumber}/>
+                <Text style={styles.whatsAppDescription}>{translation.screens.unAuthScreens.medicalRegistration.whatsAppDescription}</Text>
             </View>
+            
 
             <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.button} onPress={onSubmit}>
+                <TouchableOpacity style={styles.button} onPress={handleSubmit}>
                     <Text style={styles.buttonText}>{translation.screens.unAuthScreens.general.continueButton}</Text>
                 </TouchableOpacity>
             </View>
@@ -137,5 +147,10 @@ const styles = StyleSheet.create({
         color: Colours.pontinetAccent,
         backgroundColor: 'white',
         borderRadius: 10
+    },
+    whatsAppDescription: {
+        fontSize: 16, 
+        color: Colours.pontinetSeconday,
+        marginTop: 10, 
     },
   });
