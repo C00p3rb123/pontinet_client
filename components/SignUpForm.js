@@ -5,43 +5,43 @@ import Error from './Error';
 import { Colours } from '../utils/colours';
 import CheckBox from 'expo-checkbox';
 import { useLanguage } from "../LanguageContext";
+import { useRegistration } from '../RegistrationContext';
+import { useNavigation } from '@react-navigation/native';
 
-const SignUpForm = ({handleSubmit}) => {
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
-    const [error, setError] = useState();
-    const [isSelected, setSelection] = useState(false);
-    const {translation} = useLanguage();
-  
-    const data = {
-      email: email,
-      password: password,
-    };
-  
-  /**
-   * 
-   * @returns 
-   */
-    const onSubmit = async () => {
+const SignUpForm = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState();
+  const [isSelected, setSelection] = useState(false);
+  const {translation} = useLanguage();
+  const {registrationDetails, setRegistrationDetails} = useRegistration();
+  const navigation = useNavigation(); 
+  //ONCE the button is clicked changed the registrationDetails corresponding values. 
+  //EG on the signup form - once clicked the registrationDetails email and password values are updated. 
+
+  const onSubmit = async () => {
       const isEmail = emailValidator(email);
       const isPassword = passwordValidator(password);
+      
       setError(null);
       if (!isEmail) {
-        
-        setError(`Email not properly formatted`);
-        return;
+          setError(`Email not properly formatted`);
+          return;
       }
       if (!isPassword.valid) {
-        setError(isPassword.message);
-        return;
+          setError(isPassword.message);
+          return;
       }
-      try{
-        await handleSubmit(data);
-    
-      }catch(err) {
-        setError(err.message);
-      }
-    };
+
+      
+      setRegistrationDetails(prevDetails => ({
+          ...prevDetails, 
+          email: email, 
+          password: password, 
+      }));
+      console.log("hello")
+      navigation.navigate("MedicalRegistration")
+  };
 
     // Dummy handlers for your links
     const handleTermsOfServicePress = () => {

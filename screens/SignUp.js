@@ -4,6 +4,7 @@ import SignUpForm from "../components/SignUpForm";
 import { Colours } from "../utils/colours";
 import { useNavigation } from '@react-navigation/native';
 import { useLanguage } from "../LanguageContext";
+import { RegistrationProvider } from "../RegistrationContext";
 
 const SignUp = () => {
     const navigation = useNavigation();
@@ -26,21 +27,20 @@ const SignUp = () => {
     }, []);
 
     
-    const handleSubmitPress = () => {
-        navigation.navigate('MedicalRegistration');
-    }
-
     return (
-        <SafeAreaView>
+        <RegistrationProvider>
+            <SafeAreaView>
             <View style={[styles.container, {height: screenHeight}]}>
                 {!isKeyboardVisible && <Image source={require('../assets/medical_professionals.png')} />}
                 <Text style={styles.headerText}>{translation.screens.unAuthScreens.signup.accountDetails}</Text>
                 <Text style={styles.subHeaderText}>{translation.screens.unAuthScreens.signup.memo}</Text>
                 <View style={styles.form}>
-                    <SignUpForm handleSubmit={handleSubmitPress} />
+                    <SignUpForm />
                 </View>
             </View>
         </SafeAreaView>
+        </RegistrationProvider>
+        
     );
 };
 

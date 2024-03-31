@@ -3,13 +3,15 @@ import { useState } from "react";
 import Dropdown from 'react-native-input-select';
 import { Colours } from "../utils/colours";
 import { useLanguage } from "../LanguageContext";
+import { useRegistration } from "../RegistrationContext";
 
 const ClinicRegistrationForm = () => {
-    const [clinicName, setClinicName] = useState();
-    const [clinicCountry, setClinicCountry] = useState();
-    const [clinicCity, setClinicCity] = useState();
-    const [clinicSuburb, setClinicSuburb] = useState();
-    const {translation} = useLanguage();
+    const [clinicName, setClinicName] = useState('');
+    const [clinicCountry, setClinicCountry] = useState('');
+    const [clinicCity, setClinicCity] = useState('');
+    const [clinicSuburb, setClinicSuburb] = useState('');
+    const { translation } = useLanguage();
+    const { registrationDetails, setRegistrationDetails } = useRegistration();
 
     const countries = [
         { label: 'Nigeria', value: 'NG' },
@@ -36,8 +38,18 @@ const ClinicRegistrationForm = () => {
     ];
 
     const onSubmit = () => {
+        if (!clinicName || !clinicCountry || !clinicCity || !clinicSuburb) {
+            Alert.alert("Form Incomplete", "Please fill out all the fields.");
+            return;
+        }
 
-    }
+        setRegistrationDetails(previousDetails => {
+            consoel.log(previousDetails)
+            }
+        );
+        console.log(registrationDetails)
+        // Add any further logic here, such as navigation to the next screen
+    };
 
     return (
         <View style={styles.container}>

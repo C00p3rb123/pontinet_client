@@ -3,15 +3,20 @@ import { useState } from "react";
 import Dropdown from 'react-native-input-select';
 import { Colours } from "../utils/colours";
 import { useLanguage } from "../LanguageContext";
+import { useRegistration } from "../RegistrationContext";
+import { useNavigation } from '@react-navigation/native';
 
-const MedicalRegistrationForm = ({ onSubmit })  => {
-    const [drName, setDrName] = useState();
-    const [specialisation, setSpecialisation] = useState();
-    const [subSpecialisation, setSubSpecialisation] = useState();
-    const [registrationId, setRegistrationId] = useState();
-    const [registrationCouncil, setRegistrationCouncil] = useState();
-    const [whatsAppMobileNumber, setWhatsAppMobileNumber] = useState();
+const MedicalRegistrationForm = () => {
+    const navigation = useNavigation();
+    const [drName, setDrName] = useState('');
+    const [specialisation, setSpecialisation] = useState('');
+    const [subSpecialisation, setSubSpecialisation] = useState('');
+    const [registrationId, setRegistrationId] = useState('');
+    const [registrationCouncil, setRegistrationCouncil] = useState('');
+    const [whatsAppMobileNumber, setWhatsAppMobileNumber] = useState('');
     const { translation } = useLanguage();
+    const { registrationDetails, setRegistrationDetails } = useRegistration();
+
     
 
     // Placeholder data for dropdowns, replace with your actual data
@@ -34,15 +39,26 @@ const MedicalRegistrationForm = ({ onSubmit })  => {
     ];
 
     const handleSubmit = () => {
-        // Check if all fields are filled
         if (!drName || !specialisation || !subSpecialisation || !registrationId || !registrationCouncil || !whatsAppMobileNumber) {
-            // Alert the user that all fields are required
             Alert.alert("Form Incomplete", "Please fill out all the fields.");
             return;
         }
 
-        // If validation passes, navigate to the next screen
-        onSubmit();
+        setRegistrationDetails(previousDetails => ({
+            ...registrationDetails,
+            registrationDetails: {
+                name: drName,
+                specialisation: specialisation,
+                subSpecialisation: subSpecialisation,
+                registrationId: registrationId,
+                registrationCouncil: registrationCouncil,
+                mobileNumber: whatsAppMobileNumber
+            }
+        }));
+        
+        console.log(registrationDetails);
+        navigation.navigate("ClinicRegistration");
+        
     };
 
     return (

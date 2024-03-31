@@ -3,13 +3,15 @@ import React, { useEffect, useState } from "react";
 import { Colours } from "../utils/colours";
 import ClinicRegistrationForm from "../components/ClinicRegistrationForm";
 import { useLanguage } from "../LanguageContext";
+import { RegistrationProvider } from "../RegistrationContext";
 
 const ClinicRegistration = () => {
     const screenHeight = Dimensions.get('window').height;
     const {translation} = useLanguage();
 
     return (
-        <SafeAreaView>
+        <RegistrationProvider>
+            <SafeAreaView>
             <ScrollView contentContainerStyle={styles.scrollView} contentInset={styles.inset}>
                 <Image source={require('../assets/clinic.png')} />
                 <Text style={styles.headerText}>{translation.screens.unAuthScreens.clinicRegistration.clinicDetails}</Text>
@@ -19,6 +21,8 @@ const ClinicRegistration = () => {
                 </View>
             </ScrollView>
         </SafeAreaView>
+        </RegistrationProvider>
+        
     );
 };
 
