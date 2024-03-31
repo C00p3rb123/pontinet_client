@@ -36,6 +36,17 @@
                 "clinicCountry": "Clínica País",
                 "clinicCity": "Ciudad Clínica",
                 "clinicSuburb": "Suburbio de la clínica"
+            },
+            "medicalRegistration": {
+                "header": "Los detalles de su registro médico",
+                "description": "Para garantizar que PontiNet siga siendo una plataforma confiable, proporcione información precisa",
+                "drName": "Dr. Nombre",
+                "specialisation": "Especialización",
+                "subSpecialisation": "Subespecialización",
+                "registrationId": "ID de registro",
+                "registrationCouncil": "Consejo de Registro",
+                "whatsAppMobileNumber": "Número de móvil de WhatsApp",
+                "whatsAppDescription": "Asegúrese de que este número esté conectado a una cuenta de WhatsApp"
             }
         },
         "authScreens": {

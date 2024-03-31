@@ -41,7 +41,6 @@
               "header": "Your Medical Registration Details ",
               "description": "To ensure PontiNet remains trustworthy platform, please provide accurate information",
               "drName": "Dr Name",
-              "drNamePlaceholder": "Enter Dr Name",
               "specialisation": "Specialisation",
               "subSpecialisation": "Sub Specialisation",
               "registrationId": "Registration ID",
