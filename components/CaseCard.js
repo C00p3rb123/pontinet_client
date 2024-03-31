@@ -32,6 +32,7 @@ const CaseCard = ({ caseDetails }) => {
             shadowRadius: 3,
             shadowColor: "#171717",
             borderTopColor: Colours.pontinetPrimary,
+            elevation: 10
           },
         ]}
         key={Date.now()}
@@ -94,7 +95,7 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   expanded: {
-    paddingTop: 5
+    paddingTop: 5,
   },
   header: {
     fontWeight: 'bold'

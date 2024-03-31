@@ -29,10 +29,15 @@ const LanguageSelection = () => {
       <View style={[styles.container, { height: screenHeight }]}>
         <View style={styles.topContainer}>
           <Image source={require("../assets/medical_professionals.png")} />
-          <Text style={styles.headerText}>{translation.screens.unAuthScreens.general.selectOption}</Text>
+          <Text style={styles.headerText}>
+            {translation.screens.unAuthScreens.general.selectOption}
+          </Text>
         </View>
         <View style={styles.selection}>
-          <TouchableOpacity style={{width: "50%"}} onPress={() => onSubmit(english)}>
+          <TouchableOpacity
+            style={{ width: "50%" }}
+            onPress={() => onSubmit(english)}
+          >
             <View style={styles.button}>
               <CountryFlag isoCode="gb" size={25} />
               <Text style={styles.buttonText}>English</Text>
@@ -40,7 +45,10 @@ const LanguageSelection = () => {
           </TouchableOpacity>
 
           <Text>or</Text>
-          <TouchableOpacity style={{width: "50%"}} onPress={() => onSubmit(spanish)}>
+          <TouchableOpacity
+            style={{ width: "50%" }}
+            onPress={() => onSubmit(spanish)}
+          >
             <View style={styles.button}>
               <CountryFlag isoCode="es" size={25} />
               <Text style={styles.buttonText}>Español</Text>
@@ -67,21 +75,23 @@ const styles = StyleSheet.create({
   selection: {
     width: "100%",
     alignItems: "center",
-    height: "40%",
-    justifyContent: "center",
+    flex: 2,
+    justifyContent: "flex-start",
     gap: 10,
   },
   button: {
     backgroundColor: Colours.pontinetPrimary,
     borderRadius: 45,
     width: "100%",
-    flexDirection: 'row',
+    flexDirection: "row",
     paddingVertical: 10,
-    justifyContent: "flex-start",
+    justifyContent: "center",
+    alignItems: "center",
     paddingHorizontal: 10,
-    gap: 10
+    gap: 4
   },
   topContainer: {
     alignItems: "center",
+    flex: 1
   },
 });

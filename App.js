@@ -57,6 +57,7 @@ export const Layout = () => {
           ) : (
             <Stack.Group
               screenOptions={{
+                headerTitleAlign: 'center',
                 headerTitle: () => <UnAuthHeader />,
                 headerShadowVisible: false,
               }}
@@ -65,15 +66,6 @@ export const Layout = () => {
                 <Stack.Screen
                   name="LanguageSelection"
                   component={LanguageSelection}
-                  options={{
-                    headerBackImage: () => (
-                      <Image
-                        source={require("./assets/BackButton.png")}
-                        style={{ marginLeft: 15 }}
-                      />
-                    ),
-                    headerBackTitleVisible: false,
-                  }}
                 />
               )}
               <Stack.Screen name="Login" component={Login} />
