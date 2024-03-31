@@ -17,12 +17,15 @@ import AuthHeader from "./components/AuthHeader";
 import { LanguageProvider, useLanguage } from "./LanguageContext";
 import LanguageSelection from "./screens/LanguageSelection";
 import MedicalRegistration from "./screens/MedicalRegistration";
+import { RegistrationProvider } from "./RegistrationContext";
 
 export default function App() {
   return (
     <AuthProvider>
       <LanguageProvider>
-        <Layout></Layout>
+        <RegistrationProvider>
+          <Layout></Layout>
+        </RegistrationProvider>
       </LanguageProvider>
     </AuthProvider>
   );
@@ -97,7 +100,9 @@ export const Layout = () => {
                 component={MedicalRegistration}
                 options={{
                   headerBackImage: () => (
-                    <Image source={require("./assets/BackButton.png")} style={{ marginLeft: 15 }}
+                    <Image
+                      source={require("./assets/BackButton.png")}
+                      style={{ marginLeft: 15 }}
                     />
                   ),
                   headerBackTitleVisible: false,

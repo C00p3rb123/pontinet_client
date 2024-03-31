@@ -44,7 +44,7 @@ const MedicalRegistrationForm = () => {
             return;
         }
 
-        setRegistrationDetails(previousDetails => ({
+        setRegistrationDetails ({
             ...registrationDetails,
             registrationDetails: {
                 name: drName,
@@ -54,7 +54,7 @@ const MedicalRegistrationForm = () => {
                 registrationCouncil: registrationCouncil,
                 mobileNumber: whatsAppMobileNumber
             }
-        }));
+        });
         
         console.log(registrationDetails);
         navigation.navigate("ClinicRegistration");

@@ -47,7 +47,7 @@ const ClinicRegistrationForm = () => {
             consoel.log(previousDetails)
             }
         );
-        console.log(registrationDetails)
+       
         // Add any further logic here, such as navigation to the next screen
     };
 

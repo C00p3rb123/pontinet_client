@@ -34,12 +34,11 @@ const SignUpForm = () => {
       }
 
       
-      setRegistrationDetails(prevDetails => ({
-          ...prevDetails, 
+      setRegistrationDetails({
+          ...registrationDetails, 
           email: email, 
           password: password, 
-      }));
-      console.log("hello")
+      });
       navigation.navigate("MedicalRegistration")
   };
 

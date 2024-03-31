@@ -18,7 +18,7 @@ export const AuthProvider = ({children}) => {
 
                 axios.defaults.headers.common[
                     "Authorization"
-                ] = `Bearer ${token}`;
+                ] = `Bearer sdf `;
                 setAuthState({
                     token: token,
                     authenticated: true,
