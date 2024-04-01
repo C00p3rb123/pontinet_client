@@ -15,16 +15,22 @@ export const RegistrationProvider = ({ children }) => {
         type: '',
         clinicId: '',
         registrationDetails: {
-          name: '', 
-          specialisation: '', 
-          subSpecialisation: '',
-          registrationId: '',
-          registrationCouncil: '',
-          moileNumber: ''
-    }})
+            name: '', 
+            specialisation: '', 
+            subSpecialisation: '',
+            registrationId: '',
+            registrationCouncil: '',
+            mobileNumber: ''
+        },
+        clinicDetails: { // Add clinic details here
+            clinicName: '',
+            clinicCountry: '',
+            clinicCity: '',
+            clinicSuburb: ''
+        }
+    });
 
-    //TODO improve password security
-
+    //TODO: Improve password security
 
     return (
         <RegistrationContext.Provider

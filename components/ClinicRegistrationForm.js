@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert } from "react-native";
 import { useState } from "react";
 import Dropdown from 'react-native-input-select';
 import { Colours } from "../utils/colours";
@@ -12,6 +12,7 @@ const ClinicRegistrationForm = () => {
     const [clinicSuburb, setClinicSuburb] = useState('');
     const { translation } = useLanguage();
     const { registrationDetails, setRegistrationDetails } = useRegistration();
+    
 
     const countries = [
         { label: 'Nigeria', value: 'NG' },
@@ -42,15 +43,18 @@ const ClinicRegistrationForm = () => {
             Alert.alert("Form Incomplete", "Please fill out all the fields.");
             return;
         }
-
-        setRegistrationDetails(previousDetails => {
-            consoel.log(previousDetails)
+    
+        setRegistrationDetails({
+            ...registrationDetails,
+            clinicDetails: {
+                name: clinicName,
+                country: clinicCountry,
+                city: clinicCity,
+                suburb: clinicSuburb
             }
-        );
-       
-        // Add any further logic here, such as navigation to the next screen
+        });
+        console.log("Registration Details:", registrationDetails);
     };
-
     return (
         <View style={styles.container}>
             <View style={{paddingBottom: 20}}>
