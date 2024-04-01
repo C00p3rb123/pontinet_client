@@ -58,7 +58,6 @@ const ClinicRegistrationForm = () => {
         await sendRegistrationDetails();
         navigation.navigate("Login");
     };
-
     return (
         <View style={styles.container}>
             <View style={{paddingBottom: 20}}>
