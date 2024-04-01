@@ -30,7 +30,14 @@
             }
         },
         "authScreens": {
-            "hello": "Hello",
+            "general": {
+                "hello": "Hello",
+                "logout": "Logout"
+            },
+            "dashboard": {
+                "newCaseButtonHeader": "New Cases",
+                "newCaseButtonText": "View New Cases"
+            },
             "caseSelection": {
                 "title": "View New Cases",
                 "cases": "Cases",

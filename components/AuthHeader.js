@@ -12,7 +12,7 @@ const AuthHeader = () => {
         </View>
         <View style ={styles.profile}>
           <Image source={require("../assets/Vector.png")} />
-          <Text> {translation.screens.authScreens.hello}, Rachel </Text>
+          <Text> {translation.screens.authScreens.general.hello}, Rachel </Text>
           <Image source={require("../assets/profile_pic.png")} />
         </View>
       </View>

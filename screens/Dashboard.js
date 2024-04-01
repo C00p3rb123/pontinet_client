@@ -28,13 +28,13 @@ const Dashboard = () => {
                 <View style={styles.newCaseButton}>
                     <Image source={require('../assets/new_case_symbol.png')}/>
                     <View>
-                        <Text style={styles.newCaseButtonHeader} >New Cases</Text>
-                        <Text style={styles.newCaseButtonText} >View New Cases</Text>
+                        <Text style={styles.newCaseButtonHeader} >{translation.screens.authScreens.dashboard.newCaseButtonHeader}</Text>
+                        <Text style={styles.newCaseButtonText} >{translation.screens.authScreens.dashboard.newCaseButtonText}</Text>
                     </View>
                 </View>
             </TouchableOpacity>
             <TouchableOpacity style={styles.logoutButton} onPress={logout}>
-                <Text style={styles.logoutButtonText} ></Text>
+                <Text style={styles.logoutButtonText} >{translation.screens.authScreens.general.logout}</Text>
             </TouchableOpacity>
         </SafeAreaView>
     );
