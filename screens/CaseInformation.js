@@ -1,4 +1,11 @@
-import { StyleSheet, Text, View, SafeAreaView, Dimensions } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  Dimensions,
+  TouchableOpacity,
+} from "react-native";
 import React, { useState } from "react";
 import { Colours } from "../utils/colours";
 import PaitentInformationCard from "../components/PaitentInformationCard";
@@ -13,7 +20,7 @@ const CaseInformation = ({ route }) => {
   const titles = [
     `Diagnostic Impression`,
     `On-site Procedure`,
-    `On=site Medication`,
+    `On-site Medication`,
     `General Indications`,
     `Medication`,
     `Referral/Follow up`,
@@ -25,6 +32,15 @@ const CaseInformation = ({ route }) => {
   const [medication, setMedication] = useState("");
   const [referral, setReferral] = useState("");
   const { translation } = useLanguage();
+
+  const setters = [
+    setDiagnosticImpression,
+    setOnSitreProcedue,
+    setOnSiteMedication,
+    setGeneralIndications,
+    setMedication,
+    setReferral,
+  ];
 
   console.log(diagnosticImpression);
   return (
@@ -39,17 +55,48 @@ const CaseInformation = ({ route }) => {
             {caseDetails.paitentInformation.illnessDescription.mechanism}
           </Text>
         </View>
+        <ScrollView>
         <View style={styles.caseInformation}>
-          <ScrollView>
-          <View style={styles.paitnentInformation}>
-            <PaitentInformationCard caseDetails={caseDetails} />
-          </View>
-          <View>
+          
+            <View style={styles.paitnentInformation}>
+              <PaitentInformationCard caseDetails={caseDetails} />
+            </View>
+            <View>
+              <Text>General Instructions</Text>
+              {titles.map((title, i) => {
+                if (i <= 2) {
+                  return (
+                    <CaseResponseCard title={title} onChangeText={setters[i]} />
+                  );
+                }
+              })}
+              <Text>Discharge Instructions</Text>
+              {titles.map((title, i) => {
+                if (i > 2) {
+                  return (
+                    <CaseResponseCard title={title} onChangeText={setters[i]} />
+                  );
+                }
+              })}
+            </View>
+            <View></View>
+            <View>
+              <TouchableOpacity>
+                <Text>Add image +</Text>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Text>Add report +</Text>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Text>Camera</Text>
+              </TouchableOpacity>
+            </View>
 
-          </View>
-          </ScrollView>
-         
-        </View>
+            <TouchableOpacity>
+              <Text>Submit</Text>
+            </TouchableOpacity>
+            </View>
+          </ScrollView>        
       </View>
     </SafeAreaView>
   );
@@ -74,6 +121,9 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     marginTop: 20,
     borderRadius: 10,
+    flexDirection: "row",
+  },
+  additionalButtons: {
     flexDirection: "row",
   },
 });
