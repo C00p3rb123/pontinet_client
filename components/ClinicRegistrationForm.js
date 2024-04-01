@@ -1,17 +1,19 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert } from "react-native";
 import { useState } from "react";
 import Dropdown from 'react-native-input-select';
 import { Colours } from "../utils/colours";
 import { useLanguage } from "../LanguageContext";
 import { useRegistration } from "../RegistrationContext";
+import { useNavigation } from '@react-navigation/native';
 
 const ClinicRegistrationForm = () => {
     const [clinicName, setClinicName] = useState('');
     const [clinicCountry, setClinicCountry] = useState('');
+    const [clinicState, setClinicState] = useState('');
     const [clinicCity, setClinicCity] = useState('');
-    const [clinicSuburb, setClinicSuburb] = useState('');
     const { translation } = useLanguage();
-    const { registrationDetails, setRegistrationDetails } = useRegistration();
+    const { registrationDetails, setRegistrationDetails, sendRegistrationDetails } = useRegistration();
+    const navigation = useNavigation();
 
     const countries = [
         { label: 'Nigeria', value: 'NG' },
@@ -37,18 +39,24 @@ const ClinicRegistrationForm = () => {
         { label: 'Andorra', value: 'AD' },
     ];
 
-    const onSubmit = () => {
-        if (!clinicName || !clinicCountry || !clinicCity || !clinicSuburb) {
+    const onSubmit = async () => {
+        if (!clinicName || !clinicCountry || !clinicCity || !clinicState) {
             Alert.alert("Form Incomplete", "Please fill out all the fields.");
             return;
         }
 
-        setRegistrationDetails(previousDetails => {
-            consoel.log(previousDetails)
+        setRegistrationDetails ({
+            ...registrationDetails,
+            clinicDetails: {
+                clinicName: clinicName,
+                clinicCountry: clinicCountry,
+                clinicState: clinicState,
+                clinicCity: clinicCity                
             }
-        );
-       
-        // Add any further logic here, such as navigation to the next screen
+        });
+               
+        await sendRegistrationDetails();
+        navigation.navigate("Login");
     };
 
     return (
@@ -71,27 +79,27 @@ const ClinicRegistrationForm = () => {
                 />
             </View>
             <View>
-                <Text style={styles.formText}>{translation.screens.unAuthScreens.clinicRegistration.clinicCity}</Text>
+                <Text style={styles.formText}>{translation.screens.unAuthScreens.clinicRegistration.clinicState}</Text>
                 <Dropdown
                     dropdownStyle={styles.dropdown}
                     placeholder={translation.screens.unAuthScreens.general.dropdownPlaceholder}
                     placeholderStyle={{fontSize: 16}}
                     options={cities}
-                    selectedValue={clinicCity}
-                    onValueChange={(value) => setClinicCity(value)}
+                    selectedValue={clinicState}
+                    onValueChange={(value) => setClinicState(value)}
                     isSearchable={true}
                     selectedItemStyle={{ fontSize: 16 }}
                 />
             </View>
             <View>
-                <Text style={styles.formText}>{translation.screens.unAuthScreens.clinicRegistration.clinicSuburb}</Text>
+                <Text style={styles.formText}>{translation.screens.unAuthScreens.clinicRegistration.clinicCity}</Text>
                 <Dropdown
                     dropdownStyle={styles.dropdown}
                     placeholder={translation.screens.unAuthScreens.general.dropdownPlaceholder}
                     placeholderStyle={{fontSize: 16}}
                     options={suburbs}
-                    selectedValue={clinicSuburb}
-                    onValueChange={(value) => setClinicSuburb(value)}
+                    selectedValue={clinicCity}
+                    onValueChange={(value) => setClinicCity(value)}
                     isSearchable={true}
                     selectedItemStyle={{ fontSize: 16 }}
                 />

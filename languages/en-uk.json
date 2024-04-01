@@ -34,8 +34,8 @@
                 "memo": "You are nearly there, please let us know your clinic details",
                 "clinicName": "Clinic Name",
                 "clinicCountry": "Clinic Country",
-                "clinicCity": "Clinic City",
-                "clinicSuburb": "Clinic Suburb"
+                "clinicState": "Clinic State",
+                "clinicCity": "Clinic City"
             },
             "medicalRegistration": {
               "header": "Your Medical Registration Details ",

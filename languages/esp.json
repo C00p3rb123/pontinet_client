@@ -34,8 +34,8 @@
                 "memo": "Ya casi has llegado, por favor háganos saber los detalles de su clínica",
                 "clinicName": "Nombre de la clínica",
                 "clinicCountry": "Clínica País",
-                "clinicCity": "Ciudad Clínica",
-                "clinicSuburb": "Suburbio de la clínica"
+                "clinicState": "Clínica Estado",
+                "clinicCity": "Clínica Ciudad"
             },
             "medicalRegistration": {
                 "header": "Los detalles de su registro médico",

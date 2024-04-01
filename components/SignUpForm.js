@@ -38,6 +38,7 @@ const SignUpForm = () => {
           ...registrationDetails, 
           email: email, 
           password: password, 
+          type: 'SP'
       });
       navigation.navigate("MedicalRegistration")
   };
