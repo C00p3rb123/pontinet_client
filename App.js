@@ -5,6 +5,7 @@ import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Login from "./screens/Login";
 import Signup from "./screens/SignUp";
+import Dashboard from "./screens/Dashboard";
 import CaseSelecton from "./screens/CaseSelection";
 import CaseInformation from "./screens/CaseInformation";
 import { StyleSheet, Image } from "react-native";
@@ -47,7 +48,12 @@ export const Layout = () => {
                 headerShadowVisible: false,
               }}
             >
-              <Stack.Screen name="CaseSelection" component={CaseSelecton} />
+              <Stack.Screen name="Dashboard" component={Dashboard} />
+              <Stack.Screen
+                name="CaseSelection"
+                component={CaseSelecton} 
+                options={{ headerLeft: () => null }}
+              />
               <Stack.Screen
                 name="CaseInformation"
                 component={CaseInformation}
