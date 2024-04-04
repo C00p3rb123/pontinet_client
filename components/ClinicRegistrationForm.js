@@ -7,13 +7,15 @@ import {
   Alert,
   TurboModuleRegistry,
 } from "react-native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Dropdown from "react-native-input-select";
 import { Colours } from "../utils/colours";
 import Error from "./Error";
 import { useLanguage } from "../LanguageContext";
 import { useRegistration } from "../RegistrationContext";
 import { useNavigation } from "@react-navigation/native";
+import Loader from "./Loader";
+import axios from "axios";
 
 const ClinicRegistrationForm = () => {
   const [clinicName, setClinicName] = useState("");
@@ -29,35 +31,86 @@ const ClinicRegistrationForm = () => {
   } = useRegistration();
   const navigation = useNavigation();
 
-  const countries = [
-    { label: "Nigeria", value: "NG" },
-    { label: "Åland Islands", value: "AX" },
-    { label: "Algeria", value: "DZ" },
-    { label: "American Samoa", value: "AS" },
-    { label: "Andorra", value: "AD" },
-  ];
+  const [countries, setCountries] = useState([]);
+  const [states, setStates] = useState([]);
+  const [cities, setCities] = useState([]);
 
-  const cities = [
-    { label: "Nigeria", value: "NG" },
-    { label: "Åland Islands", value: "AX" },
-    { label: "Algeria", value: "DZ" },
-    { label: "American Samoa", value: "AS" },
-    { label: "Andorra", value: "AD" },
-  ];
+  useEffect(() => {
 
-  const suburbs = [
-    { label: "Nigeria", value: "NG" },
-    { label: "Åland Islands", value: "AX" },
-    { label: "Algeria", value: "DZ" },
-    { label: "American Samoa", value: "AS" },
-    { label: "Andorra", value: "AD" },
-  ];
+    async function fetchCountriesData() {
+
+      const response = await axios.get("https://api.countrystatecity.in/v1/countries", { headers: { "X-CSCAPI-KEY": "eWs4OWhpYml3b3U3Umh6aDBxZ2h6Q3hoU0RyQTdhd1BDTW1GYVFJRA==" } });
+      const result = response.data;
+      const tempData = result.map(e => { return { label: e.name, value: e.name, iso: e.iso2 } })
+      setCountries(tempData);
+    }
+
+    fetchCountriesData().then().catch();
+
+  }, []);
+
+
+  useEffect(() => {
+
+    setClinicState("");
+    setClinicCity("");
+    setStates([]);
+    setCities([]);
+
+    if (!clinicCountry.trim()) {
+      setStates([]);
+      return;
+    }
+
+    async function fetchStatesData() {
+
+      const countryISOCode = countries.find(e => e.value === clinicCountry).iso;
+
+      const response = await axios.get(`https://api.countrystatecity.in/v1/countries/${countryISOCode}/states`, { headers: { "X-CSCAPI-KEY": "eWs4OWhpYml3b3U3Umh6aDBxZ2h6Q3hoU0RyQTdhd1BDTW1GYVFJRA==" } });
+      const result = response.data;
+      const tempData = result.map(e => { return { label: e.name, value: e.name, iso: e.iso2 } })
+      setStates(tempData);
+    }
+
+
+    fetchStatesData().then().catch();
+
+  }, [clinicCountry]);
+
+  useEffect(() => {
+    setClinicCity("");
+    setCities([]);
+
+    if (!clinicCountry.trim() || !clinicState.trim()) {
+      setCities([]);
+      return;
+    }
+
+    async function fetchCitiesData() {
+
+      const countryISOCode = countries.find(e => e.value === clinicCountry).iso;
+      const stateISOCode = states.find(e => e.value === clinicState).iso;
+
+      const response = await axios.get(`https://api.countrystatecity.in/v1/countries/${countryISOCode}/states/${stateISOCode}/cities`, { headers: { "X-CSCAPI-KEY": "eWs4OWhpYml3b3U3Umh6aDBxZ2h6Q3hoU0RyQTdhd1BDTW1GYVFJRA==" } });
+      const result = response.data;
+      const tempData = result.map(e => { return { label: e.name, value: e.name } })
+      setCities(tempData);
+    }
+
+
+    fetchCitiesData().then().catch();
+
+  }, [clinicState]);
+
 
   const onSubmit = async () => {
     if (!clinicName || !clinicCountry || !clinicCity || !clinicState) {
       Alert.alert("Form Incomplete", "Please fill out all the fields.");
       return;
     }
+
+    //Alert.alert(clinicName + " " + clinicCountry + " " + clinicState + " " + clinicCity)
+    //return;
 
     try {
       setRegistrationDetails({
@@ -75,6 +128,12 @@ const ClinicRegistrationForm = () => {
       setError(`${error.response.data.message}. Please contact Pontinet`);
     }
   };
+
+
+  if (!countries.length) {
+    return <Loader />;
+  }
+
   return (
     <View style={styles.container}>
       <View style={{ paddingBottom: 20 }}>
@@ -118,11 +177,12 @@ const ClinicRegistrationForm = () => {
             translation.screens.unAuthScreens.general.dropdownPlaceholder
           }
           placeholderStyle={{ fontSize: 16 }}
-          options={cities}
+          options={states}
           selectedValue={clinicState}
           onValueChange={(value) => setClinicState(value)}
           isSearchable={true}
           selectedItemStyle={{ fontSize: 16 }}
+          disabled={!clinicCountry.trim()}
         />
       </View>
       <View>
@@ -135,11 +195,12 @@ const ClinicRegistrationForm = () => {
             translation.screens.unAuthScreens.general.dropdownPlaceholder
           }
           placeholderStyle={{ fontSize: 16 }}
-          options={suburbs}
+          options={cities}
           selectedValue={clinicCity}
           onValueChange={(value) => setClinicCity(value)}
           isSearchable={true}
           selectedItemStyle={{ fontSize: 16 }}
+          disabled={!clinicCountry.trim() || !clinicState.trim()}
         />
       </View>
       {error && <Error message={error} />}
@@ -149,7 +210,7 @@ const ClinicRegistrationForm = () => {
             {translation.screens.unAuthScreens.general.continueButton}
           </Text>
         </TouchableOpacity>
-      </View>     
+      </View>
     </View>
   );
 };
