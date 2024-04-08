@@ -17,22 +17,33 @@ const Dashboard = () => {
             <View style={styles.header}>
                 <View style={styles.header2}>
                     <Image source={require('../assets/dashboard_header_icon.png')}/>
-                    <Text> asdf</Text>
+                    <Text style={styles.header2Text}>Clinic Name</Text>
                 </View>
                 <View style={styles.header2}>
                     <Image source={require('../assets/dashboard_header_icon2.png')}/>
-                    <Text></Text>
+                    <Text style={styles.header2Text}>Country</Text>
                 </View>
             </View>
-            <TouchableOpacity style={styles.newCaseButtonContainer} onPress={() => navigation.navigate('CaseSelection')}>
-                <View style={styles.newCaseButton}>
-                    <Image source={require('../assets/new_case_symbol.png')}/>
-                    <View>
-                        <Text style={styles.newCaseButtonHeader} >{translation.screens.authScreens.dashboard.newCaseButtonHeader}</Text>
-                        <Text style={styles.newCaseButtonText} >{translation.screens.authScreens.dashboard.newCaseButtonText}</Text>
+            <View>
+                <TouchableOpacity style={styles.caseButtonContainer} onPress={() => navigation.navigate('CaseSelection')}>
+                    <View style={styles.caseButton}>
+                        <Image source={require('../assets/new_case_symbol.png')}/>
+                        <View style={{paddingLeft:10, alignSelf: "center"}}>
+                            <Text style={styles.caseButtonHeader} >{translation.screens.authScreens.dashboard.newCaseButtonHeader}</Text>
+                            <Text style={styles.caseButtonText} >{translation.screens.authScreens.dashboard.newCaseButtonText}</Text>
+                        </View>
                     </View>
-                </View>
-            </TouchableOpacity>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.caseButtonContainer} onPress={null}>
+                    <View style={styles.caseButton}>
+                        <Image source={require('../assets/case_history_symbol.png')}/>
+                        <View style={{paddingLeft:10, alignSelf: "center"}}>
+                            <Text style={styles.caseButtonHeader} >{translation.screens.authScreens.dashboard.caseHistoryButtonHeader}</Text>
+                            <Text style={styles.caseButtonText} >{translation.screens.authScreens.dashboard.caseHistoryButtonText}</Text>
+                        </View>
+                    </View>
+                </TouchableOpacity>
+            </View>
             <TouchableOpacity style={styles.logoutButton} onPress={logout}>
                 <Text style={styles.logoutButtonText} >{translation.screens.authScreens.general.logout}</Text>
             </TouchableOpacity>
@@ -43,35 +54,56 @@ const Dashboard = () => {
 export default Dashboard;
 
 const styles = StyleSheet.create({
+    container: {
+        backgroundColor: Colours.pontinetDashboardBackground
+    },
     header: {
         flexDirection:"row",
         backgroundColor: Colours.pontinetAccent2,
         justifyContent: "flex-start",
         width:'100%',
-        paddingVertical: 5,
+        paddingVertical: 10,
         paddingLeft: 20
     },
     header2: {
-        flexDirection: "row"
+        flexDirection: "row",
+        paddingRight: 20,
+        alignItems: "center"
     },
-    newCaseButtonContainer: {
-        paddingVertical: 10,
+    header2Text: {
+        fontSize: 16,
+        paddingLeft: 5,
     },
-    newCaseButton: {
+    caseButtonContainer: {
+        paddingTop: 10,
+        paddingBottom: 15
+    },
+    caseButton: {
         flexDirection: "row",
         width: "95%",
         backgroundColor: "white",
         shadowOffset: { width: 1, height: 4 },
-        shadowOpacity: 0.5,
+        shadowOpacity: 0.25,
         shadowRadius: 3,
         shadowColor: "#171717",
         borderRadius: 11,
         alignSelf: "center",
         justifyContent: "flex-start",
-        paddingLeft: 10,
-        paddingBottom: 10,
-        paddingTop: 5,
+        paddingLeft: 35,
+        paddingTop: 30,
+        paddingBottom: 25,
         borderRadius: 10,
+    },
+    caseButtonHeader: {
+        fontSize: 20,
+        fontWeight: "500",
+        color: Colours.pontinetButtonHeader,
+        paddingBottom: 5
+    },
+    caseButtonText: {
+        fontSize: 16,
+        fontWeight: "500",
+        color: Colours.pontinetButtonText
     },
     logoutButton: {
         backgroundColor: Colours.pontinetPrimary,

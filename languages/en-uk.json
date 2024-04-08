@@ -36,7 +36,9 @@
             },
             "dashboard": {
                 "newCaseButtonHeader": "New Cases",
-                "newCaseButtonText": "View New Cases"
+                "newCaseButtonText": "View New Cases",
+                "caseHistoryButtonHeader": "Case History",
+                "caseHistoryButtonText": "View Your Recently Opened Cases"
             },
             "caseSelection": {
                 "title": "View New Cases",
