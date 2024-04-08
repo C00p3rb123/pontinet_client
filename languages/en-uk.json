@@ -10,7 +10,6 @@
                 "and": "and",
                 "button": "Confirm",
                 "selectOption": "Please Select an Option"
-                
             },
             "login": {
                 "accountlogin": "Account Login",
@@ -32,7 +31,8 @@
         "authScreens": {
             "general": {
                 "hello": "Hello",
-                "logout": "Logout"
+                "logout": "Logout",
+                "languageButton": "Change Language"
             },
             "dashboard": {
                 "newCaseButtonHeader": "New Cases",

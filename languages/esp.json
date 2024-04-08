@@ -29,7 +29,17 @@
             }
         },
         "authScreens": {
-            "hello": "Hola",
+            "general": {
+                "hello": "Hola",
+                "logout": "Logout",
+                "languageButton": "Change Language"
+            },
+            "dashboard": {
+                "newCaseButtonHeader": "New Cases",
+                "newCaseButtonText": "View New Cases",
+                "caseHistoryButtonHeader": "Case History",
+                "caseHistoryButtonText": "View Your Recently Opened Cases"
+            },
             "caseSelection": {
                 "title": "Ver nuevos casos",
                 "cases": "Casos",

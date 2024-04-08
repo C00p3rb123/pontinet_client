@@ -3,14 +3,12 @@ import { useLanguage } from "../LanguageContext";
 import React from "react";
 import { Colours } from "../utils/colours";
 import { useNavigation } from '@react-navigation/native';
-import { useAuth } from "../AuthContext";
 
 const Dashboard = () => {
 
     const screenHeight = Dimensions.get("window").height;
     const navigation = useNavigation();
     const { translation } = useLanguage();
-    const { logout } = useAuth();
 
     return (
         <SafeAreaView style={[styles.container, { height: screenHeight }]}>
@@ -44,9 +42,6 @@ const Dashboard = () => {
                     </View>
                 </TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.logoutButton} onPress={logout}>
-                <Text style={styles.logoutButtonText} >{translation.screens.authScreens.general.logout}</Text>
-            </TouchableOpacity>
         </SafeAreaView>
     );
 }
@@ -104,18 +99,5 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: "500",
         color: Colours.pontinetButtonText
-    },
-    logoutButton: {
-        backgroundColor: Colours.pontinetPrimary,
-        paddingVertical: 10,
-        paddingHorizontal: 20,
-        borderRadius: 45,
-        width: "55%",
-        alignSelf: "center",
-    },
-    logoutButtonText: {
-        color: "white",
-        textAlign: "center",
-        fontSize: 20,
     },
 })

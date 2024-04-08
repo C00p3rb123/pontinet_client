@@ -12,6 +12,7 @@ import { Colours } from "../utils/colours";
 import { useLanguage } from "../LanguageContext";
 import { useNavigation } from "@react-navigation/native";
 import CountryFlag from "react-native-country-flag";
+import { useAuth } from "../AuthContext";
 
 const LanguageSelection = () => {
   const { manageTranslation, translation } = useLanguage();
@@ -19,10 +20,11 @@ const LanguageSelection = () => {
   const navigation = useNavigation();
   const english = "en";
   const spanish = "esp";
+  const { authState } = useAuth();
 
   const onSubmit = (language) => {
     manageTranslation(language);
-    navigation.navigate("Login");
+    authState.authenticated ? navigation.navigate("Settings"): navigation.navigate("Login");
   };
   return (
     <SafeAreaView>
