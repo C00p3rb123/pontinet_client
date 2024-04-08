@@ -13,6 +13,8 @@ import PageTitle from "../components/PageTitle";
 import { useLanguage } from "../LanguageContext";
 import CaseResponseCard from "../components/CaseResponseCard";
 import { ScrollView } from "react-native-gesture-handler";
+import axios from "axios"
+import { useAuth } from "../AuthContext";
 
 const CaseInformation = ({ route }) => {
   const screenHeight = Dimensions.get("window").height;
@@ -31,7 +33,9 @@ const CaseInformation = ({ route }) => {
   const [generalIndications, setGeneralIndications] = useState("");
   const [medication, setMedication] = useState("");
   const [referral, setReferral] = useState("");
+  const [error, setError] = useState(false);
   const { translation } = useLanguage();
+  const {user} = useAuth();
 
   const setters = [
     setDiagnosticImpression,
@@ -42,7 +46,28 @@ const CaseInformation = ({ route }) => {
     setReferral,
   ];
 
-  console.log(diagnosticImpression);
+const onSubmit = async () => {
+  const data = {
+    id: caseDetails._id,
+    generalInstructions: {
+      diagnosticImpression: diagnosticImpression,
+      onSiteProcedure: onSiteProcedure,
+      onSiteMedication: onSiteMedication
+    },
+    dischargeInstructions: {
+      generalIndications: generalIndications,
+      medication: medication,
+      referalDetails: referral,
+    },
+    specialist: user
+  }
+  try{
+    const response = axios.post(`${process.env.EXPO_PUBLIC_CASES_URL}/send`, data);
+  }catch(err){
+    setError(true)
+  }
+}
+  //TODO A MODAL TO CONFIRM
   return (
     <SafeAreaView>
       <View style={[styles.container, { height: screenHeight }]}>
@@ -55,9 +80,9 @@ const CaseInformation = ({ route }) => {
             {caseDetails.paitentInformation.illnessDescription.mechanism}
           </Text>
         </View>
-        <ScrollView>
+        <ScrollView style={styles.scrollView}>  
         <View style={styles.caseInformation}>
-          
+                
             <View style={styles.paitnentInformation}>
               <PaitentInformationCard caseDetails={caseDetails} />
             </View>
@@ -80,7 +105,7 @@ const CaseInformation = ({ route }) => {
               })}
             </View>
             <View></View>
-            <View>
+            <View style={styles.additionalButtons}>
               <TouchableOpacity>
                 <Text>Add image +</Text>
               </TouchableOpacity>
@@ -92,11 +117,12 @@ const CaseInformation = ({ route }) => {
               </TouchableOpacity>
             </View>
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress={onSubmit}>
               <Text>Submit</Text>
-            </TouchableOpacity>
+            </TouchableOpacity>            
             </View>
-          </ScrollView>        
+            </ScrollView>  
+               
       </View>
     </SafeAreaView>
   );
@@ -107,15 +133,15 @@ export default CaseInformation;
 const styles = StyleSheet.create({
   container: {},
   header: {
-    flex: 1,
+    
     gap: 15,
     justifyContent: "center",
   },
   caseInformation: {
-    flex: 4,
     backgroundColor: Colours.pontinetCaseBackground,
     alignItems: "flex-start",
     paddingHorizontal: 10,
+    
   },
   paitnentInformation: {
     backgroundColor: "white",
@@ -126,4 +152,5 @@ const styles = StyleSheet.create({
   additionalButtons: {
     flexDirection: "row",
   },
+ 
 });
