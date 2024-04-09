@@ -16,6 +16,7 @@ import { useRegistration } from "../RegistrationContext";
 import { useNavigation } from "@react-navigation/native";
 import Loader from "./Loader";
 import axios from "axios";
+import Constants from "expo-constants";
 
 const ClinicRegistrationForm = () => {
   const [clinicName, setClinicName] = useState("");
@@ -35,24 +36,29 @@ const ClinicRegistrationForm = () => {
   const [countries, setCountries] = useState([]);
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
+  const apiKey = process.env.EXPO_PUBLIC_CSCAPI_KEY;
 
   useEffect(() => {
-
     async function fetchCountriesData() {
-
-      const response = await axios.get("https://api.countrystatecity.in/v1/countries", { headers: { "X-CSCAPI-KEY": "eWs4OWhpYml3b3U3Umh6aDBxZ2h6Q3hoU0RyQTdhd1BDTW1GYVFJRA==" } });
+      const response = await axios.get(
+        "https://api.countrystatecity.in/v1/countries",
+        {
+          headers: {
+            "X-CSCAPI-KEY": apiKey,
+          },
+        }
+      );
       const result = response.data;
-      const tempData = result.map(e => { return { label: e.name, value: e.name, iso: e.iso2 } })
+      const tempData = result.map((e) => {
+        return { label: e.name, value: e.name, iso: e.iso2 };
+      });
       setCountries(tempData);
     }
 
     fetchCountriesData().then().catch();
-
   }, []);
 
-
   useEffect(() => {
-
     setClinicState("");
     setClinicCity("");
     setStates([]);
@@ -64,18 +70,25 @@ const ClinicRegistrationForm = () => {
     }
 
     async function fetchStatesData() {
-
-      const countryISOCode = countries.find(e => e.value === clinicCountry).iso;
-
-      const response = await axios.get(`https://api.countrystatecity.in/v1/countries/${countryISOCode}/states`, { headers: { "X-CSCAPI-KEY": "eWs4OWhpYml3b3U3Umh6aDBxZ2h6Q3hoU0RyQTdhd1BDTW1GYVFJRA==" } });
+      const countryISOCode = countries.find(
+        (e) => e.value === clinicCountry
+      ).iso;
+      const response = await axios.get(
+        `https://api.countrystatecity.in/v1/countries/${countryISOCode}/states`,
+        {
+          headers: {
+            "X-CSCAPI-KEY": apiKey,
+          },
+        }
+      );
       const result = response.data;
-      const tempData = result.map(e => { return { label: e.name, value: e.name, iso: e.iso2 } })
+      const tempData = result.map((e) => {
+        return { label: e.name, value: e.name, iso: e.iso2 };
+      });
       setStates(tempData);
     }
 
-
     fetchStatesData().then().catch();
-
   }, [clinicCountry]);
 
   useEffect(() => {
@@ -88,21 +101,28 @@ const ClinicRegistrationForm = () => {
     }
 
     async function fetchCitiesData() {
+      const countryISOCode = countries.find(
+        (e) => e.value === clinicCountry
+      ).iso;
+      const stateISOCode = states.find((e) => e.value === clinicState).iso;
 
-      const countryISOCode = countries.find(e => e.value === clinicCountry).iso;
-      const stateISOCode = states.find(e => e.value === clinicState).iso;
-
-      const response = await axios.get(`https://api.countrystatecity.in/v1/countries/${countryISOCode}/states/${stateISOCode}/cities`, { headers: { "X-CSCAPI-KEY": "eWs4OWhpYml3b3U3Umh6aDBxZ2h6Q3hoU0RyQTdhd1BDTW1GYVFJRA==" } });
+      const response = await axios.get(
+        `https://api.countrystatecity.in/v1/countries/${countryISOCode}/states/${stateISOCode}/cities`,
+        {
+          headers: {
+            "X-CSCAPI-KEY": apiKey,
+          },
+        }
+      );
       const result = response.data;
-      const tempData = result.map(e => { return { label: e.name, value: e.name } })
+      const tempData = result.map((e) => {
+        return { label: e.name, value: e.name };
+      });
       setCities(tempData);
     }
 
-
     fetchCitiesData().then().catch();
-
   }, [clinicState]);
-
 
   const onSubmit = async () => {
     if (!clinicName || !clinicCountry || !clinicCity || !clinicState) {
@@ -121,10 +141,6 @@ const ClinicRegistrationForm = () => {
       setError(`${error.response.data.message}. Please contact Pontinet`);
     }
   };
-
-  const onChange = (setter, value, attribute) => {
-
-  }
 
   if (!countries.length) {
     return <Loader />;
