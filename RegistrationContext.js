@@ -29,7 +29,29 @@ export const RegistrationProvider = ({ children }) => {
   const sendRegistrationDetails = async () => {
     await axios.post(url, registrationDetails);
   };
-
+  const clearRegistration = () => {
+    setRegistrationDetails({
+      email: "",
+      password: "",
+      mobile: "",
+      type: "",
+      clinicId: "",
+      registrationDetails: {
+        name: "",
+        specialisation: "",
+        subSpecialisation: "",
+        registrationId: "",
+        registrationCouncil: "",
+        mobileNumber: "",
+      },
+      clinicDetails: {
+        clinicName: "",
+        clinicCountry: "",
+        clinicState: "",
+        clinicCity: "",
+      }
+    })
+  }
   //TODO improve password security
 
   return (
@@ -38,6 +60,7 @@ export const RegistrationProvider = ({ children }) => {
         registrationDetails,
         setRegistrationDetails,
         sendRegistrationDetails,
+        clearRegistration
       }}
     >
       {children}

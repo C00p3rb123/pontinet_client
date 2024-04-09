@@ -28,6 +28,7 @@ const ClinicRegistrationForm = () => {
     registrationDetails,
     setRegistrationDetails,
     sendRegistrationDetails,
+    clearRegistration,
   } = useRegistration();
   const navigation = useNavigation();
 
@@ -113,22 +114,17 @@ const ClinicRegistrationForm = () => {
     //return;
 
     try {
-      setRegistrationDetails({
-        ...registrationDetails,
-        clinicDetails: {
-          clinicName: clinicName,
-          clinicCountry: clinicCountry,
-          clinicState: clinicState,
-          clinicCity: clinicCity,
-        },
-      });
       await sendRegistrationDetails();
+      clearRegistration();
       navigation.navigate("Login");
     } catch (error) {
       setError(`${error.response.data.message}. Please contact Pontinet`);
     }
   };
 
+  const onChange = (setter, value, attribute) => {
+
+  }
 
   if (!countries.length) {
     return <Loader />;
@@ -147,7 +143,17 @@ const ClinicRegistrationForm = () => {
             borderRadius: 10,
             borderColor: Colours.pontinetInputContainer,
           }}
-          onChangeText={setClinicName}
+          onChangeText={(value) => {
+            setClinicName(value);
+            setRegistrationDetails({
+             ...registrationDetails,
+             clinicDetails: {
+               ...registrationDetails.clinicDetails,
+               clinicName: value
+             }
+            }
+            )
+          }}
         />
       </View>
       <View>
@@ -162,7 +168,17 @@ const ClinicRegistrationForm = () => {
           placeholderStyle={{ fontSize: 16 }}
           options={countries}
           selectedValue={clinicCountry}
-          onValueChange={(value) => setClinicCountry(value)}
+          onValueChange={(value) => {
+            setClinicCountry(value);
+            setRegistrationDetails({
+             ...registrationDetails,
+             clinicDetails: {
+               ...registrationDetails.clinicDetails,
+               clinicCountry: value
+             }
+            }
+            )
+          }}
           isSearchable={true}
           selectedItemStyle={{ fontSize: 16 }}
         />
@@ -179,7 +195,17 @@ const ClinicRegistrationForm = () => {
           placeholderStyle={{ fontSize: 16 }}
           options={states}
           selectedValue={clinicState}
-          onValueChange={(value) => setClinicState(value)}
+          onValueChange={(value) => {
+            setClinicState(value);
+            setRegistrationDetails({
+             ...registrationDetails,
+             clinicDetails: {
+               ...registrationDetails.clinicDetails,
+               clinicState: value
+             }
+            }
+            )
+          }}
           isSearchable={true}
           selectedItemStyle={{ fontSize: 16 }}
           disabled={!clinicCountry.trim()}
@@ -197,7 +223,17 @@ const ClinicRegistrationForm = () => {
           placeholderStyle={{ fontSize: 16 }}
           options={cities}
           selectedValue={clinicCity}
-          onValueChange={(value) => setClinicCity(value)}
+          onValueChange={(value) => {
+            setClinicCity(value);
+            setRegistrationDetails({
+             ...registrationDetails,
+             clinicDetails: {
+               ...registrationDetails.clinicDetails,
+               clinicCity: value
+             }
+            }
+            )
+          }}
           isSearchable={true}
           selectedItemStyle={{ fontSize: 16 }}
           disabled={!clinicCountry.trim() || !clinicState.trim()}
