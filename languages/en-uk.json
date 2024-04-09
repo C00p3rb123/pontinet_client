@@ -10,7 +10,6 @@
                 "and": "and",
                 "button": "Confirm",
                 "selectOption": "Please Select an Option"
-                
             },
             "login": {
                 "accountlogin": "Account Login",
@@ -30,7 +29,17 @@
             }
         },
         "authScreens": {
-            "hello": "Hello",
+            "general": {
+                "hello": "Hello",
+                "logout": "Logout",
+                "languageButton": "Change Language"
+            },
+            "dashboard": {
+                "newCaseButtonHeader": "New Cases",
+                "newCaseButtonText": "View New Cases",
+                "caseHistoryButtonHeader": "Case History",
+                "caseHistoryButtonText": "View Your Recently Opened Cases"
+            },
             "caseSelection": {
                 "title": "View New Cases",
                 "cases": "Cases",

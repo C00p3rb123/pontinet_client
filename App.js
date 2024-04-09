@@ -3,8 +3,10 @@ import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Login from "./screens/Login";
 import Signup from "./screens/SignUp";
+import Dashboard from "./screens/Dashboard";
 import CaseSelecton from "./screens/CaseSelection";
 import CaseInformation from "./screens/CaseInformation";
 import { StyleSheet, Image } from "react-native";
@@ -16,11 +18,14 @@ import AuthHeader from "./components/AuthHeader";
 import { LanguageProvider, useLanguage } from "./LanguageContext";
 import LanguageSelection from "./screens/LanguageSelection";
 
+const Tab = createBottomTabNavigator();
+import Settings from "./screens/Settings";
+
 export default function App() {
   return (
     <AuthProvider>
       <LanguageProvider>
-        <Layout></Layout>
+        <Layout />
       </LanguageProvider>
     </AuthProvider>
   );
@@ -39,32 +44,35 @@ export const Layout = () => {
   return (
     <NavigationContainer theme={MyTheme}>
       <SafeAreaProvider>
-        <Stack.Navigator>
           {authState.authenticated ? (
-            <Stack.Group
-              screenOptions={{
-                headerTitle: () => <AuthHeader />,
-                headerShadowVisible: false,
-              }}
-            >
-              <Stack.Screen name="CaseSelection" component={CaseSelecton} />
-              <Stack.Screen
-                name="CaseInformation"
-                component={CaseInformation}
-                options={{ headerLeft: () => null }}
-              />
-            </Stack.Group>
+            <NavigationBar />
           ) : (
-            <Stack.Group
-              screenOptions={{
-                headerTitle: () => <UnAuthHeader />,
-                headerShadowVisible: false,
-              }}
-            >
-              {!isLanguageSet && (
+            <Stack.Navigator>
+              <Stack.Group
+                screenOptions={{
+                  headerTitle: () => <UnAuthHeader />,
+                  headerShadowVisible: false,
+                }}
+              >
+                {!isLanguageSet && (
+                  <Stack.Screen
+                    name="LanguageSelection"
+                    component={LanguageSelection}
+                    options={{
+                      headerBackImage: () => (
+                        <Image
+                          source={require("./assets/BackButton.png")}
+                          style={{ marginLeft: 15 }}
+                        />
+                      ),
+                      headerBackTitleVisible: false,
+                    }}
+                  />
+                )}
+                <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen
-                  name="LanguageSelection"
-                  component={LanguageSelection}
+                  name="SignUp"
+                  component={Signup}
                   options={{
                     headerBackImage: () => (
                       <Image
@@ -75,27 +83,91 @@ export const Layout = () => {
                     headerBackTitleVisible: false,
                   }}
                 />
-              )}
-              <Stack.Screen name="Login" component={Login} />
-              <Stack.Screen
-                name="SignUp"
-                component={Signup}
-                options={{
-                  headerBackImage: () => (
-                    <Image
-                      source={require("./assets/BackButton.png")}
-                      style={{ marginLeft: 15 }}
-                    />
-                  ),
-                  headerBackTitleVisible: false,
-                }}
-              />
-            </Stack.Group>
+              </Stack.Group>
+            </Stack.Navigator>
           )}
-        </Stack.Navigator>
       </SafeAreaProvider>
     </NavigationContainer>
   );
 };
+
+export const NavigationBar = () => {
+  return (
+    <Tab.Navigator
+      initialRouteName="HomePage"
+      screenOptions={{
+        header: () => <AuthHeader />,
+        tabBarShowLabel: false,
+        tabBarStyle: { paddingTop: 20 }
+      }}
+    >
+      <Tab.Screen 
+        name="HomePage"
+        component={HomePage}
+        options={{
+          tabBarIcon: () => <Image source={require("./assets/home_button.png")} />,
+        }}
+      />
+      <Tab.Screen 
+        name="SettingsPage"
+        component={SettingsPage}
+        options={{
+          tabBarIcon: () => <Image source={require("./assets/settings_button.png")} />,
+        }}  
+      />
+    </Tab.Navigator>
+  );
+};
+
+export const HomePage = () => {
+  return (
+    <Stack.Navigator
+    initialRouteName="Dashboard"
+      screenOptions={{
+        header: () => null,
+        headerShadowVisible: false,
+      }}
+    >
+        <Stack.Screen name="Dashboard" component={Dashboard} />
+        <Stack.Screen
+          name="CaseSelection"
+          component={CaseSelecton} 
+          options={{ headerLeft: () => null }}
+        />
+        <Stack.Screen
+          name="CaseInformation"
+          component={CaseInformation}
+          options={{ headerLeft: () => null }}
+        />
+    </Stack.Navigator>
+  )
+}
+
+export const SettingsPage = () => {
+  return (
+    <Stack.Navigator
+      initialRouteName="Settings"
+      screenOptions={{
+        header: () => null,
+        headerShadowVisible: false,
+      }}
+    >
+      <Stack.Screen name="Settings" component={Settings}/>
+      <Stack.Screen
+        name="LanguageSelection"
+        component={LanguageSelection}
+        options={{
+          headerBackImage: () => (
+            <Image
+              source={require("./assets/BackButton.png")}
+              style={{ marginLeft: 15 }}
+            />
+          ),
+          headerBackTitleVisible: false,
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
 
 const styles = StyleSheet.create({});
