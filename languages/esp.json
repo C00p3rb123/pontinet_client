@@ -31,14 +31,14 @@
         "authScreens": {
             "general": {
                 "hello": "Hola",
-                "logout": "Logout",
-                "languageButton": "Change Language"
+                "logout": "Cierre de sesión",
+                "languageButton": "Cambiar idioma"
             },
             "dashboard": {
-                "newCaseButtonHeader": "New Cases",
-                "newCaseButtonText": "View New Cases",
-                "caseHistoryButtonHeader": "Case History",
-                "caseHistoryButtonText": "View Your Recently Opened Cases"
+                "newCaseButtonHeader": "Nuevos casos",
+                "newCaseButtonText": "Ver nuevos casos",
+                "caseHistoryButtonHeader": "Historia de un caso",
+                "caseHistoryButtonText": "Ver los casos abiertos recientemente"
             },
             "caseSelection": {
                 "title": "Ver nuevos casos",
