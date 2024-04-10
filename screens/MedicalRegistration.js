@@ -60,6 +60,7 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     paddingBottom: 15,
     textAlign: "center",
+    paddingHorizontal: 8
   },
   subHeaderText: {
     color: Colours.pontinetSeconday,

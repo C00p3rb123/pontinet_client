@@ -35,7 +35,11 @@
                 "clinicName": "Nombre de la clínica",
                 "clinicCountry": "Clínica País",
                 "clinicState": "Clínica Estado",
-                "clinicCity": "Clínica Ciudad"
+                "clinicCity": "Clínica Ciudad",
+                "formIncomplete": "Formulario incompleto, por favor rellene los datos de la clínica",
+                "clinicError": "No se puede registrar como usuario o ya existe o campos incompletos. Póngase en contacto con Pontinet",
+                "noCountries": "No se pueden recuperar los datos de localización"
+                
             },
             "medicalRegistration": {
                 "header": "Los detalles de su registro médico",

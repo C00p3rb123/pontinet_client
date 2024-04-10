@@ -17,14 +17,15 @@ import { useNavigation } from "@react-navigation/native";
 import Loader from "./Loader";
 import axios from "axios";
 import Constants from "expo-constants";
+import { useCountries } from "../hooks/useCountries";
 
 const ClinicRegistrationForm = () => {
   const [clinicName, setClinicName] = useState("");
   const [clinicCountry, setClinicCountry] = useState("");
   const [clinicState, setClinicState] = useState("");
   const [clinicCity, setClinicCity] = useState("");
-  const [error, setError] = useState(false);
   const { translation } = useLanguage();
+  const [clinicError, setClinicError] = useState("");
   const {
     registrationDetails,
     setRegistrationDetails,
@@ -32,119 +33,39 @@ const ClinicRegistrationForm = () => {
     clearRegistration,
   } = useRegistration();
   const navigation = useNavigation();
+  const {countries, states, cities, fetchStatesData, fetchCitiesData, error  } = useCountries();
+  
+  useEffect(() => {
+    if(clinicCountry){
+      fetchStatesData(clinicCountry);
+      setClinicCity("");
+      setClinicState("")
 
-  const [countries, setCountries] = useState([]);
-  const [states, setStates] = useState([]);
-  const [cities, setCities] = useState([]);
-  const apiKey = process.env.EXPO_PUBLIC_CSCAPI_KEY;
+    }    
+  },[clinicCountry])
 
   useEffect(() => {
-    async function fetchCountriesData() {
-      const response = await axios.get(
-        "https://api.countrystatecity.in/v1/countries",
-        {
-          headers: {
-            "X-CSCAPI-KEY": apiKey,
-          },
-        }
-      );
-      const result = response.data;
-      const tempData = result.map((e) => {
-        return { label: e.name, value: e.name, iso: e.iso2 };
-      });
-      setCountries(tempData);
-    }
-
-    fetchCountriesData().then().catch();
-  }, []);
-
-  useEffect(() => {
-    setClinicState("");
-    setClinicCity("");
-    setStates([]);
-    setCities([]);
-
-    if (!clinicCountry.trim()) {
-      setStates([]);
-      return;
-    }
-
-    async function fetchStatesData() {
-      const countryISOCode = countries.find(
-        (e) => e.value === clinicCountry
-      ).iso;
-      const response = await axios.get(
-        `https://api.countrystatecity.in/v1/countries/${countryISOCode}/states`,
-        {
-          headers: {
-            "X-CSCAPI-KEY": apiKey,
-          },
-        }
-      );
-      const result = response.data;
-      const tempData = result.map((e) => {
-        return { label: e.name, value: e.name, iso: e.iso2 };
-      });
-      setStates(tempData);
-    }
-
-    fetchStatesData().then().catch();
-  }, [clinicCountry]);
-
-  useEffect(() => {
-    setClinicCity("");
-    setCities([]);
-
-    if (!clinicCountry.trim() || !clinicState.trim()) {
-      setCities([]);
-      return;
-    }
-
-    async function fetchCitiesData() {
-      const countryISOCode = countries.find(
-        (e) => e.value === clinicCountry
-      ).iso;
-      const stateISOCode = states.find((e) => e.value === clinicState).iso;
-
-      const response = await axios.get(
-        `https://api.countrystatecity.in/v1/countries/${countryISOCode}/states/${stateISOCode}/cities`,
-        {
-          headers: {
-            "X-CSCAPI-KEY": apiKey,
-          },
-        }
-      );
-      const result = response.data;
-      const tempData = result.map((e) => {
-        return { label: e.name, value: e.name };
-      });
-      setCities(tempData);
-    }
-
-    fetchCitiesData().then().catch();
-  }, [clinicState]);
+    if(clinicState){
+      fetchCitiesData(clinicState);
+    }    
+  },[clinicState])
 
   const onSubmit = async () => {
-    if (!clinicName || !clinicCountry || !clinicCity || !clinicState) {
-      Alert.alert("Form Incomplete", "Please fill out all the fields.");
+    setClinicError('')
+    if (!clinicName || (states.length && !clinicState) || (cities.length && !clinicCity)) {
+      console.log(clinicCity)
+      Alert.alert(`${translation.screens.unAuthScreens.clearRegistration.formIncomplete}`);
       return;
     }
-
-    //Alert.alert(clinicName + " " + clinicCountry + " " + clinicState + " " + clinicCity)
-    //return;
 
     try {
       await sendRegistrationDetails();
       clearRegistration();
       navigation.navigate("Login");
-    } catch (error) {
-      setError(`${error.response.data.message}. Please contact Pontinet`);
+    } catch (err) {
+      setClinicError(`${translation.screens.unAuthScreens.clearRegistration.formIncomplete}`);
     }
   };
-
-  if (!countries.length) {
-    return <Loader />;
-  }
 
   return (
     <View style={styles.container}>
@@ -172,7 +93,8 @@ const ClinicRegistrationForm = () => {
           }}
         />
       </View>
-      <View>
+      {!error && <View>
+        <View>
         <Text style={styles.formText}>
           {translation.screens.unAuthScreens.clinicRegistration.clinicCountry}
         </Text>
@@ -224,7 +146,7 @@ const ClinicRegistrationForm = () => {
           }}
           isSearchable={true}
           selectedItemStyle={{ fontSize: 16 }}
-          disabled={!clinicCountry.trim()}
+          disabled={!clinicCountry }
         />
       </View>
       <View>
@@ -252,10 +174,12 @@ const ClinicRegistrationForm = () => {
           }}
           isSearchable={true}
           selectedItemStyle={{ fontSize: 16 }}
-          disabled={!clinicCountry.trim() || !clinicState.trim()}
+          disabled={!clinicCountry || !clinicState}
         />
       </View>
+        </View>}     
       {error && <Error message={error} />}
+      {clinicError && <Error message={clinicError} />}
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button} onPress={onSubmit}>
           <Text style={styles.buttonText}>

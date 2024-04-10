@@ -12,6 +12,7 @@
                 "selectOption": "Please Select an Option",
                 "continueButton": "Continue",
                 "dropdownPlaceholder": "Select an option"
+                
             },
             "login": {
                 "accountlogin": "Account Login",
@@ -35,10 +36,13 @@
                 "clinicName": "Clinic Name",
                 "clinicCountry": "Clinic Country",
                 "clinicState": "Clinic State",
-                "clinicCity": "Clinic City"
+                "clinicCity": "Clinic City",
+                "formIncomplete": "Form Incomplete, Please fill out clinic details",
+                "clinicError": "Unable to register as user or already exists or incomplete fields. Please contact Pontinet",
+                "noCountries": "Unable to retrieve location data"
             },
             "medicalRegistration": {
-              "header": "Your Medical Registration Details ",
+              "header": "Medical Registration Details ",
               "description": "To ensure PontiNet remains trustworthy platform, please provide accurate information",
               "drName": "Dr Name",
               "specialisation": "Specialisation",
