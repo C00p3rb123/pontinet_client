@@ -9,6 +9,7 @@
                 "passwordPlaceholder": "Enter password",
                 "and": "and",
                 "button": "Confirm",
+                "selectOption": "Please Select an Option"
                 "selectOption": "Please Select an Option",
                 "continueButton": "Continue",
                 "dropdownPlaceholder": "Select an option"
@@ -54,7 +55,17 @@
             }
         },
         "authScreens": {
-            "hello": "Hello",
+            "general": {
+                "hello": "Hello",
+                "logout": "Logout",
+                "languageButton": "Change Language"
+            },
+            "dashboard": {
+                "newCaseButtonHeader": "New Cases",
+                "newCaseButtonText": "View New Cases",
+                "caseHistoryButtonHeader": "Case History",
+                "caseHistoryButtonText": "View Your Recently Opened Cases"
+            },
             "caseSelection": {
                 "title": "View New Cases",
                 "cases": "Cases",

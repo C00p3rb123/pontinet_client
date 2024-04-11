@@ -51,11 +51,14 @@ export const LanguageProvider = ({ children }) => {
   };
   const changeLanguage = (language) => {
     if(language === en){
+        setTranslation(spanish)
         setLanguage(esp)
     }
     else{
-        setIsLanguageSet(en)
+        setTranslation(english)
+        setLanguage(en)
     }
+    setIsLanguageSet(true);
   }
   const clearLanguage = async () =>{
     try {

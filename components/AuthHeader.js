@@ -1,18 +1,19 @@
-import { StyleSheet, Text, View, SafeAreaView, Image } from "react-native";
+import { StyleSheet, Text, View, SafeAreaView, Image, Dimensions } from "react-native";
 import React from "react";
 import { useLanguage } from "../LanguageContext";
 
 const AuthHeader = () => {
   const {translation} = useLanguage()
+  const screenWidth = Dimensions.get("window").width;
   return (
     <SafeAreaView>
-      <View style={styles.container}>
+      <View style={[styles.container, {width:screenWidth}]}>
         <View>
           <Image source={require("../assets/pontinet_logo_small.png")} />
         </View>
         <View style ={styles.profile}>
           <Image source={require("../assets/Vector.png")} />
-          <Text> {translation.screens.authScreens.hello}, Rachel </Text>
+          <Text> {translation.screens.authScreens.general.hello}, Rachel </Text>
           <Image source={require("../assets/profile_pic.png")} />
         </View>
       </View>
@@ -28,6 +29,8 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         width:'100%',
         paddingVertical: 5,
+        paddingLeft: 5,
+        paddingRight: 10
     },
     profile:{
         flexDirection: 'row',

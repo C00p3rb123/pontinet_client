@@ -54,7 +54,17 @@
             }
         },
         "authScreens": {
-            "hello": "Hola",
+            "general": {
+                "hello": "Hola",
+                "logout": "Cierre de sesión",
+                "languageButton": "Cambiar idioma"
+            },
+            "dashboard": {
+                "newCaseButtonHeader": "Nuevos casos",
+                "newCaseButtonText": "Ver nuevos casos",
+                "caseHistoryButtonHeader": "Historia de un caso",
+                "caseHistoryButtonText": "Ver los casos abiertos recientemente"
+            },
             "caseSelection": {
                 "title": "Ver nuevos casos",
                 "cases": "Casos",
