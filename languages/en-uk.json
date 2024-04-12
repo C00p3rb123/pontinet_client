@@ -6,10 +6,13 @@
                 "email": "Email",
                 "password": "Password",
                 "emailPlaceholder": "Enter email address",
-                "passwordPalceholder": "Enter password",
+                "passwordPlaceholder": "Enter password",
                 "and": "and",
                 "button": "Confirm",
-                "selectOption": "Please Select an Option"
+                "selectOption": "Please Select an Option",
+                "continueButton": "Continue",
+                "dropdownPlaceholder": "Select an option"
+                
             },
             "login": {
                 "accountlogin": "Account Login",
@@ -22,10 +25,32 @@
                 "accountDetails": "Account Details",
                 "memo": "This will be your login details when you need to login at a later date",
                 "button": "Confirm",
-                "agreement": "By singing up, you agree to",
+                "agreement": "By signing up, you agree to",
                 "terms": "Terms of Service",
                 "privacyPolicy": "Privacy Policy",
                 "check": "I agree to the Pontinet's Terms of services"
+            },
+            "clinicRegistration": {
+                "clinicDetails": "Your Clinic Details",
+                "memo": "You are nearly there, please let us know your clinic details",
+                "clinicName": "Clinic Name",
+                "clinicCountry": "Clinic Country",
+                "clinicState": "Clinic State",
+                "clinicCity": "Clinic City",
+                "formIncomplete": "Form Incomplete, Please fill out clinic details",
+                "clinicError": "Unable to register as user or already exists or incomplete fields. Please contact Pontinet",
+                "noCountries": "Unable to retrieve location data"
+            },
+            "medicalRegistration": {
+              "header": "Medical Registration Details ",
+              "description": "To ensure PontiNet remains trustworthy platform, please provide accurate information",
+              "drName": "Dr Name",
+              "specialisation": "Specialisation",
+              "subSpecialisation": "Sub Specialisation",
+              "registrationId": "Registration ID",
+              "registrationCouncil": "Registration Council",
+              "whatsAppMobileNumber": "WhatsApp Mobile Number",
+              "whatsAppDescription": "Please ensure that this number is connected to a WhatsApp account"
             }
         },
         "authScreens": {

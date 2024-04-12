@@ -10,7 +10,7 @@ import { useLanguage } from '../LanguageContext';
  * @returns LoginForm returns the form for logging in and handles the. 
  */
 
-const AccountForm = ({handleSubmit}) => {
+const LoginForm = ({handleSubmit}) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState();
@@ -47,7 +47,7 @@ const AccountForm = ({handleSubmit}) => {
   };
 
   return (
-    <View style={styles.con}>
+    <View style={styles.container}>
         <View>
             <Text style={styles.formText}>Email</Text>
             <TextInput style={{ borderWidth: 1, padding: 15, borderRadius: 10, borderColor: Colours.pontinetInputContainer}} onChangeText={setEmail} placeholder={translation.screens.unAuthScreens.general.emailPlaceholder}/>
@@ -58,7 +58,7 @@ const AccountForm = ({handleSubmit}) => {
           secureTextEntry={true}
           style={{ borderWidth: 1, padding: 15, borderRadius: 10, borderColor: Colours.pontinetInputContainer}}
           onChangeText={setPassword}
-          placeholder={translation.screens.unAuthScreens.general.passwordPalceholder}
+          placeholder={translation.screens.unAuthScreens.general.passwordPlaceholder}
         />
       </View>
       {error && <Error message={error} />}
@@ -72,7 +72,7 @@ const AccountForm = ({handleSubmit}) => {
   );
 };
 
-export default AccountForm;
+export default LoginForm;
 
 const styles = StyleSheet.create({
   container: {
