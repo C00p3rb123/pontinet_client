@@ -5,8 +5,9 @@ import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Login from "./screens/Login";
-import Signup from "./screens/SignUp";
+import SignUp from "./screens/SignUp";
 import Dashboard from "./screens/Dashboard";
+import ClinicRegistration from "./screens/ClinicRegistration";
 import CaseSelecton from "./screens/CaseSelection";
 import CaseInformation from "./screens/CaseInformation";
 import { StyleSheet, Image } from "react-native";
@@ -20,12 +21,16 @@ import LanguageSelection from "./screens/LanguageSelection";
 
 const Tab = createBottomTabNavigator();
 import Settings from "./screens/Settings";
+import MedicalRegistration from "./screens/MedicalRegistration";
+import { RegistrationProvider } from "./RegistrationContext";
 
 export default function App() {
   return (
     <AuthProvider>
       <LanguageProvider>
-        <Layout />
+        <RegistrationProvider>
+          <Layout />
+        </RegistrationProvider>
       </LanguageProvider>
     </AuthProvider>
   );
@@ -73,7 +78,33 @@ export const Layout = () => {
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen
                   name="SignUp"
-                  component={Signup}
+                  component={SignUp}
+                options={{
+                  headerBackImage: () => (
+                    <Image
+                      source={require("./assets/BackButton.png")}
+                      style={{ marginLeft: 15 }}
+                    />
+                  ),
+                  headerBackTitleVisible: false,
+                }}
+              />
+              <Stack.Screen
+                name="MedicalRegistration"
+                component={MedicalRegistration}
+                options={{
+                  headerBackImage: () => (
+                    <Image
+                      source={require("./assets/BackButton.png")}
+                      style={{ marginLeft: 15 }}
+                    />
+                  ),
+                  headerBackTitleVisible: false,
+                }}
+              />
+              <Stack.Screen
+                name="ClinicRegistration"
+                component={ClinicRegistration}
                   options={{
                     headerBackImage: () => (
                       <Image

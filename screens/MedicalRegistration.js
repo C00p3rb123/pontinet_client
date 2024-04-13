@@ -6,65 +6,51 @@ import {
   Image,
   Dimensions,
   Keyboard,
-  TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import React, { useEffect, useState } from "react";
-import SignUpForm from "../components/SignUpForm";
 import { Colours } from "../utils/colours";
+import MedicalRegistrationForm from "../components/MedicalRegistrationForm";
 import { useNavigation } from "@react-navigation/native";
 import { useLanguage } from "../LanguageContext";
 import { RegistrationProvider } from "../RegistrationContext";
 
-const SignUp = () => {
-  const navigation = useNavigation();
+const MedicalRegistration = () => {
   const screenHeight = Dimensions.get("window").height;
-  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
   const { translation } = useLanguage();
-
-  useEffect(() => {
-    const keyboardDidShowListener = Keyboard.addListener(
-      "keyboardDidShow",
-      () => {
-        setKeyboardVisible(true);
-      }
-    );
-    const keyboardDidHideListener = Keyboard.addListener(
-      "keyboardDidHide",
-      () => {
-        setKeyboardVisible(false);
-      }
-    );
-
-    return () => {
-      keyboardDidShowListener.remove();
-      keyboardDidHideListener.remove();
-    };
-  }, []);
+  const navigation = useNavigation();
+  const handleFormSubmit = () => {
+    navigation.navigate("ClinicRegistration");
+  };
 
   return (
     <SafeAreaView>
-      <View style={[styles.container, { height: screenHeight }]}>
-        {!isKeyboardVisible && (
-          <Image source={require("../assets/medical_professionals.png")} />
-        )}
+      <ScrollView
+        contentContainerStyle={styles.scrollView}
+        contentInset={styles.inset}
+      >
+        <Image source={require("../assets/Medical_registration.png")} />
         <Text style={styles.headerText}>
-          {translation.screens.unAuthScreens.signup.accountDetails}
+          {translation.screens.unAuthScreens.medicalRegistration.header}
         </Text>
         <Text style={styles.subHeaderText}>
-          {translation.screens.unAuthScreens.signup.memo}
+          {translation.screens.unAuthScreens.medicalRegistration.description}
         </Text>
         <View style={styles.form}>
-          <SignUpForm />
+          <MedicalRegistrationForm onSubmit={handleFormSubmit} />
         </View>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
 
-export default SignUp;
+export default MedicalRegistration;
 
 const styles = StyleSheet.create({
   container: {
+    alignItems: "center",
+  },
+  scrollView: {
     alignItems: "center",
   },
   headerText: {
@@ -73,6 +59,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     paddingTop: 15,
     paddingBottom: 15,
+    textAlign: "center",
+    paddingHorizontal: 8
   },
   subHeaderText: {
     color: Colours.pontinetSeconday,
@@ -81,7 +69,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   form: {
-    width: "75%",
+    width: "80%",
     paddingVertical: 20,
+  },
+  inset: {
+    top: 0,
+    bottom: 10,
   },
 });

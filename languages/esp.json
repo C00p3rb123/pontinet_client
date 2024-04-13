@@ -9,7 +9,9 @@
                 "passwordPalceholder": "Introducir la contraseña",
                 "and": "y",
                 "button": "Confirme",
-                "selectOption": "Seleccione una opción"
+                "selectOption": "Seleccione una opción",
+                "continueButton": "Continuar",
+                "dropdownPlaceholder": "Seleccione una opción"
             },
             "login": {
                 "accountlogin": "Acceso a la cuenta",
@@ -26,6 +28,29 @@
                 "terms": "Condiciones de uso",
                 "privacyPolicy": "Política de privacidad",
                 "check": "Acepto las Condiciones de servicio de Pontinet"
+            },
+            "clinicRegistration": {
+                "clinicDetails": "Detalles de su clínica",
+                "memo": "Ya casi has llegado, por favor háganos saber los detalles de su clínica",
+                "clinicName": "Nombre de la clínica",
+                "clinicCountry": "Clínica País",
+                "clinicState": "Clínica Estado",
+                "clinicCity": "Clínica Ciudad",
+                "formIncomplete": "Formulario incompleto, por favor rellene los datos de la clínica",
+                "clinicError": "No se puede registrar como usuario o ya existe o campos incompletos. Póngase en contacto con Pontinet",
+                "noCountries": "No se pueden recuperar los datos de localización"
+                
+            },
+            "medicalRegistration": {
+                "header": "Los detalles de su registro médico",
+                "description": "Para garantizar que PontiNet siga siendo una plataforma confiable, proporcione información precisa",
+                "drName": "Dr. Nombre",
+                "specialisation": "Especialización",
+                "subSpecialisation": "Subespecialización",
+                "registrationId": "ID de registro",
+                "registrationCouncil": "Consejo de Registro",
+                "whatsAppMobileNumber": "Número de móvil de WhatsApp",
+                "whatsAppDescription": "Asegúrese de que este número esté conectado a una cuenta de WhatsApp"
             }
         },
         "authScreens": {
