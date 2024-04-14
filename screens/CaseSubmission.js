@@ -13,8 +13,9 @@ import { useLanguage } from "../LanguageContext";
 
 import { useNavigation } from '@react-navigation/native';
 
-const CaseSubmission = ({ subtitle }) => {
+const CaseSubmission = ({ route }) => {
   const screenHeight = Dimensions.get("window").height;
+  const subtitle = route.params;
   const { translation } = useLanguage();
   const navigation = useNavigation();
 

@@ -61,12 +61,13 @@ const onSubmit = async () => {
       medication: medication,
       referalDetails: referral,
     },
-    specialist: user
+    specialist: user.name
   }
   try{
     const response = await axios.post(`${process.env.EXPO_PUBLIC_CASES_URL}/send`, data);
     if(response.data.message){
-      navigation.navigate("CaseSubmission");
+      const subtitle = caseDetails.paitentInformation.illnessDescription.segment
+      navigation.navigate("CaseSubmission", subtitle );
     }
   }catch(err){
     setError(true)
@@ -82,7 +83,7 @@ const onSubmit = async () => {
           />
           <Text style={{ paddingLeft: 15, fontWeight: "300", fontSize: 18 }}>
             {translation.screens.authScreens.caseInformation.case} -{" "}
-            {caseDetails.paitentInformation.illnessDescription.mechanism}
+            {caseDetails.paitentInformation.illnessDescription.segment}
           </Text>
         </View>
         <ScrollView style={styles.scrollView}>  

@@ -9,7 +9,9 @@ export const AuthProvider = ({children}) => {
         token: null,
         authenticated: false,
     });
-    const [user, setUser] = useState('');
+    const [user, setUser] = useState({
+
+    });
 
    useEffect(() => {
     const retrieveTokenFromStorage = async () => {
@@ -23,10 +25,15 @@ export const AuthProvider = ({children}) => {
                 setAuthState({
                     token: token,
                     authenticated: true,
-                });               
+                });    
+                const userDetails = await axios.get(process.env.EXPO_PUBLIC_USER_URL);
+                setUser({
+                    name: userDetails.data.name,
+                    clinic: userDetails.data.clinic,
+                    country: userDetails.data.country
+                });           
             }
-            const userName = await axios.get(process.env.EXPO_PUBLIC_USER_URL);
-            setUser(userName.data.name);
+            
         } catch (err) {
             console.error(err);
             throw new Error("Unable to retrieve token from storage");
