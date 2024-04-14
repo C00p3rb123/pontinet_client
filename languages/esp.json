@@ -79,7 +79,14 @@
                 "case": "Caso",
                 "paitentInformation": "Información para pacientes",
                 "referralDate": "Fecha de remisión"
-            }           
+            },
+            "caseSubmission": {
+                "thankyou": "Gracias por su envío",
+                "appreciate": "Agradecemos su ayuda para colmar las lagunas de la comunidad médica",
+                "next": "¿Qué le gustaría hacer ahora?",
+                "return": "Volver a la página de inicio",
+                "moreCases": "Ver más casos"
+            }              
         }
         
     }

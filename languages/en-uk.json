@@ -80,6 +80,13 @@
                 "case": "Case",
                 "paitentInformation": "Paitent Information",
                 "referralDate": "Referral Date"
+            },
+            "caseSubmission": {
+                "thankyou": "Thank you for your submission",
+                "appreciate": "We appreciate your help to bridge gaps in the medical community",
+                "next": "What would you like to do next?",
+                "return": "Return to Homepage",
+                "moreCases": "View More Cases"
             }           
         }
         

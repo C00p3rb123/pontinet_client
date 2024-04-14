@@ -15,6 +15,7 @@ import CaseResponseCard from "../components/CaseResponseCard";
 import { ScrollView } from "react-native-gesture-handler";
 import axios from "axios"
 import { useAuth } from "../AuthContext";
+import { useNavigation } from '@react-navigation/native';
 
 const CaseInformation = ({ route }) => {
   const screenHeight = Dimensions.get("window").height;
@@ -35,6 +36,7 @@ const CaseInformation = ({ route }) => {
   const [referral, setReferral] = useState("");
   const [error, setError] = useState(false);
   const { translation } = useLanguage();
+  const navigation = useNavigation();
   const {user} = useAuth();
 
   const setters = [
@@ -62,7 +64,10 @@ const onSubmit = async () => {
     specialist: user
   }
   try{
-    const response = axios.post(`${process.env.EXPO_PUBLIC_CASES_URL}/send`, data);
+    const response = await axios.post(`${process.env.EXPO_PUBLIC_CASES_URL}/send`, data);
+    if(response.data.message){
+      navigation.navigate("CaseSubmission");
+    }
   }catch(err){
     setError(true)
   }
@@ -91,7 +96,7 @@ const onSubmit = async () => {
               {titles.map((title, i) => {
                 if (i <= 2) {
                   return (
-                    <CaseResponseCard title={title} onChangeText={setters[i]} />
+                    <CaseResponseCard key={title} title={title} onChangeText={setters[i]} />
                   );
                 }
               })}
@@ -99,7 +104,7 @@ const onSubmit = async () => {
               {titles.map((title, i) => {
                 if (i > 2) {
                   return (
-                    <CaseResponseCard title={title} onChangeText={setters[i]} />
+                    <CaseResponseCard key={title} title={title} onChangeText={setters[i]} />
                   );
                 }
               })}
