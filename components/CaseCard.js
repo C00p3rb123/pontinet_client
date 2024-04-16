@@ -9,17 +9,20 @@ import React, { useState } from "react";
 import { caseUrgencyStyle } from "../utils/colours";
 import { convertTime } from "../utils/formatting";
 import { Colours } from "../utils/colours";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 import { useLanguage } from "../LanguageContext";
 
 const CaseCard = ({ caseDetails }) => {
-  const caseColour = caseUrgencyStyle(caseDetails.paitentInformation.referalDate);
-  const formattedCreatedAt = convertTime(caseDetails.paitentInformation.referalDate);
+  const caseColour = caseUrgencyStyle(
+    caseDetails.paitentInformation.referalDate
+  );
+  const formattedCreatedAt = convertTime(
+    caseDetails.paitentInformation.referalDate
+  );
   const [expanded, setExpanded] = useState(false);
   const navigation = useNavigation();
-  const {translation } = useLanguage();
-  
-  
+  const { translation } = useLanguage();
+
   return (
     <TouchableWithoutFeedback onPress={() => setExpanded(!expanded)}>
       <View
@@ -32,27 +35,40 @@ const CaseCard = ({ caseDetails }) => {
             shadowRadius: 3,
             shadowColor: "#171717",
             borderTopColor: Colours.pontinetPrimary,
-            elevation: 10
+            elevation: 10,
           },
         ]}
         key={Date.now()}
       >
         <Text style={styles.description}>
-          {caseDetails.paitentInformation.age} yrs old | {caseDetails.paitentInformation.illnessDescription.segment} |{" "}
+          {caseDetails.paitentInformation.age} yrs old |{" "}
+          {caseDetails.paitentInformation.illnessDescription.segment} |{" "}
           {caseDetails.paitentInformation.illnessDescription.mechanism}
         </Text>
         <Text>
           <Text style={caseColour}>{`\u25cf`}</Text>{" "}
-          <Text style={{ fontWeight: "bold" }}>{translation.screens.authScreens.caseSelection.submitted}</Text>{" "}
+          <Text style={{ fontWeight: "bold" }}>
+            {translation.screens.authScreens.caseSelection.submitted}
+          </Text>{" "}
           {formattedCreatedAt}
         </Text>
         {expanded && (
-          <View style={styles.expanded} >
+          <View style={styles.expanded}>
             <View>
               <Text style={styles.header}>Segment Details</Text>
-              <Text>{caseDetails.paitentInformation.illnessDescription.segment_details}</Text>
+              <Text>
+                {
+                  caseDetails.paitentInformation.illnessDescription
+                    .segment_details
+                }
+              </Text>
               <Text style={styles.header}>Mechanism Details</Text>
-              <Text>{caseDetails.paitentInformation.illnessDescription.mechanism_details}</Text>
+              <Text>
+                {
+                  caseDetails.paitentInformation.illnessDescription
+                    .mechanism_details
+                }
+              </Text>
               <Text style={styles.header}>General Practioner</Text>
               <Text>{caseDetails.paitentInformation.gp}</Text>
               <Text style={styles.header}>Practice</Text>
@@ -60,7 +76,12 @@ const CaseCard = ({ caseDetails }) => {
             </View>
             <View>
               <View>
-                <TouchableOpacity style={styles.button} onPress={() =>{navigation.navigate('CaseInformation', caseDetails)}}>
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={() => {
+                    navigation.navigate("CaseInformation", caseDetails);
+                  }}
+                >
                   <Text style={styles.buttonText}>Open Case</Text>
                 </TouchableOpacity>
               </View>
@@ -90,14 +111,14 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 45,
-    alignSelf: 'flex-end',
+    alignSelf: "flex-end",
     marginRight: 5,
-    color: 'white'
+    color: "white",
   },
   expanded: {
     paddingTop: 5,
   },
   header: {
-    fontWeight: 'bold'
-  }
+    fontWeight: "bold",
+  },
 });
