@@ -87,7 +87,12 @@
                 "next": "What would you like to do next?",
                 "return": "Return to Homepage",
                 "moreCases": "View More Cases"
-            }           
+            }  ,
+            "caseHistory": {
+                "title": "Case History",
+                "adviceGiven": "Advice given",
+                "reopenCase": "Re-open case"
+            }         
         }
         
     }

@@ -34,7 +34,7 @@ const Dashboard = () => {
                         </View>
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.caseButtonContainer} onPress={null}>
+                <TouchableOpacity style={styles.caseButtonContainer}  onPress={() => navigation.navigate('CaseHistory')} >
                     <View style={styles.caseButton}>
                         <Image source={require('../assets/case_history_symbol.png')}/>
                         <View style={{paddingLeft:10, alignSelf: "center"}}>

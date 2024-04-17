@@ -86,7 +86,12 @@
                 "next": "¿Qué le gustaría hacer ahora?",
                 "return": "Volver a la página de inicio",
                 "moreCases": "Ver más casos"
-            }              
+            }  ,
+            "caseHistory": {
+                "title": "Historia de un caso",
+                "adviceGiven": "Consejos dados",
+                "reopenCase": "Reabrir el caso"
+            }           
         }
         
     }

@@ -24,6 +24,7 @@ import Settings from "./screens/Settings";
 import MedicalRegistration from "./screens/MedicalRegistration";
 import { RegistrationProvider } from "./RegistrationContext";
 import CaseSubmission from "./screens/CaseSubmission";
+import CaseHistory from "./screens/CaseHistory";
 
 export default function App() {
   return (
@@ -175,6 +176,11 @@ export const HomePage = () => {
          <Stack.Screen
           name="CaseSubmission"
           component={CaseSubmission}
+          options={{ headerLeft: () => null }}
+        />
+          <Stack.Screen
+          name="CaseHistory"
+          component={CaseHistory}
           options={{ headerLeft: () => null }}
         />
     </Stack.Navigator>

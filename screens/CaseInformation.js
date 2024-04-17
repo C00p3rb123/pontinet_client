@@ -61,7 +61,9 @@ const onSubmit = async () => {
       medication: medication,
       referalDetails: referral,
     },
-    specialist: user.name
+    specialist: {
+      name: user.name
+    }
   }
   try{
     const response = await axios.post(`${process.env.EXPO_PUBLIC_CASES_URL}/send`, data);
@@ -122,10 +124,10 @@ const onSubmit = async () => {
                 <Text>Camera</Text>
               </TouchableOpacity>
             </View>
-
-            <TouchableOpacity onPress={onSubmit}>
+           <TouchableOpacity onPress={onSubmit}>
               <Text>Submit</Text>
-            </TouchableOpacity>            
+            </TouchableOpacity>  
+                      
             </View>
             </ScrollView>  
                
