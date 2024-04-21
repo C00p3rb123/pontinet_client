@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import React from "react";
 import { Colours } from "../utils/colours";
-import PaitentInformationCard from "../components/PaitentInformationCard";
+import PatientInformationCard from "../components/PatientInformationCard";
 import PageTitle from "../components/PageTitle";
 import { useLanguage } from "../LanguageContext";
 
@@ -22,11 +22,11 @@ const CaseInformation = ({route}) => {
       <View style={[styles.container, { height: screenHeight }]}>
         <View style={styles.header}>
           <PageTitle title={translation.screens.authScreens.caseInformation.title} />
-          <Text style={{paddingLeft: 15, fontWeight: '300', fontSize: 18}}>{translation.screens.authScreens.caseInformation.case} - {caseDetails.paitentInformation.illnessDescription.mechanism}</Text>
+          <Text style={{paddingLeft: 15, fontWeight: '300', fontSize: 18}}>{translation.screens.authScreens.caseInformation.case} - {caseDetails.patientInformation.illnessDescription.mechanism}</Text>
         </View>
         <View style={styles.caseInformation}>          
             <View style={styles.paitnentInformation}>
-                <PaitentInformationCard caseDetails={caseDetails} />
+                <PatientInformationCard caseDetails={caseDetails} />
             </View>
           
         </View>

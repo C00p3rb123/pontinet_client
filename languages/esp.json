@@ -77,7 +77,7 @@
             "caseInformation": {
                 "title": "Caso abierto",
                 "case": "Caso",
-                "paitentInformation": "Información para pacientes",
+                "patientInformation": "Información para pacientes",
                 "referralDate": "Fecha de remisión"
             }           
         }

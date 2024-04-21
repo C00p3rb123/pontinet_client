@@ -78,7 +78,7 @@
             "caseInformation": {
                 "title": "Open Case",
                 "case": "Case",
-                "paitentInformation": "Paitent Information",
+                "patientInformation": "Patient Information",
                 "referralDate": "Referral Date"
             }           
         }
