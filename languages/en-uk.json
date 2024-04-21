@@ -82,6 +82,7 @@
                 "referralDate": "Referral Date"
             },
             "caseSubmission": {
+                "title": "Case Submitted",
                 "thankyou": "Thank you for your submission",
                 "appreciate": "We appreciate your help to bridge gaps in the medical community",
                 "next": "What would you like to do next?",
