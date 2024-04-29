@@ -15,7 +15,13 @@ import CaseResponseCard from "../components/CaseResponseCard";
 import { ScrollView } from "react-native-gesture-handler";
 import axios from "axios"
 import { useAuth } from "../AuthContext";
+<<<<<<< Updated upstream
 import { useNavigation } from '@react-navigation/native';
+=======
+import { useNavigation } from "@react-navigation/native";
+import { useImage } from "../hooks/useImage";
+import { useDocuments } from "../hooks/useDocuments";
+>>>>>>> Stashed changes
 
 const CaseInformation = ({ route }) => {
   const screenHeight = Dimensions.get("window").height;
@@ -37,7 +43,15 @@ const CaseInformation = ({ route }) => {
   const [error, setError] = useState(false);
   const { translation } = useLanguage();
   const navigation = useNavigation();
+<<<<<<< Updated upstream
   const {user} = useAuth();
+=======
+  const { pickImage, image } = useImage();
+  const [imageSelected, setImageSelected] = useState(false);
+  const [documentSelected, isDocumentSelected] = useState()
+  const { selectDocument, document } = useDocuments();
+  const { user } = useAuth();
+>>>>>>> Stashed changes
 
   const setters = [
     setDiagnosticImpression,
@@ -48,6 +62,7 @@ const CaseInformation = ({ route }) => {
     setReferral,
   ];
 
+<<<<<<< Updated upstream
 const onSubmit = async () => {
   const data = {
     id: caseDetails._id,
@@ -63,6 +78,39 @@ const onSubmit = async () => {
     },
     specialist: {
       name: user.name
+=======
+  const onSubmit = async () => {
+    console.log(caseDetails._id);
+    const data = {
+      id: caseDetails._id,
+      generalInstructions: {
+        diagnosticImpression: diagnosticImpression,
+        onSiteProcedure: onSiteProcedure,
+        onSiteMedication: onSiteMedication,
+      },
+      dischargeInstructions: {
+        generalIndications: generalIndications,
+        medication: medication,
+        referalDetails: referral,
+      },
+      specialist: {
+        name: user.name
+      }
+    };
+
+    try {
+      const response = await axios.post(
+        `${process.env.EXPO_PUBLIC_CASES_URL}/send`,
+        data
+      );
+      if (response.data.message) {
+        const subtitle =
+          caseDetails.paitentInformation.illnessDescription.segment;
+        navigation.navigate("CaseSubmission", subtitle);
+      }
+    } catch (err) {
+      setError(true);
+>>>>>>> Stashed changes
     }
   }
   try{
@@ -112,6 +160,7 @@ const onSubmit = async () => {
                 }
               })}
             </View>
+<<<<<<< Updated upstream
             <View></View>
             <View style={styles.additionalButtons}>
               <TouchableOpacity>
@@ -119,6 +168,72 @@ const onSubmit = async () => {
               </TouchableOpacity>
               <TouchableOpacity>
                 <Text>Add report +</Text>
+=======
+            {image && (
+              <View>
+                <TouchableOpacity
+                  style={[!imageSelected && styles.button, { marginTop: 20 }]}
+                  onPress={() => setImageSelected(!imageSelected)}
+                >
+                  {imageSelected ? (
+                    <Image
+                      source={{ uri: image.uri }}
+                      style={{
+                        width: 200, // Adjust the width and height as needed
+                        height: 200,
+                        marginVertical: 20,
+                      }}
+                    ></Image>
+                  ) : (
+                    <Text style={styles.buttonText}>View Image</Text>
+                  )}
+                </TouchableOpacity>
+              </View>
+            )}
+            
+            <View style={styles.additionalButtons}>
+              <TouchableOpacity style={styles.button} onPress={pickImage}>
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Text style={styles.buttonText}>Add Image</Text>
+                  <Image
+                    style={{
+                      marginStart: 5,
+                      height: 25,
+                      width: 15,
+                      marginTop: 0,
+                    }}
+                    source={require("../assets/Addsign.png")}
+                  />
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.button} onPress={selectDocument}>
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Text style={styles.buttonText}>Add Report</Text>
+                  <Image
+                    style={{
+                      marginStart: 5,
+                      height: 25,
+                      width: 15,
+                      marginTop: 0,
+                    }}
+                    source={require("../assets/Addsign.png")}
+                  />
+                </View>
+>>>>>>> Stashed changes
               </TouchableOpacity>
               <TouchableOpacity>
                 <Text>Camera</Text>

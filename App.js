@@ -176,7 +176,7 @@ export const HomePage = () => {
          <Stack.Screen
           name="CaseSubmission"
           component={CaseSubmission}
-          options={{ headerLeft: () => null }}
+          options={{ headerLeft: () => null, gestureEnabled: false }}
         />
           <Stack.Screen
           name="CaseHistory"
