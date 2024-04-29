@@ -4,6 +4,7 @@ import {
   View,
   SafeAreaView,
   Dimensions,
+  Image,
   TouchableOpacity,
 } from "react-native";
 import React, { useState } from "react";
@@ -13,15 +14,11 @@ import PageTitle from "../components/PageTitle";
 import { useLanguage } from "../LanguageContext";
 import CaseResponseCard from "../components/CaseResponseCard";
 import { ScrollView } from "react-native-gesture-handler";
-import axios from "axios"
+import axios from "axios";
 import { useAuth } from "../AuthContext";
-<<<<<<< Updated upstream
-import { useNavigation } from '@react-navigation/native';
-=======
 import { useNavigation } from "@react-navigation/native";
 import { useImage } from "../hooks/useImage";
 import { useDocuments } from "../hooks/useDocuments";
->>>>>>> Stashed changes
 
 const CaseInformation = ({ route }) => {
   const screenHeight = Dimensions.get("window").height;
@@ -43,15 +40,11 @@ const CaseInformation = ({ route }) => {
   const [error, setError] = useState(false);
   const { translation } = useLanguage();
   const navigation = useNavigation();
-<<<<<<< Updated upstream
-  const {user} = useAuth();
-=======
   const { pickImage, image } = useImage();
   const [imageSelected, setImageSelected] = useState(false);
   const [documentSelected, isDocumentSelected] = useState()
   const { selectDocument, document } = useDocuments();
   const { user } = useAuth();
->>>>>>> Stashed changes
 
   const setters = [
     setDiagnosticImpression,
@@ -62,25 +55,7 @@ const CaseInformation = ({ route }) => {
     setReferral,
   ];
 
-<<<<<<< Updated upstream
-const onSubmit = async () => {
-  const data = {
-    id: caseDetails._id,
-    generalInstructions: {
-      diagnosticImpression: diagnosticImpression,
-      onSiteProcedure: onSiteProcedure,
-      onSiteMedication: onSiteMedication
-    },
-    dischargeInstructions: {
-      generalIndications: generalIndications,
-      medication: medication,
-      referalDetails: referral,
-    },
-    specialist: {
-      name: user.name
-=======
   const onSubmit = async () => {
-    console.log(caseDetails._id);
     const data = {
       id: caseDetails._id,
       generalInstructions: {
@@ -93,11 +68,8 @@ const onSubmit = async () => {
         medication: medication,
         referalDetails: referral,
       },
-      specialist: {
-        name: user.name
-      }
+      specialist: user.name,
     };
-
     try {
       const response = await axios.post(
         `${process.env.EXPO_PUBLIC_CASES_URL}/send`,
@@ -110,23 +82,12 @@ const onSubmit = async () => {
       }
     } catch (err) {
       setError(true);
->>>>>>> Stashed changes
     }
-  }
-  try{
-    const response = await axios.post(`${process.env.EXPO_PUBLIC_CASES_URL}/send`, data);
-    if(response.data.message){
-      const subtitle = caseDetails.paitentInformation.illnessDescription.segment
-      navigation.navigate("CaseSubmission", subtitle );
-    }
-  }catch(err){
-    setError(true)
-  }
-}
+  };
   //TODO A MODAL TO CONFIRM
   return (
     <SafeAreaView>
-      <View style={[styles.container, { height: screenHeight }]}>
+      <View>
         <View style={styles.header}>
           <PageTitle
             title={translation.screens.authScreens.caseInformation.title}
@@ -136,39 +97,55 @@ const onSubmit = async () => {
             {caseDetails.paitentInformation.illnessDescription.segment}
           </Text>
         </View>
-        <ScrollView style={styles.scrollView}>  
-        <View style={styles.caseInformation}>
-                
+        <ScrollView contentContainerStyle={{ paddingBottom: 160 }}>
+          <View style={{ ...styles.caseInformation }}>
             <View style={styles.paitnentInformation}>
               <PaitentInformationCard caseDetails={caseDetails} />
             </View>
-            <View>
-              <Text>General Instructions</Text>
+            <View style={{ width: "100%" }}>
+              <Text
+                style={{
+                  fontWeight: "bold",
+                  color: "black",
+                  fontSize: 18,
+                  marginTop: 20,
+                }}
+              >
+                General Instructions
+              </Text>
               {titles.map((title, i) => {
                 if (i <= 2) {
                   return (
-                    <CaseResponseCard key={title} title={title} onChangeText={setters[i]} />
+                    <CaseResponseCard
+                      key={title}
+                      title={title}
+                      onChangeText={setters[i]}
+                    />
                   );
                 }
               })}
-              <Text>Discharge Instructions</Text>
+              <Text
+                style={{
+                  fontWeight: "bold",
+                  color: "black",
+                  fontSize: 18,
+                  marginTop: 20,
+                }}
+              >
+                Discharge Instructions
+              </Text>
               {titles.map((title, i) => {
                 if (i > 2) {
                   return (
-                    <CaseResponseCard key={title} title={title} onChangeText={setters[i]} />
+                    <CaseResponseCard
+                      key={title}
+                      title={title}
+                      onChangeText={setters[i]}
+                    />
                   );
                 }
               })}
             </View>
-<<<<<<< Updated upstream
-            <View></View>
-            <View style={styles.additionalButtons}>
-              <TouchableOpacity>
-                <Text>Add image +</Text>
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Text>Add report +</Text>
-=======
             {image && (
               <View>
                 <TouchableOpacity
@@ -233,19 +210,39 @@ const onSubmit = async () => {
                     source={require("../assets/Addsign.png")}
                   />
                 </View>
->>>>>>> Stashed changes
               </TouchableOpacity>
-              <TouchableOpacity>
-                <Text>Camera</Text>
+
+              <TouchableOpacity style={styles.button}>
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Text style={styles.buttonText}>Camera</Text>
+                  <Image
+                    style={{
+                      marginStart: 7,
+                      height: 25,
+                      width: 25,
+                      marginTop: 0,
+                    }}
+                    source={require("../assets/camera.png")}
+                  />
+                </View>
               </TouchableOpacity>
             </View>
-           <TouchableOpacity onPress={onSubmit}>
-              <Text>Submit</Text>
-            </TouchableOpacity>  
-                      
-            </View>
-            </ScrollView>  
-               
+
+            <TouchableOpacity
+              style={{ ...styles.button, marginTop: 30, alignSelf: "center" }}
+              onPress={onSubmit}
+            >
+              <Text style={styles.buttonText}>Submit Case</Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
       </View>
     </SafeAreaView>
   );
@@ -254,9 +251,7 @@ const onSubmit = async () => {
 export default CaseInformation;
 
 const styles = StyleSheet.create({
-  container: {},
   header: {
-    
     gap: 15,
     justifyContent: "center",
   },
@@ -264,16 +259,39 @@ const styles = StyleSheet.create({
     backgroundColor: Colours.pontinetCaseBackground,
     alignItems: "flex-start",
     paddingHorizontal: 10,
-    
   },
   paitnentInformation: {
     backgroundColor: "white",
     marginTop: 20,
     borderRadius: 10,
     flexDirection: "row",
+    shadowOffset: { width: 1, height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 3,
+    shadowColor: "#171717",
   },
   additionalButtons: {
+    display: "flex",
     flexDirection: "row",
+    width: "100%",
+    justifyContent: "space-around",
+    alignContent: "center",
+    gap: 30,
+    marginTop: 30,
+    flexWrap: "wrap",
   },
- 
+  button: {
+    backgroundColor: Colours.pontinetPrimary,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 45,
+    alignSelf: "flex-end",
+    marginRight: 5,
+    color: "white",
+  },
+  buttonText: {
+    color: "white",
+    textAlign: "center",
+    fontSize: 20,
+  },
 });
