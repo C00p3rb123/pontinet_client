@@ -3,17 +3,21 @@ import React, { useState } from "react";
 import { convertDate } from "../utils/formatting";
 import { useLanguage } from "../LanguageContext";
 
-const PaitentInformationCard = ({caseDetails}) => {
+const PaitentInformationCard = ({ caseDetails }) => {
   const [isExpaned, setIsExpanded] = useState(false);
   const date = convertDate(caseDetails.paitentInformation.referalDate);
-  const {translation} = useLanguage()
+  const { translation } = useLanguage();
   return (
     <TouchableWithoutFeedback onPress={() => setIsExpanded(!isExpaned)}>
       <View style={styles.paitentInformation}>
         <View style={styles.column}>
-          <Text style={styles.title}>{translation.screens.authScreens.caseInformation.paitentInformation}</Text>
+          <Text style={styles.title}>
+            {translation.screens.authScreens.caseInformation.paitentInformation}
+          </Text>
           <Text style={styles.date}>
-            <Text style={styles.title}>{translation.screens.authScreens.caseInformation.referralDate}</Text>
+            <Text style={styles.title}>
+              {translation.screens.authScreens.caseInformation.referralDate}
+            </Text>
             {date}
           </Text>
           {isExpaned && (
@@ -23,14 +27,14 @@ const PaitentInformationCard = ({caseDetails}) => {
                 {caseDetails.paitentInformation.illnessDescription.segment}
               </Text>
               <Text style={styles.information}>
-              {
+                {
                   caseDetails.paitentInformation.illnessDescription
                     .segment_details
-                } {" "}
+                }{" "}
               </Text>
               <Text style={styles.subTitle}>Mechanism Details</Text>
               <Text style={styles.information}>
-              {
+                {
                   caseDetails.paitentInformation.illnessDescription
                     .mechanism_details
                 }
@@ -62,7 +66,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     paddingTop: 5,
     paddingRight: 5,
-    },
+  },
   column: {
     paddingTop: 8,
     gap: 8,
@@ -76,10 +80,10 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     fontSize: 16,
-    fontWeight: "300"
+    fontWeight: "300",
   },
-  information:{
+  information: {
     fontSize: 15,
-    paddingLeft: 10
-  }
+    paddingLeft: 10,
+  },
 });

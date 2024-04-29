@@ -81,6 +81,7 @@
                 "referralDate": "Fecha de remisión"
             },
             "caseSubmission": {
+                "title": "Caso presentado",
                 "thankyou": "Gracias por su envío",
                 "appreciate": "Agradecemos su ayuda para colmar las lagunas de la comunidad médica",
                 "next": "¿Qué le gustaría hacer ahora?",

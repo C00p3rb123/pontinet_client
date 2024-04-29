@@ -15,6 +15,7 @@ import { useLanguage } from "../LanguageContext";
 import CaseResponseCard from "../components/CaseResponseCard";
 import { ScrollView } from "react-native-gesture-handler";
 import axios from "axios";
+import axios from "axios";
 import { useAuth } from "../AuthContext";
 import { useNavigation } from "@react-navigation/native";
 import { useImage } from "../hooks/useImage";
