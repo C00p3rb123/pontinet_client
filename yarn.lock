@@ -5421,11 +5421,6 @@ react-native-country-flag@^2.0.2:
   resolved "https://registry.yarnpkg.com/react-native-country-flag/-/react-native-country-flag-2.0.2.tgz#ef22a6017f3118aaeae23c0409663c18e49241bd"
   integrity sha512-5LMWxS79ZQ0Q9ntYgDYzWp794+HcQGXQmzzZNBR1AT7z5HcJHtX7rlk8RHi7RVzfp5gW6plWSZ4dKjRpu/OafQ==
 
-react-native-doc-viewer@^2.7.8:
-  version "2.7.8"
-  resolved "https://registry.yarnpkg.com/react-native-doc-viewer/-/react-native-doc-viewer-2.7.8.tgz#43d065328fb1b7ec90d321e5bd234711e807c8f6"
-  integrity sha512-6rAHGfU6CedfGhr8SoqbdtA3MHKRnbKqwjzzCFnTEniynM0PgJxC4vXZF3MxbJdh6nGWPVVuM23zCfWNLvAuRg==
-
 react-native-dotenv@^3.4.11:
   version "3.4.11"
   resolved "https://registry.yarnpkg.com/react-native-dotenv/-/react-native-dotenv-3.4.11.tgz#2e6c4eabd55d5f1bf109b3dd9141dadf9c55cdd4"

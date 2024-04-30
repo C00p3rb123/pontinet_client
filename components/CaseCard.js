@@ -85,7 +85,7 @@ const CaseCard = ({ caseDetails }) => {
                     navigation.navigate("CaseInformation", caseDetails);
                   }}
                 >
-                  <Text style={styles.buttonText}>Open Case</Text>
+                  <Text style={styles.buttonText}>{translation.screens.authScreens.caseSelection.openCase}</Text>
                 </TouchableOpacity>
               </View>
             </View>

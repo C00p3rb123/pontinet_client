@@ -57,7 +57,9 @@
             "general": {
                 "hello": "Hola",
                 "logout": "Cierre de sesión",
-                "languageButton": "Cambiar idioma"
+                "languageButton": "Cambiar idioma",
+                "cancel": "Cancelar",
+                "submit": "Enviar"
             },
             "dashboard": {
                 "newCaseButtonHeader": "Nuevos casos",
@@ -78,7 +80,17 @@
                 "title": "Caso abierto",
                 "case": "Caso",
                 "paitentInformation": "Información para pacientes",
-                "referralDate": "Fecha de remisión"
+                "referralDate": "Fecha de remisión",
+                "confirmSubmission": "Confirmar envío",
+                "confirmation": "¿Desea enviar su respuesta?",
+                "submissionCancelled": "Presentación cancelada",
+                "diagnosticImpression": "Impresión diagnóstica",
+                "onSiteProcedure": "Procedimiento in situ",
+                "onSiteMedication": "Medicación in situ",
+                "generalIndications": "Indicaciones generales",
+                "medication": "Medicación",
+                "referral": "Remisión/seguimiento"
+
             },
             "caseSubmission": {
                 "title": "Caso presentado",

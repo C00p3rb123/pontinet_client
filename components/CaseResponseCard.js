@@ -41,5 +41,7 @@ const styles = StyleSheet.create({
     marginStart: 12,
     minHeight: 40,
     marginEnd: 12,
+    textAlign: 'left',
+    paddingLeft: 10
   },
 });

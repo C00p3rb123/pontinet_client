@@ -57,7 +57,9 @@
             "general": {
                 "hello": "Hello",
                 "logout": "Logout",
-                "languageButton": "Change Language"
+                "languageButton": "Change Language",
+                "cancel": "Cancel",
+                "submit": "Submit"
             },
             "dashboard": {
                 "newCaseButtonHeader": "New Cases",
@@ -79,7 +81,18 @@
                 "title": "Open Case",
                 "case": "Case",
                 "paitentInformation": "Paitent Information",
-                "referralDate": "Referral Date"
+                "referralDate": "Referral Date",
+                "confirmSubmission": "Confirm submission",
+                "confirmation": "Do you wish to submit your response?",
+                "submissionCancelled": "Submission canceled",
+                "diagnosticImpression": "Diagnostic Impression",
+                "onSiteProcedure": "On-site Procedure",
+                "onSiteMedication": "On-site Medication",
+                "generalIndications": "General Indications",
+                "medication": "Medication",
+                "referral": "Referral/Follow up"
+
+
             },
             "caseSubmission": {
                 "title": "Case Submitted",

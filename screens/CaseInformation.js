@@ -6,6 +6,7 @@ import {
   Dimensions,
   Image,
   TouchableOpacity,
+  Alert
 } from "react-native";
 import React, { useState } from "react";
 import { Colours } from "../utils/colours";
@@ -14,7 +15,6 @@ import PageTitle from "../components/PageTitle";
 import { useLanguage } from "../LanguageContext";
 import CaseResponseCard from "../components/CaseResponseCard";
 import { ScrollView } from "react-native-gesture-handler";
-import axios from "axios";
 import axios from "axios";
 import { useAuth } from "../AuthContext";
 import { useNavigation } from "@react-navigation/native";
@@ -25,19 +25,23 @@ const CaseInformation = ({ route }) => {
   const screenHeight = Dimensions.get("window").height;
   const caseDetails = route.params;
   const titles = [
-    `Diagnostic Impression`,
-    `On-site Procedure`,
-    `On-site Medication`,
-    `General Indications`,
-    `Medication`,
-    `Referral/Follow up`,
+    `${translation.screens.authScreens.caseInformation.diagnosticImpression}`,
+    `${translation.screens.authScreens.caseInformation.onSiteProcedure}`,
+    `${translation.screens.authScreens.caseInformation.onSiteMedication}`,
+    `${translation.screens.authScreens.caseInformation.generalIndications}`,
+    `${translation.screens.authScreens.caseInformation.medication}`,
+    `${translation.screens.authScreens.caseInformation.referral}`,
+    
   ];
-  const [diagnosticImpression, setDiagnosticImpression] = useState("");
-  const [onSiteProcedure, setOnSitreProcedue] = useState("");
-  const [onSiteMedication, setOnSiteMedication] = useState("");
-  const [generalIndications, setGeneralIndications] = useState("");
-  const [medication, setMedication] = useState("");
-  const [referral, setReferral] = useState("");
+  const notApplicable = `N/A`;
+  const [diagnosticImpression, setDiagnosticImpression] = useState(notApplicable);
+  const [onSiteProcedure, setOnSitreProcedue] = useState(notApplicable);
+  const [onSiteMedication, setOnSiteMedication] = useState(notApplicable);
+  const [generalIndications, setGeneralIndications] = useState(notApplicable);
+  const [medication, setMedication] = useState(notApplicable);
+  const [referral, setReferral] = useState(notApplicable);
+  const [addtionalGeneralInstructions, setAddtionalGeneralInstructions] = useState(notApplicable);
+  const [addtionalDischargeInstructions, setAddtionalDischargeInstructions] = useState(notApplicable);
   const [error, setError] = useState(false);
   const { translation } = useLanguage();
   const navigation = useNavigation();
@@ -57,33 +61,56 @@ const CaseInformation = ({ route }) => {
   ];
 
   const onSubmit = async () => {
-    const data = {
-      id: caseDetails._id,
-      generalInstructions: {
-        diagnosticImpression: diagnosticImpression,
-        onSiteProcedure: onSiteProcedure,
-        onSiteMedication: onSiteMedication,
-      },
-      dischargeInstructions: {
-        generalIndications: generalIndications,
-        medication: medication,
-        referalDetails: referral,
-      },
-      specialist: user.name,
-    };
-    try {
-      const response = await axios.post(
-        `${process.env.EXPO_PUBLIC_CASES_URL}/send`,
-        data
-      );
-      if (response.data.message) {
-        const subtitle =
-          caseDetails.paitentInformation.illnessDescription.segment;
-        navigation.navigate("CaseSubmission", subtitle);
-      }
-    } catch (err) {
-      setError(true);
-    }
+    Alert.alert(
+      `${translation.screens.authScreens.caseInformation.confirmSubmission}`,
+      `${translation.screens.authScreens.caseInformation.confirmation}`,
+      [
+        {
+          text: `${translation.screens.authScreens.general.cancel}`,
+          style: 'cancel',
+          onPress: () => console.log('Submission canceled'),
+        },
+        {
+          text: `${translation.screens.authScreens.general.submit}`,
+          onPress: async () => {
+            const data = {
+              id: caseDetails._id,
+              generalInstructions: {
+                diagnosticImpression: diagnosticImpression,
+                onSiteProcedure: onSiteProcedure,
+                onSiteMedication: onSiteMedication,
+                other: addtionalGeneralInstructions,
+              },
+              dischargeInstructions: {
+                generalIndications: generalIndications,
+                medication: medication,
+                referalDetails: referral,
+                other: addtionalDischargeInstructions,
+              },
+              specialist: {
+                name: user.name
+              }
+            };
+            
+            try {
+              console.log(caseDetails)
+              const response = await axios.post(
+                `${process.env.EXPO_PUBLIC_CASES_URL}/send`,
+                data
+              );
+              if (response.data.message) {
+                const subtitle =
+                  caseDetails.paitentInformation.illnessDescription.segment;
+                navigation.navigate("CaseSubmission", subtitle);
+              }
+            } catch (err) {
+              setError(true);
+            }
+          },
+        },
+      ],
+      { cancelable: true, onDismiss: () => console.log('Alert dismissed') }
+    );
   };
   //TODO A MODAL TO CONFIRM
   return (
@@ -124,7 +151,9 @@ const CaseInformation = ({ route }) => {
                     />
                   );
                 }
+                
               })}
+              <View><CaseResponseCard title={`Other`} onChangeText={setAddtionalDischargeInstructions} /></View>
               <Text
                 style={{
                   fontWeight: "bold",
@@ -145,7 +174,9 @@ const CaseInformation = ({ route }) => {
                     />
                   );
                 }
+                
               })}
+              <View><CaseResponseCard title={`Other`} onChangeText={setAddtionalDischargeInstructions} /></View>
             </View>
             {image && (
               <View>
@@ -242,6 +273,7 @@ const CaseInformation = ({ route }) => {
             >
               <Text style={styles.buttonText}>Submit Case</Text>
             </TouchableOpacity>
+            {error && <Error message={error}/>}
           </View>
         </ScrollView>
       </View>
