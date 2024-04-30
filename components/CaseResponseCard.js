@@ -2,11 +2,12 @@ import { StyleSheet, Text, View, TextInput } from "react-native";
 import React from "react";
 import { Colours } from "../utils/colours";
 
-const CaseResponseCard = ({ title, onChangeText }) => {
+const CaseResponseCard = ({ title, onChangeText, readOnly = false, caseDetails=null }) => {
   return (
     <View style={styles.paitnentInformation}>
       <Text style={styles.title}>{title}</Text>
-      <TextInput style={styles.response} onChangeText={onChangeText} />
+      {!readOnly && <TextInput style={styles.response} onChangeText={onChangeText} />}
+      {readOnly && caseDetails &&<Text style={styles.readOnly}>{caseDetails}</Text>}
     </View>
   );
 };
@@ -44,4 +45,14 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     paddingLeft: 10
   },
+  readOnly: {
+    marginBottom: 16,
+    marginTop: 4,
+    marginStart: 12,
+    minHeight: 40,
+    marginEnd: 12,
+    textAlign: 'left',
+    paddingLeft: 10,
+    fontSize: 16
+  }
 });

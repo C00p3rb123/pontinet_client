@@ -20,10 +20,8 @@ import {
     const formattedCreatedAt = convertTime(caseDetails.updatedAt);
     const [expanded, setExpanded] = useState(false);
     const navigation = useNavigation();
-    const {translation } = useLanguage();
-    
-
-    
+    const {translation } = useLanguage();    
+        
     return (
       <TouchableWithoutFeedback onPress={() => setExpanded(!expanded)}>
         <View
@@ -51,7 +49,7 @@ import {
           <Text style={[styles.description, {paddingTop: 5}]}>{caseDetails.paitentInformation.age} | {caseDetails.paitentInformation.illnessDescription.segment} |  {caseDetails.paitentInformation.illnessDescription.mechanism}  </Text>
           {expanded && (
             <View style={styles.expanded} >
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("CaseInformation", caseDetails)}>
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("CaseReadOnly", caseDetails)}>
                     <Text>{translation.screens.authScreens.caseHistory.adviceGiven}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.button} onPress={() => Alert.alert(`Incorrect permissions`, `Please contact Pontinet Support to re-open case`, [], { cancelable: true })}>

@@ -24,15 +24,7 @@ import { useDocuments } from "../hooks/useDocuments";
 const CaseInformation = ({ route }) => {
   const screenHeight = Dimensions.get("window").height;
   const caseDetails = route.params;
-  const titles = [
-    `${translation.screens.authScreens.caseInformation.diagnosticImpression}`,
-    `${translation.screens.authScreens.caseInformation.onSiteProcedure}`,
-    `${translation.screens.authScreens.caseInformation.onSiteMedication}`,
-    `${translation.screens.authScreens.caseInformation.generalIndications}`,
-    `${translation.screens.authScreens.caseInformation.medication}`,
-    `${translation.screens.authScreens.caseInformation.referral}`,
-    
-  ];
+
   const notApplicable = `N/A`;
   const [diagnosticImpression, setDiagnosticImpression] = useState(notApplicable);
   const [onSiteProcedure, setOnSitreProcedue] = useState(notApplicable);
@@ -50,6 +42,16 @@ const CaseInformation = ({ route }) => {
   const [documentSelected, isDocumentSelected] = useState()
   const { selectDocument, document } = useDocuments();
   const { user } = useAuth();
+
+  const titles = [
+    `${translation.screens.authScreens.caseInformation.diagnosticImpression}`,
+    `${translation.screens.authScreens.caseInformation.onSiteProcedure}`,
+    `${translation.screens.authScreens.caseInformation.onSiteMedication}`,
+    `${translation.screens.authScreens.caseInformation.generalIndications}`,
+    `${translation.screens.authScreens.caseInformation.medication}`,
+    `${translation.screens.authScreens.caseInformation.referral}`,
+    
+  ];
 
   const setters = [
     setDiagnosticImpression,
@@ -139,7 +141,7 @@ const CaseInformation = ({ route }) => {
                   marginTop: 20,
                 }}
               >
-                General Instructions
+                {translation.screens.authScreens.caseInformation.generalInstructions}
               </Text>
               {titles.map((title, i) => {
                 if (i <= 2) {
@@ -162,7 +164,7 @@ const CaseInformation = ({ route }) => {
                   marginTop: 20,
                 }}
               >
-                Discharge Instructions
+                {translation.screens.authScreens.caseInformation.dischargeInstructions}
               </Text>
               {titles.map((title, i) => {
                 if (i > 2) {

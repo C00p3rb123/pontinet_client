@@ -84,12 +84,15 @@
                 "confirmSubmission": "Confirmar envío",
                 "confirmation": "¿Desea enviar su respuesta?",
                 "submissionCancelled": "Presentación cancelada",
+                "generalInstructions": "Instrucciones generales",
+                "dischargeInstructions": "Instrucciones para el alta",
                 "diagnosticImpression": "Impresión diagnóstica",
                 "onSiteProcedure": "Procedimiento in situ",
                 "onSiteMedication": "Medicación in situ",
                 "generalIndications": "Indicaciones generales",
                 "medication": "Medicación",
-                "referral": "Remisión/seguimiento"
+                "referral": "Remisión/seguimiento",
+                "other":  "Otros"
 
             },
             "caseSubmission": {
@@ -104,8 +107,12 @@
                 "title": "Historia de un caso",
                 "adviceGiven": "Consejos dados",
                 "reopenCase": "Reabrir el caso"
-            }           
+            }         ,
+            "caseReadOnly": {
+                "return": "Volver al panel de control"
+            }       
         }
         
     }
 }
+
