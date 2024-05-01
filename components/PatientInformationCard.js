@@ -3,45 +3,41 @@ import React, { useState } from "react";
 import { convertDate } from "../utils/formatting";
 import { useLanguage } from "../LanguageContext";
 
-const PaitentInformationCard = ({ caseDetails }) => {
+const PatientInformationCard = ({caseDetails}) => {
   const [isExpaned, setIsExpanded] = useState(false);
-  const date = convertDate(caseDetails.paitentInformation.referalDate);
-  const { translation } = useLanguage();
+  const date = convertDate(caseDetails.patientInformation.referralDate);
+  const {translation} = useLanguage()
   return (
     <TouchableWithoutFeedback onPress={() => setIsExpanded(!isExpaned)}>
-      <View style={styles.paitentInformation}>
+      <View style={styles.patientInformation}>
         <View style={styles.column}>
-          <Text style={styles.title}>
-            {translation.screens.authScreens.caseInformation.paitentInformation}
-          </Text>
+          <Text style={styles.title}>{translation.screens.authScreens.caseInformation.patientInformation}</Text>
           <Text style={styles.date}>
-            <Text style={styles.title}>
-              {translation.screens.authScreens.caseInformation.referralDate}
-            </Text>
+            <Text style={styles.title}>{translation.screens.authScreens.caseInformation.referralDate}</Text>
             {date}
           </Text>
           {isExpaned && (
             <View style={styles.column}>
               <Text style={styles.subTitle}>
                 Segment:{" "}
-                {caseDetails.paitentInformation.illnessDescription.segment}
+                {caseDetails.patientInformation.illnessDescription.segment}
               </Text>
               <Text style={styles.information}>
-                {
-                  caseDetails.paitentInformation.illnessDescription
+              {
+                  caseDetails.patientInformation.illnessDescription
                     .segment_details
-                }{" "}
+                } {" "}
               </Text>
               <Text style={styles.subTitle}>Mechanism Details</Text>
               <Text style={styles.information}>
-                {
-                  caseDetails.paitentInformation.illnessDescription
+              {
+                  caseDetails.patientInformation.illnessDescription
                     .mechanism_details
                 }
               </Text>
               <Text style={styles.subTitle}>General Practioner</Text>
               <Text style={styles.information}>
-                {caseDetails.paitentInformation.gp}
+                {caseDetails.patientInformation.gp}
               </Text>
             </View>
           )}
@@ -52,10 +48,10 @@ const PaitentInformationCard = ({ caseDetails }) => {
   );
 };
 
-export default PaitentInformationCard;
+export default PatientInformationCard;
 
 const styles = StyleSheet.create({
-  paitentInformation: {
+  patientInformation: {
     flexDirection: "row",
     justifyContent: "space-between",
     paddingHorizontal: 8,
@@ -66,7 +62,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     paddingTop: 5,
     paddingRight: 5,
-  },
+    },
   column: {
     paddingTop: 8,
     gap: 8,
@@ -80,10 +76,10 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     fontSize: 16,
-    fontWeight: "300",
+    fontWeight: "300"
   },
-  information: {
+  information:{
     fontSize: 15,
-    paddingLeft: 10,
-  },
+    paddingLeft: 10
+  }
 });

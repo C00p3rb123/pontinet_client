@@ -13,12 +13,8 @@ import { useNavigation } from "@react-navigation/native";
 import { useLanguage } from "../LanguageContext";
 
 const CaseCard = ({ caseDetails }) => {
-  const caseColour = caseUrgencyStyle(
-    caseDetails.paitentInformation.referalDate
-  );
-  const formattedCreatedAt = convertTime(
-    caseDetails.paitentInformation.referalDate
-  );
+  const caseColour = caseUrgencyStyle(caseDetails.patientInformation.referralDate);
+  const formattedCreatedAt = convertTime(caseDetails.patientInformation.referralDate);
   const [expanded, setExpanded] = useState(false);
   const navigation = useNavigation();
   const { translation } = useLanguage();
@@ -41,9 +37,8 @@ const CaseCard = ({ caseDetails }) => {
         key={Date.now()}
       >
         <Text style={styles.description}>
-          {caseDetails.paitentInformation.age} yrs old |{" "}
-          {caseDetails.paitentInformation.illnessDescription.segment} |{" "}
-          {caseDetails.paitentInformation.illnessDescription.mechanism}
+          {caseDetails.patientInformation.age} yrs old | {caseDetails.patientInformation.illnessDescription.segment} |{" "}
+          {caseDetails.patientInformation.illnessDescription.mechanism}
         </Text>
         <Text>
           <Text style={caseColour}>{`\u25cf`}</Text>{" "}
@@ -58,21 +53,16 @@ const CaseCard = ({ caseDetails }) => {
               <Text style={styles.header}>Segment Details</Text>
               <Text>
                 {
-                  caseDetails.paitentInformation.illnessDescription
+                  caseDetails.patientInformation.illnessDescription
                     .segment_details
                 }
               </Text>
               <Text style={styles.header}>Mechanism Details</Text>
-              <Text>
-                {
-                  caseDetails.paitentInformation.illnessDescription
-                    .mechanism_details
-                }
-              </Text>
+              <Text>{caseDetails.patientInformation.illnessDescription.mechanism_details}</Text>
               <Text style={styles.header}>General Practioner</Text>
-              <Text>{caseDetails.paitentInformation.gp}</Text>
+              <Text>{caseDetails.patientInformation.gp}</Text>
               <Text style={styles.header}>Practice</Text>
-              <Text>{caseDetails.paitentInformation.clinic}</Text>
+              <Text>{caseDetails.patientInformation.clinic}</Text>
             </View>
             <View>
               <View>

@@ -80,7 +80,7 @@
             "caseInformation": {
                 "title": "Open Case",
                 "case": "Case",
-                "paitentInformation": "Paitent Information",
+                "patientInformation": "Patient Information",
                 "referralDate": "Referral Date",
                 "confirmSubmission": "Confirm submission",
                 "confirmation": "Do you wish to submit your response?",
