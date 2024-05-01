@@ -86,7 +86,7 @@ const CaseInformation = ({ route }) => {
               dischargeInstructions: {
                 generalIndications: generalIndications,
                 medication: medication,
-                referalDetails: referral,
+                referralDetails: referral,
                 other: addtionalDischargeInstructions,
               },
               specialist: {
@@ -102,7 +102,7 @@ const CaseInformation = ({ route }) => {
               );
               if (response.data.message) {
                 const subtitle =
-                  caseDetails.paitentInformation.illnessDescription.segment;
+                  caseDetails.patientInformation.illnessDescription.segment;
                 navigation.navigate("CaseSubmission", subtitle);
               }
             } catch (err) {
