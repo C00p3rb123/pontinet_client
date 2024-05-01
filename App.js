@@ -9,7 +9,7 @@ import Dashboard from "./screens/Dashboard";
 import ClinicRegistration from "./screens/ClinicRegistration";
 import CaseSelecton from "./screens/CaseSelection";
 import CaseInformation from "./screens/CaseInformation";
-import { StyleSheet, Image } from "react-native";
+import { StyleSheet, Image, Platform } from "react-native";
 
 const Stack = createStackNavigator();
 import { AuthProvider, useAuth } from "./AuthContext";
@@ -24,7 +24,6 @@ import MedicalRegistration from "./screens/MedicalRegistration";
 import { RegistrationProvider } from "./RegistrationContext";
 import CaseSubmission from "./screens/CaseSubmission";
 import CaseHistory from "./screens/CaseHistory";
-import CaseReadOnly from "./screens/CaseReadOnly";
 
 export default function App() {
   return (
@@ -132,7 +131,7 @@ export const NavigationBar = () => {
       screenOptions={{
         header: () => <AuthHeader />,
         tabBarShowLabel: false,
-        tabBarStyle: { paddingTop: 20 }
+        tabBarStyle: { height: 80, paddingTop: Platform.OS === "ios" ? 20 : 0 }
       }}
     >
       <Tab.Screen 
@@ -183,7 +182,7 @@ export const HomePage = () => {
           component={CaseHistory}
           options={{ headerLeft: () => null }}
         />
-          <Stack.Screen
+        <Stack.Screen
           name="CaseReadOnly"
           component={CaseReadOnly}
           options={{ headerLeft: () => null }}
