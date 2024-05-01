@@ -10,7 +10,7 @@ import {
   } from "react-native";
   import React, { useState } from "react";
   import { Colours } from "../utils/colours";
-  import PaitentInformationCard from "../components/PaitentInformationCard";
+  import PatientInformationCard from "../components/PatientInformationCard";
   import PageTitle from "../components/PageTitle";
   import { useLanguage } from "../LanguageContext";
   import CaseResponseCard from "../components/CaseResponseCard";
@@ -64,13 +64,13 @@ import {
             />
             <Text style={{ paddingLeft: 15, fontWeight: "300", fontSize: 18 }}>
               {translation.screens.authScreens.caseInformation.case} -{" "}
-              {caseDetails.paitentInformation.illnessDescription.segment}
+              {caseDetails.patientInformationCard.illnessDescription.segment}
             </Text>
           </View>
           <ScrollView contentContainerStyle={{ paddingBottom: 160 }}>
             <View style={{ ...styles.caseInformation }}>
               <View style={styles.paitnentInformation}>
-                <PaitentInformationCard caseDetails={caseDetails} />
+                <PatientInformationCard caseDetails={caseDetails} />
               </View>
               <View style={{ width: "100%" }}>
                 <Text

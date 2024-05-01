@@ -69,9 +69,6 @@ const CaseCard = ({ caseDetails }) => {
                 <TouchableOpacity
                   style={styles.button}
                   onPress={() => {
-                    //const subtitle =
-                    //caseDetails.paitentInformation.illnessDescription.segment;
-                    // navigation.navigate("CaseSubmission", subtitle);
                     navigation.navigate("CaseInformation", caseDetails);
                   }}
                 >

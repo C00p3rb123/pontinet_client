@@ -40,13 +40,13 @@ import {
           key={Date.now()}
         >
           <Text style={styles.description}>
-            {caseDetails.paitentInformation.gp} | {caseDetails.paitentInformation.illnessDescription.clinc ? caseDetails.paitentInformation.illnessDescription.clinc : "" }{" "}
+            {caseDetails.patientInformation.gp} | {caseDetails.patientInformation.illnessDescription.clinc ? caseDetails.patientInformation.illnessDescription.clinc : "" }{" "}
           </Text>
           <Text>
             <Text style={{ fontWeight: "bold" }}>{translation.screens.authScreens.caseSelection.submitted}</Text>{" "}
             {formattedCreatedAt}
           </Text>
-          <Text style={[styles.description, {paddingTop: 5}]}>{caseDetails.paitentInformation.age} | {caseDetails.paitentInformation.illnessDescription.segment} |  {caseDetails.paitentInformation.illnessDescription.mechanism}  </Text>
+          <Text style={[styles.description, {paddingTop: 5}]}>{caseDetails.patientInformation.age} | {caseDetails.patientInformation.illnessDescription.segment} |  {caseDetails.patientInformation.illnessDescription.mechanism}  </Text>
           {expanded && (
             <View style={styles.expanded} >
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("CaseReadOnly", caseDetails)}>
