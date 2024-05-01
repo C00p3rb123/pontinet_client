@@ -57,7 +57,9 @@
             "general": {
                 "hello": "Hola",
                 "logout": "Cierre de sesión",
-                "languageButton": "Cambiar idioma"
+                "languageButton": "Cambiar idioma",
+                "cancel": "Cancelar",
+                "submit": "Enviar"
             },
             "dashboard": {
                 "newCaseButtonHeader": "Nuevos casos",
@@ -78,9 +80,39 @@
                 "title": "Caso abierto",
                 "case": "Caso",
                 "patientInformation": "Información para pacientes",
-                "referralDate": "Fecha de remisión"
-            }           
+                "referralDate": "Fecha de remisión",
+                "confirmSubmission": "Confirmar envío",
+                "confirmation": "¿Desea enviar su respuesta?",
+                "submissionCancelled": "Presentación cancelada",
+                "generalInstructions": "Instrucciones generales",
+                "dischargeInstructions": "Instrucciones para el alta",
+                "diagnosticImpression": "Impresión diagnóstica",
+                "onSiteProcedure": "Procedimiento in situ",
+                "onSiteMedication": "Medicación in situ",
+                "generalIndications": "Indicaciones generales",
+                "medication": "Medicación",
+                "referral": "Remisión/seguimiento",
+                "other":  "Otros"
+
+            },
+            "caseSubmission": {
+                "title": "Caso presentado",
+                "thankyou": "Gracias por su envío",
+                "appreciate": "Agradecemos su ayuda para colmar las lagunas de la comunidad médica",
+                "next": "¿Qué le gustaría hacer ahora?",
+                "return": "Volver a la página de inicio",
+                "moreCases": "Ver más casos"
+            }  ,
+            "caseHistory": {
+                "title": "Historia de un caso",
+                "adviceGiven": "Consejos dados",
+                "reopenCase": "Reabrir el caso"
+            }         ,
+            "caseReadOnly": {
+                "return": "Volver al panel de control"
+            }       
         }
         
     }
 }
+

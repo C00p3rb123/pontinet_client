@@ -57,7 +57,9 @@
             "general": {
                 "hello": "Hello",
                 "logout": "Logout",
-                "languageButton": "Change Language"
+                "languageButton": "Change Language",
+                "cancel": "Cancel",
+                "submit": "Submit"
             },
             "dashboard": {
                 "newCaseButtonHeader": "New Cases",
@@ -79,8 +81,38 @@
                 "title": "Open Case",
                 "case": "Case",
                 "patientInformation": "Patient Information",
-                "referralDate": "Referral Date"
-            }           
+                "referralDate": "Referral Date",
+                "confirmSubmission": "Confirm submission",
+                "confirmation": "Do you wish to submit your response?",
+                "generalInstructions": "General Instructions",
+                "dischargeInstructions": "Discharge Instructions",
+                "submissionCancelled": "Submission canceled",
+                "diagnosticImpression": "Diagnostic Impression",
+                "onSiteProcedure": "On-site Procedure",
+                "onSiteMedication": "On-site Medication",
+                "generalIndications": "General Indications",
+                "medication": "Medication",
+                "referral": "Referral/Follow up",
+                "other":  "Other"
+
+
+            },
+            "caseSubmission": {
+                "title": "Case Submitted",
+                "thankyou": "Thank you for your submission",
+                "appreciate": "We appreciate your help to bridge gaps in the medical community",
+                "next": "What would you like to do next?",
+                "return": "Return to Homepage",
+                "moreCases": "View More Cases"
+            }  ,
+            "caseHistory": {
+                "title": "Case History",
+                "adviceGiven": "Advice given",
+                "reopenCase": "Re-open case"
+            },
+            "caseReadOnly": {
+                "return": "Return to dashboard"
+            }      
         }
         
     }

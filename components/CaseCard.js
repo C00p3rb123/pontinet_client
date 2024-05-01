@@ -9,7 +9,7 @@ import React, { useState } from "react";
 import { caseUrgencyStyle } from "../utils/colours";
 import { convertTime } from "../utils/formatting";
 import { Colours } from "../utils/colours";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 import { useLanguage } from "../LanguageContext";
 
 const CaseCard = ({ caseDetails }) => {
@@ -17,9 +17,8 @@ const CaseCard = ({ caseDetails }) => {
   const formattedCreatedAt = convertTime(caseDetails.patientInformation.referralDate);
   const [expanded, setExpanded] = useState(false);
   const navigation = useNavigation();
-  const {translation } = useLanguage();
-  
-  
+  const { translation } = useLanguage();
+
   return (
     <TouchableWithoutFeedback onPress={() => setExpanded(!expanded)}>
       <View
@@ -32,6 +31,7 @@ const CaseCard = ({ caseDetails }) => {
             shadowRadius: 3,
             shadowColor: "#171717",
             borderTopColor: Colours.pontinetPrimary,
+            elevation: 10,
           },
         ]}
         key={Date.now()}
@@ -42,14 +42,21 @@ const CaseCard = ({ caseDetails }) => {
         </Text>
         <Text>
           <Text style={caseColour}>{`\u25cf`}</Text>{" "}
-          <Text style={{ fontWeight: "bold" }}>{translation.screens.authScreens.caseSelection.submitted}</Text>{" "}
+          <Text style={{ fontWeight: "bold" }}>
+            {translation.screens.authScreens.caseSelection.submitted}
+          </Text>{" "}
           {formattedCreatedAt}
         </Text>
         {expanded && (
-          <View style={styles.expanded} >
+          <View style={styles.expanded}>
             <View>
               <Text style={styles.header}>Segment Details</Text>
-              <Text>{caseDetails.patientInformation.illnessDescription.segment_details}</Text>
+              <Text>
+                {
+                  caseDetails.patientInformation.illnessDescription
+                    .segment_details
+                }
+              </Text>
               <Text style={styles.header}>Mechanism Details</Text>
               <Text>{caseDetails.patientInformation.illnessDescription.mechanism_details}</Text>
               <Text style={styles.header}>General Practioner</Text>
@@ -59,8 +66,13 @@ const CaseCard = ({ caseDetails }) => {
             </View>
             <View>
               <View>
-                <TouchableOpacity style={styles.button} onPress={() =>{navigation.navigate('CaseInformation', caseDetails)}}>
-                  <Text style={styles.buttonText}>Open Case</Text>
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={() => {
+                    navigation.navigate("CaseInformation", caseDetails);
+                  }}
+                >
+                  <Text style={styles.buttonText}>{translation.screens.authScreens.caseSelection.openCase}</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -89,14 +101,14 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 45,
-    alignSelf: 'flex-end',
+    alignSelf: "flex-end",
     marginRight: 5,
-    color: 'white'
+    color: "white",
   },
   expanded: {
-    paddingTop: 5
+    paddingTop: 5,
   },
   header: {
-    fontWeight: 'bold'
-  }
+    fontWeight: "bold",
+  },
 });

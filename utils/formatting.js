@@ -66,8 +66,10 @@ export const convertTime = (submittedDate) => {
   const dateSubmitted = new Date(submittedDate).getTime();
   const difference = current - dateSubmitted;
   
+  
   if (difference >= day) {
     const differenceInDays = Math.round(difference / (1000 * 3600 * 24));
+    return `${differenceInDays} ${translation.screens.authScreens.caseSelection.day}`;
     return `${differenceInDays} ${translation.screens.authScreens.caseSelection.day}`;
   }
   if (difference >= hour) {
@@ -85,5 +87,6 @@ export const convertDate = (submittedDate) => {
     const year = date.getUTCFullYear();
 
     const formattedDate = `${day} - ${month} - ${year}`;
+    
     return formattedDate
 }

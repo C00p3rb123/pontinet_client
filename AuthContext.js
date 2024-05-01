@@ -9,6 +9,9 @@ export const AuthProvider = ({children}) => {
         token: null,
         authenticated: false,
     });
+    const [user, setUser] = useState({
+
+    });
 
    useEffect(() => {
     const retrieveTokenFromStorage = async () => {
@@ -22,8 +25,15 @@ export const AuthProvider = ({children}) => {
                 setAuthState({
                     token: token,
                     authenticated: true,
-                });               
+                });    
+                const userDetails = await axios.get(process.env.EXPO_PUBLIC_USER_URL);
+                setUser({
+                    name: userDetails.data.name,
+                    clinic: userDetails.data.clinic,
+                    country: userDetails.data.country
+                });           
             }
+            
         } catch (err) {
             console.error(err);
             throw new Error("Unable to retrieve token from storage");
@@ -35,8 +45,7 @@ export const AuthProvider = ({children}) => {
    },[])
     const login = async (data) => {
         const url = process.env.EXPO_PUBLIC_LOGIN_URL;
-        try {
-            
+        try {            
             const response = await axios.post(url, data);
             axios.defaults.headers.common[
                 "Authorization"
@@ -47,10 +56,10 @@ export const AuthProvider = ({children}) => {
             );  
             setAuthState({
                 token: response.data.token,
-                authenticated: true,
-                
+                authenticated: true,                
             });
-               
+            const userName = await axios.get(process.env.EXPO_PUBLIC_USER_URL);
+            setUser(userName.data.name);               
             return response;
         } catch (err) {
             console.log(err);
@@ -76,6 +85,7 @@ export const AuthProvider = ({children}) => {
         login: login,
         logout: logout,
         authState: authState,
+        user:user
     };
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 

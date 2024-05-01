@@ -3,23 +3,25 @@ import { useLanguage } from "../LanguageContext";
 import React from "react";
 import { Colours } from "../utils/colours";
 import { useNavigation } from '@react-navigation/native';
+import { useAuth } from "../AuthContext";
 
 const Dashboard = () => {
 
     const screenHeight = Dimensions.get("window").height;
     const navigation = useNavigation();
     const { translation } = useLanguage();
+    const {user} = useAuth();
 
     return (
         <SafeAreaView style={[styles.container, { height: screenHeight }]}>
             <View style={styles.header}>
                 <View style={styles.header2}>
                     <Image source={require('../assets/dashboard_header_icon.png')}/>
-                    <Text style={styles.header2Text}>Clinic Name</Text>
+                    <Text style={styles.header2Text}>{user.clinic}</Text>
                 </View>
                 <View style={styles.header2}>
                     <Image source={require('../assets/dashboard_header_icon2.png')}/>
-                    <Text style={styles.header2Text}>Country</Text>
+                    <Text style={styles.header2Text}>{user.country}</Text>
                 </View>
             </View>
             <View>
@@ -32,7 +34,7 @@ const Dashboard = () => {
                         </View>
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.caseButtonContainer} onPress={null}>
+                <TouchableOpacity style={styles.caseButtonContainer}  onPress={() => navigation.navigate('CaseHistory')} >
                     <View style={styles.caseButton}>
                         <Image source={require('../assets/case_history_symbol.png')}/>
                         <View style={{paddingLeft:10, alignSelf: "center"}}>

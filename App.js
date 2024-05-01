@@ -1,5 +1,4 @@
 import React from "react";
-import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -23,6 +22,9 @@ const Tab = createBottomTabNavigator();
 import Settings from "./screens/Settings";
 import MedicalRegistration from "./screens/MedicalRegistration";
 import { RegistrationProvider } from "./RegistrationContext";
+import CaseSubmission from "./screens/CaseSubmission";
+import CaseHistory from "./screens/CaseHistory";
+import CaseReadOnly from "./screens/CaseReadOnly";
 
 export default function App() {
   return (
@@ -55,6 +57,7 @@ export const Layout = () => {
             <Stack.Navigator>
               <Stack.Group
                 screenOptions={{
+                  headerTitleAlign: 'center',
                   headerTitle: () => <UnAuthHeader />,
                   headerShadowVisible: false,
                 }}
@@ -168,6 +171,21 @@ export const HomePage = () => {
         <Stack.Screen
           name="CaseInformation"
           component={CaseInformation}
+          options={{ headerLeft: () => null }}
+        />
+         <Stack.Screen
+          name="CaseSubmission"
+          component={CaseSubmission}
+          options={{ headerLeft: () => null, gestureEnabled: false }}
+        />
+          <Stack.Screen
+          name="CaseHistory"
+          component={CaseHistory}
+          options={{ headerLeft: () => null }}
+        />
+          <Stack.Screen
+          name="CaseReadOnly"
+          component={CaseReadOnly}
           options={{ headerLeft: () => null }}
         />
     </Stack.Navigator>

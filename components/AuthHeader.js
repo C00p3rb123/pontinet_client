@@ -1,10 +1,12 @@
 import { StyleSheet, Text, View, SafeAreaView, Image, Dimensions } from "react-native";
 import React from "react";
 import { useLanguage } from "../LanguageContext";
+import { useAuth } from "../AuthContext";
 
 const AuthHeader = () => {
   const {translation} = useLanguage()
   const screenWidth = Dimensions.get("window").width;
+  const {user} = useAuth()
   return (
     <SafeAreaView>
       <View style={[styles.container, {width:screenWidth}]}>
@@ -13,7 +15,7 @@ const AuthHeader = () => {
         </View>
         <View style ={styles.profile}>
           <Image source={require("../assets/Vector.png")} />
-          <Text> {translation.screens.authScreens.general.hello}, Rachel </Text>
+          <Text> {translation.screens.authScreens.general.hello}, {user.name} </Text>
           <Image source={require("../assets/profile_pic.png")} />
         </View>
       </View>
