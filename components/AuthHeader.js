@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, SafeAreaView, Image, Dimensions } from "react-native";
+import { StyleSheet, Text, View, SafeAreaView, Image, Dimensions, Platform, StatusBar } from "react-native";
 import React from "react";
 import { useLanguage } from "../LanguageContext";
 import { useAuth } from "../AuthContext";
@@ -8,7 +8,7 @@ const AuthHeader = () => {
   const screenWidth = Dimensions.get("window").width;
   const {user} = useAuth()
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0 }}>
       <View style={[styles.container, {width:screenWidth}]}>
         <View>
           <Image source={require("../assets/pontinet_logo_small.png")} />
@@ -31,8 +31,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         width:'100%',
         paddingVertical: 5,
-        paddingLeft: 5,
-        paddingRight: 10
+        paddingHorizontal: 7
     },
     profile:{
         flexDirection: 'row',
