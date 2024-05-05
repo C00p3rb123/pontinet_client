@@ -24,7 +24,7 @@ import MedicalRegistration from "./screens/MedicalRegistration";
 import { RegistrationProvider } from "./RegistrationContext";
 import CaseSubmission from "./screens/CaseSubmission";
 import CaseHistory from "./screens/CaseHistory";
-
+import CaseReadOnly from "./screens/CaseReadOnly";
 export default function App() {
   return (
     <AuthProvider>

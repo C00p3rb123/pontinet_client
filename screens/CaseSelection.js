@@ -21,7 +21,7 @@ const CaseSelecton = () => {
   const {translation } = useLanguage();
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{flex: 1}}>
       <View style={[styles.container, { height: screenHeight }]}>
         <View style={styles.top}>
           <PageTitle title={translation.screens.authScreens.caseSelection.title}/>
@@ -55,6 +55,8 @@ export default CaseSelecton;
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
+    flex: 1,
+    paddingBottom: 10
   },
   caseList: {
     width: "93%",
