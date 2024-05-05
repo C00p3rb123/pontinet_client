@@ -22,7 +22,7 @@ import {
     const {translation } = useLanguage();
   
     return (
-      <SafeAreaView>
+      <SafeAreaView style={{flex: 1}}>
         <View style={[styles.container, { height: screenHeight }]}>
           <View style={styles.top}>
             <PageTitle title={translation.screens.authScreens.caseHistory.title}/>
@@ -56,6 +56,8 @@ import {
   const styles = StyleSheet.create({
     container: {
       alignItems: "center",
+      flex: 1,
+      paddingBottom: 10
     },
     caseList: {
       width: "93%",
