@@ -70,6 +70,7 @@ const CaseCard = ({ caseDetails }) => {
                   style={styles.button}
                   onPress={() => {
                     navigation.navigate("CaseInformation", caseDetails);
+                    setExpanded(!expanded)
                   }}
                 >
                   <Text style={styles.buttonText}>{translation.screens.authScreens.caseSelection.openCase}</Text>

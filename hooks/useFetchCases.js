@@ -29,10 +29,7 @@ export const useFetchCases = (url) => {
         setrefresh(false);
 
     }
-    useEffect(() => {
-        getCases()
-    },[refresh])
 
     return {getCases, data, isLoading, refresh, onRefresh}
     
-}
+} 
