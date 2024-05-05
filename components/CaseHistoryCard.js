@@ -17,7 +17,7 @@ import {
 
   
   const CaseHistoryCard = ({ caseDetails }) => {
-    const formattedCreatedAt = convertTime(caseDetails.updatedAt);
+    const formattedCreatedAt = convertTime(caseDetails.updatedAt);    
     const [expanded, setExpanded] = useState(false);
     const navigation = useNavigation();
     const {translation } = useLanguage();    
@@ -40,7 +40,7 @@ import {
           key={Date.now()}
         >
           <Text style={styles.description}>
-            {caseDetails.patientInformation.gp} | {caseDetails.patientInformation.illnessDescription.clinc ? caseDetails.patientInformation.illnessDescription.clinc : "" }{" "}
+            {caseDetails.patientInformation.gp}
           </Text>
           <Text>
             <Text style={{ fontWeight: "bold" }}>{translation.screens.authScreens.caseSelection.submitted}</Text>{" "}
@@ -49,7 +49,10 @@ import {
           <Text style={[styles.description, {paddingTop: 5}]}>{caseDetails.patientInformation.age} | {caseDetails.patientInformation.illnessDescription.segment} |  {caseDetails.patientInformation.illnessDescription.mechanism}  </Text>
           {expanded && (
             <View style={styles.expanded} >
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("CaseReadOnly", caseDetails)}>
+                <TouchableOpacity style={styles.button} onPress={() =>{
+                  navigation.navigate("CaseReadOnly", caseDetails);
+                  setExpanded(!expanded);
+                } }>
                     <Text>{translation.screens.authScreens.caseHistory.adviceGiven}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.button} onPress={() => Alert.alert(`Incorrect permissions`, `Please contact Pontinet Support to re-open case`, [], { cancelable: true })}>

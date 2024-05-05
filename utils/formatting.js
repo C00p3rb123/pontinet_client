@@ -70,14 +70,13 @@ export const convertTime = (submittedDate) => {
   if (difference >= day) {
     const differenceInDays = Math.round(difference / (1000 * 3600 * 24));
     return `${differenceInDays} ${translation.screens.authScreens.caseSelection.day}`;
-    return `${differenceInDays} ${translation.screens.authScreens.caseSelection.day}`;
   }
   if (difference >= hour) {
     const differenceInHours = Math.round(difference / (1000 * 3600));
     return `${differenceInHours} ${translation.screens.authScreens.caseSelection.hour}`;
   }
 
-  return `< 1 ${translation.screens.authScreens.caseSelection.single}`;
+  return `< 1 ${translation.screens.authScreens.caseSelection.hourSingle}`;
 };
 
 export const convertDate = (submittedDate) => {
