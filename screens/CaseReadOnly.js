@@ -64,7 +64,7 @@ import {
             />
             <Text style={{ paddingLeft: 15, fontWeight: "300", fontSize: 18 }}>
               {translation.screens.authScreens.caseInformation.case} -{" "}
-              {caseDetails.patientInformationCard.illnessDescription.segment}
+              {caseDetails.patientInformation.illnessDescription.segment}
             </Text>
           </View>
           <ScrollView contentContainerStyle={{ paddingBottom: 160 }}>
@@ -174,6 +174,7 @@ import {
       alignSelf: "flex-end",
       marginRight: 5,
       color: "white",
+      marginBottom: 20
     },
     buttonText: {
       color: "white",
