@@ -24,7 +24,7 @@ import MedicalRegistration from "./screens/MedicalRegistration";
 import { RegistrationProvider } from "./RegistrationContext";
 import CaseSubmission from "./screens/CaseSubmission";
 import CaseHistory from "./screens/CaseHistory";
-
+import CaseReadOnly from "./screens/CaseReadOnly";
 export default function App() {
   return (
     <AuthProvider>
@@ -131,21 +131,21 @@ export const NavigationBar = () => {
       screenOptions={{
         header: () => <AuthHeader />,
         tabBarShowLabel: false,
-        tabBarStyle: { height: 80, paddingTop: Platform.OS === "ios" ? 20 : 0 }
+        tabBarStyle: { height: 60, paddingTop: Platform.OS === "ios" ? 20 : 0 }
       }}
     >
       <Tab.Screen 
         name="HomePage"
         component={HomePage}
         options={{
-          tabBarIcon: () => <Image source={require("./assets/home_button.png")} />,
+          tabBarIcon: () => <Image style={{height: 30, width:30}} source={require("./assets/home_button.png")} />,
         }}
       />
       <Tab.Screen 
         name="SettingsPage"
         component={SettingsPage}
         options={{
-          tabBarIcon: () => <Image source={require("./assets/settings_button.png")} />,
+          tabBarIcon: () => <Image style={{height: 35, width:35}} source={require("./assets/settings_button.png")} />,
         }}  
       />
     </Tab.Navigator>
