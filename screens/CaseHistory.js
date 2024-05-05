@@ -7,19 +7,24 @@ import {
     FlatList,
     RefreshControl,
   } from "react-native";
-  import React from "react";
+  import React, {useCallback}  from "react";
   import CaseHistoryCard from "../components/CaseHistoryCard";
   import { useFetchCases } from "../hooks/useFetchCases";
   import Loader from "../components/Loader";
   import PageTitle from "../components/PageTitle";
   import { useLanguage } from "../LanguageContext";
   import { Colours } from "../utils/colours";
+  import { useFocusEffect } from '@react-navigation/native';
   
   const CaseHistory = () => {
     const screenHeight = Dimensions.get("window").height;
     const url = `${process.env.EXPO_PUBLIC_CASES_URL}/retrieve/user`;
-    const { isLoading, data, refresh, onRefresh} = useFetchCases(url);
+    const { isLoading, data, refresh, onRefresh, getCases} = useFetchCases(url);
     const {translation } = useLanguage();
+
+    useFocusEffect(useCallback(() => {
+      getCases();
+    }, []))
   
     return (
       <SafeAreaView>
