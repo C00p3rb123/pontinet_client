@@ -127,7 +127,7 @@ export const Layout = () => {
 export const NavigationBar = () => {
   return (
     <Tab.Navigator
-      initialRouteName="HomePage"
+      firstRoute ="HomePage"
       screenOptions={{
         header: () => <AuthHeader />,
         tabBarShowLabel: false,
@@ -137,6 +137,12 @@ export const NavigationBar = () => {
       <Tab.Screen 
         name="HomePage"
         component={HomePage}
+        listeners={({navigation}) => ({
+          tabPress: (e) => {
+            e.preventDefault();
+            navigation.navigate("Dashboard")
+          }
+        })}
         options={{
           tabBarIcon: () => <Image style={{height: 30, width:30}} source={require("./assets/home_button.png")} />,
         }}
@@ -155,7 +161,7 @@ export const NavigationBar = () => {
 export const HomePage = () => {
   return (
     <Stack.Navigator
-    initialRouteName="Dashboard"
+      initialRouteName="Dashboard"
       screenOptions={{
         header: () => null,
         headerShadowVisible: false,
