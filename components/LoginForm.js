@@ -17,13 +17,13 @@ import { useLanguage } from "../LanguageContext";
  */
 
 const LoginForm = ({ handleSubmit }) => {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [error, setError] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const { translation } = useLanguage();
 
   const data = {
-    email: email,
+    email: email.toLowerCase(),
     password: password,
   };
 
@@ -61,7 +61,7 @@ const LoginForm = ({ handleSubmit }) => {
             borderRadius: 10,
             borderColor: Colours.pontinetInputContainer,
           }}
-          onChangeText={(text) => setEmail(text.toLowerCase())}
+          onChangeText={setEmail}
           placeholder={
             translation.screens.unAuthScreens.general.emailPlaceholder
           }

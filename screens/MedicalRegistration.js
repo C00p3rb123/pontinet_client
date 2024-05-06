@@ -36,7 +36,7 @@ const MedicalRegistration = () => {
     <SafeAreaView style={{ flex: 1 }}>
       <KeyboardAwareScrollView
         contentContainerStyle={styles.scrollView}
-        resetScrollToCoords={{ x: 0, y: 0 }}
+        enableResetScrollToCoords={false}
         scrollEnabled={true}
         extraHeight={150}
         extraScrollHeight={200}

@@ -46,7 +46,7 @@ const SignUpForm = () => {
 
     setRegistrationDetails({
       ...registrationDetails,
-      email: email,
+      email: email.toLowerCase(),
       password: password,
       type: "Specialist",
     });
@@ -79,7 +79,7 @@ const SignUpForm = () => {
             borderRadius: 10,
             borderColor: Colours.pontinetInputContainer,
           }}
-          onChangeText={(text) => setEmail(text.toLowerCase())}
+          onChangeText={setEmail}
           placeholder={
             translation.screens.unAuthScreens.general.emailPlaceholder
           }

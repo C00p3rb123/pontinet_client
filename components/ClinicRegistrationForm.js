@@ -33,28 +33,34 @@ const ClinicRegistrationForm = () => {
     clearRegistration,
   } = useRegistration();
   const navigation = useNavigation();
-  const {countries, states, cities, fetchStatesData, fetchCitiesData, error  } = useCountries();
-  
+  const { countries, states, cities, fetchStatesData, fetchCitiesData, error } =
+    useCountries();
+
   useEffect(() => {
-    if(clinicCountry){
+    if (clinicCountry) {
       fetchStatesData(clinicCountry);
       setClinicCity("");
-      setClinicState("")
-
-    }    
-  },[clinicCountry])
+      setClinicState("");
+    }
+  }, [clinicCountry]);
 
   useEffect(() => {
-    if(clinicState){
+    if (clinicState) {
       fetchCitiesData(clinicState);
-    }    
-  },[clinicState])
+    }
+  }, [clinicState]);
 
   const onSubmit = async () => {
-    setClinicError('')
-    if (!clinicName || (states.length && !clinicState) || (cities.length && !clinicCity)) {
-      console.log(clinicCity)
-      Alert.alert(`${translation.screens.unAuthScreens.clearRegistration.formIncomplete}`);
+    setClinicError("");
+    if (
+      !clinicName ||
+      (states.length && !clinicState) ||
+      (cities.length && !clinicCity)
+    ) {
+      console.log(clinicCity);
+      Alert.alert(
+        `${translation.screens.unAuthScreens.clearRegistration.formIncomplete}`
+      );
       return;
     }
 
@@ -63,7 +69,9 @@ const ClinicRegistrationForm = () => {
       clearRegistration();
       navigation.navigate("Login");
     } catch (err) {
-      setClinicError(`${translation.screens.unAuthScreens.clearRegistration.formIncomplete}`);
+      setClinicError(
+        `${translation.screens.unAuthScreens.clearRegistration.formIncomplete}`
+      );
     }
   };
 
@@ -83,101 +91,102 @@ const ClinicRegistrationForm = () => {
           onChangeText={(value) => {
             setClinicName(value);
             setRegistrationDetails({
-             ...registrationDetails,
-             clinicDetails: {
-               ...registrationDetails.clinicDetails,
-               clinicName: value
-             }
-            }
-            )
+              ...registrationDetails,
+              clinicDetails: {
+                ...registrationDetails.clinicDetails,
+                clinicName: value,
+              },
+            });
           }}
         />
       </View>
-      {!error && <View>
+      {!error && (
         <View>
-        <Text style={styles.formText}>
-          {translation.screens.unAuthScreens.clinicRegistration.clinicCountry}
-        </Text>
-        <Dropdown
-          dropdownStyle={styles.dropdown}
-          placeholder={
-            translation.screens.unAuthScreens.general.dropdownPlaceholder
-          }
-          placeholderStyle={{ fontSize: 16 }}
-          options={countries}
-          selectedValue={clinicCountry}
-          onValueChange={(value) => {
-            setClinicCountry(value);
-            setRegistrationDetails({
-             ...registrationDetails,
-             clinicDetails: {
-               ...registrationDetails.clinicDetails,
-               clinicCountry: value
-             }
-            }
-            )
-          }}
-          isSearchable={true}
-          selectedItemStyle={{ fontSize: 16 }}
-        />
-      </View>
-      <View>
-        <Text style={styles.formText}>
-          {translation.screens.unAuthScreens.clinicRegistration.clinicState}
-        </Text>
-        <Dropdown
-          dropdownStyle={styles.dropdown}
-          placeholder={
-            translation.screens.unAuthScreens.general.dropdownPlaceholder
-          }
-          placeholderStyle={{ fontSize: 16 }}
-          options={states}
-          selectedValue={clinicState}
-          onValueChange={(value) => {
-            setClinicState(value);
-            setRegistrationDetails({
-             ...registrationDetails,
-             clinicDetails: {
-               ...registrationDetails.clinicDetails,
-               clinicState: value
-             }
-            }
-            )
-          }}
-          isSearchable={true}
-          selectedItemStyle={{ fontSize: 16 }}
-          disabled={!clinicCountry }
-        />
-      </View>
-      <View>
-        <Text style={styles.formText}>
-          {translation.screens.unAuthScreens.clinicRegistration.clinicCity}
-        </Text>
-        <Dropdown
-          dropdownStyle={styles.dropdown}
-          placeholder={
-            translation.screens.unAuthScreens.general.dropdownPlaceholder
-          }
-          placeholderStyle={{ fontSize: 16 }}
-          options={cities}
-          selectedValue={clinicCity}
-          onValueChange={(value) => {
-            setClinicCity(value);
-            setRegistrationDetails({
-             ...registrationDetails,
-             clinicDetails: {
-               ...registrationDetails.clinicDetails,
-               clinicCity: value
-             }
-            }
-            )
-          }}
-          isSearchable={true}
-          selectedItemStyle={{ fontSize: 16 }}
-          disabled={!clinicCountry || !clinicState}
-        />
-      </View>
-        </View>}     
+          <View>
+            <Text style={styles.formText}>
+              {
+                translation.screens.unAuthScreens.clinicRegistration
+                  .clinicCountry
+              }
+            </Text>
+            <Dropdown
+              dropdownStyle={styles.dropdown}
+              placeholder={
+                translation.screens.unAuthScreens.general.dropdownPlaceholder
+              }
+              placeholderStyle={{ fontSize: 16 }}
+              options={countries}
+              selectedValue={clinicCountry}
+              onValueChange={(value) => {
+                setClinicCountry(value);
+                setRegistrationDetails({
+                  ...registrationDetails,
+                  clinicDetails: {
+                    ...registrationDetails.clinicDetails,
+                    clinicCountry: value,
+                  },
+                });
+              }}
+              isSearchable={true}
+              selectedItemStyle={{ fontSize: 16 }}
+            />
+          </View>
+          <View>
+            <Text style={styles.formText}>
+              {translation.screens.unAuthScreens.clinicRegistration.clinicState}
+            </Text>
+            <Dropdown
+              dropdownStyle={styles.dropdown}
+              placeholder={
+                translation.screens.unAuthScreens.general.dropdownPlaceholder
+              }
+              placeholderStyle={{ fontSize: 16 }}
+              options={states}
+              selectedValue={clinicState}
+              onValueChange={(value) => {
+                setClinicState(value);
+                setRegistrationDetails({
+                  ...registrationDetails,
+                  clinicDetails: {
+                    ...registrationDetails.clinicDetails,
+                    clinicState: value,
+                  },
+                });
+              }}
+              isSearchable={true}
+              selectedItemStyle={{ fontSize: 16 }}
+              disabled={!clinicCountry}
+            />
+          </View>
+          <View>
+            <Text style={styles.formText}>
+              {translation.screens.unAuthScreens.clinicRegistration.clinicCity}
+            </Text>
+            <Dropdown
+              dropdownStyle={styles.dropdown}
+              placeholder={
+                translation.screens.unAuthScreens.general.dropdownPlaceholder
+              }
+              placeholderStyle={{ fontSize: 16 }}
+              options={cities}
+              selectedValue={clinicCity}
+              onValueChange={(value) => {
+                setClinicCity(value);
+                setRegistrationDetails({
+                  ...registrationDetails,
+                  clinicDetails: {
+                    ...registrationDetails.clinicDetails,
+                    clinicCity: value,
+                  },
+                });
+              }}
+              isSearchable={true}
+              selectedItemStyle={{ fontSize: 16 }}
+              disabled={!clinicCountry || !clinicState}
+            />
+          </View>
+        </View>
+      )}
       {error && <Error message={error} />}
       {clinicError && <Error message={clinicError} />}
       <View style={styles.buttonContainer}>
