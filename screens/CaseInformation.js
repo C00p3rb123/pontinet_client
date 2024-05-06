@@ -323,6 +323,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
     marginRight: 5,
     color: "white",
+    marginBottom: 20
   },
   buttonText: {
     color: "white",
