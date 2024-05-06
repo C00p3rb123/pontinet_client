@@ -127,7 +127,7 @@ export const Layout = () => {
 export const NavigationBar = () => {
   return (
     <Tab.Navigator
-      initialRouteName="HomePage"
+      firstRoute ="HomePage"
       screenOptions={{
         header: () => <AuthHeader />,
         tabBarShowLabel: false,
