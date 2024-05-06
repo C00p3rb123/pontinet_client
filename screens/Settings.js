@@ -21,7 +21,13 @@ const Settings = () => {
                 </TouchableOpacity>
             </View>
             <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.button} onPress={logout}>
+                <TouchableOpacity style={styles.button} onPress={() => {
+                    navigation.reset({
+                        index: 0,
+                        routes: [{name: "HomePage"}]
+                    })
+                    logout();
+                }}>
                     <Text style={styles.buttonText} >{translation.screens.authScreens.general.logout}</Text>
                 </TouchableOpacity>
             </View>
