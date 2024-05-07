@@ -13,6 +13,7 @@ import CheckBox from "expo-checkbox";
 import { useLanguage } from "../LanguageContext";
 import { useRegistration } from "../RegistrationContext";
 import { useNavigation } from "@react-navigation/native";
+import { Linking } from "react-native";
 
 const SignUpForm = () => {
   const [email, setEmail] = useState("");
@@ -45,7 +46,7 @@ const SignUpForm = () => {
 
     setRegistrationDetails({
       ...registrationDetails,
-      email: email,
+      email: email.toLowerCase(),
       password: password,
       type: "Specialist",
     });
@@ -54,11 +55,13 @@ const SignUpForm = () => {
 
   // Dummy handlers for your links
   const handleTermsOfServicePress = () => {
+    Linking.openURL("https://pontinet.com/terms/");
     console.log("Terms of Service Pressed");
     // Implement your navigation or link handling logic here
   };
 
   const handlePrivacyPolicyPress = () => {
+    Linking.openURL("https://pontinet.com/privacy/");
     console.log("Privacy Policy Pressed");
     // Implement your navigation or link handling logic here
   };

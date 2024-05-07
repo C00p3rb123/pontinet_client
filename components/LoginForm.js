@@ -1,36 +1,41 @@
-import { StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-native'
-import React, { useState } from 'react'
-import { emailValidator, passwordValidator } from '../utils/formatting';
-import Error from './Error';
-import { Colours } from '../utils/colours';
-import { useLanguage } from '../LanguageContext';
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  TouchableOpacity,
+} from "react-native";
+import React, { useState } from "react";
+import { emailValidator, passwordValidator } from "../utils/formatting";
+import Error from "./Error";
+import { Colours } from "../utils/colours";
+import { useLanguage } from "../LanguageContext";
 
 /**
- * 
- * @returns LoginForm returns the form for logging in and handles the. 
+ *
+ * @returns LoginForm returns the form for logging in and handles the.
  */
 
-const LoginForm = ({handleSubmit}) => {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [error, setError] = useState();
-  const {translation} = useLanguage();
+const LoginForm = ({ handleSubmit }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const { translation } = useLanguage();
 
   const data = {
-    email: email,
+    email: email.toLowerCase(),
     password: password,
   };
 
-/**
- * 
- * @returns 
- */
+  /**
+   *
+   * @returns
+   */
   const onSubmit = async () => {
     const isEmail = emailValidator(email);
     const isPassword = passwordValidator(password);
     setError(null);
     if (!isEmail) {
-      
       setError(`Email not properly formatted`);
       return;
     }
@@ -38,37 +43,57 @@ const LoginForm = ({handleSubmit}) => {
       setError(isPassword.message);
       return;
     }
-    try{
+    try {
       await handleSubmit(data);
-  
-    }catch(err) {
+    } catch (err) {
       setError(err.message);
     }
   };
 
   return (
     <View style={styles.container}>
-        <View>
-            <Text style={styles.formText}>Email</Text>
-            <TextInput style={{ borderWidth: 1, padding: 15, borderRadius: 10, borderColor: Colours.pontinetInputContainer}} onChangeText={setEmail} placeholder={translation.screens.unAuthScreens.general.emailPlaceholder}/>
-        </View>
-        <View>
-        <Text style={styles.formText}>{translation.screens.unAuthScreens.general.password}</Text>
+      <View>
+        <Text style={styles.formText}>Email</Text>
+        <TextInput
+          style={{
+            borderWidth: 1,
+            padding: 15,
+            borderRadius: 10,
+            borderColor: Colours.pontinetInputContainer,
+          }}
+          onChangeText={setEmail}
+          placeholder={
+            translation.screens.unAuthScreens.general.emailPlaceholder
+          }
+        />
+      </View>
+      <View>
+        <Text style={styles.formText}>
+          {translation.screens.unAuthScreens.general.password}
+        </Text>
         <TextInput
           secureTextEntry={true}
-          style={{ borderWidth: 1, padding: 15, borderRadius: 10, borderColor: Colours.pontinetInputContainer}}
+          style={{
+            borderWidth: 1,
+            padding: 15,
+            borderRadius: 10,
+            borderColor: Colours.pontinetInputContainer,
+          }}
           onChangeText={setPassword}
-          placeholder={translation.screens.unAuthScreens.general.passwordPlaceholder}
+          placeholder={
+            translation.screens.unAuthScreens.general.passwordPlaceholder
+          }
         />
       </View>
       {error && <Error message={error} />}
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button} onPress={onSubmit}>
-          <Text style={styles.buttonText}>{translation.screens.unAuthScreens.general.button}</Text>
+          <Text style={styles.buttonText}>
+            {translation.screens.unAuthScreens.general.button}
+          </Text>
         </TouchableOpacity>
       </View>
     </View>
-    
   );
 };
 
