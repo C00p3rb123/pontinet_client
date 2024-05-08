@@ -5,7 +5,7 @@ const UnAuthHeader = () => {
   return (
    
        <View style={styles.container}>
-            <Image source={require('../assets/pontinet_logo.png')}>
+            <Image source={require('../../assets/pontinet_logo.png')}>
             </Image>
         </View>    
   )

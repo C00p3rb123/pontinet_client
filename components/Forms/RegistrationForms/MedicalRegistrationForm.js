@@ -7,10 +7,9 @@ import {
   Alert,
 } from "react-native";
 import { useState } from "react";
-import Dropdown from "react-native-input-select";
-import { Colours } from "../utils/colours";
-import { useLanguage } from "../LanguageContext";
-import { useRegistration } from "../RegistrationContext";
+import { Colours } from "../../../utils/colours";
+import { useLanguage } from "../../../LanguageContext";
+import { useRegistration } from "../../../RegistrationContext";
 import { useNavigation } from "@react-navigation/native";
 
 const MedicalRegistrationForm = () => {

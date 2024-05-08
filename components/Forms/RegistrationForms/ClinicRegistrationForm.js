@@ -5,19 +5,15 @@ import {
   TextInput,
   TouchableOpacity,
   Alert,
-  TurboModuleRegistry,
 } from "react-native";
 import { useEffect, useState } from "react";
 import Dropdown from "react-native-input-select";
-import { Colours } from "../utils/colours";
-import Error from "./Error";
-import { useLanguage } from "../LanguageContext";
-import { useRegistration } from "../RegistrationContext";
+import { Colours } from "../../../utils/colours";
+import Error from "../../Error";
+import { useLanguage } from "../../../LanguageContext";
+import { useRegistration } from "../../../RegistrationContext";
 import { useNavigation } from "@react-navigation/native";
-import Loader from "./Loader";
-import axios from "axios";
-import Constants from "expo-constants";
-import { useCountries } from "../hooks/useCountries";
+import { useCountries } from "../../../hooks/useCountries";
 
 const ClinicRegistrationForm = () => {
   const [clinicName, setClinicName] = useState("");

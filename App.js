@@ -4,27 +4,27 @@ import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Login from "./screens/Login";
-import SignUp from "./screens/SignUp";
+import SignUp from "./screens/Registration/SignUp";
 import Dashboard from "./screens/Dashboard";
-import ClinicRegistration from "./screens/ClinicRegistration";
-import CaseSelecton from "./screens/CaseSelection";
-import CaseInformation from "./screens/CaseInformation";
+import ClinicRegistration from "./screens/Registration/ClinicRegistration";
+import CaseSelecton from "./screens/Cases/CaseSelection";
+import caseReply from "./screens/Cases/CaseReply";
 import { StyleSheet, Image, Platform } from "react-native";
-
-const Stack = createStackNavigator();
 import { AuthProvider, useAuth } from "./AuthContext";
-import UnAuthHeader from "./components/UnAuthHeader";
-import AuthHeader from "./components/AuthHeader";
+import UnAuthHeader from "./components/Headers/UnAuthHeader";
+import AuthHeader from "./components/Headers/AuthHeader";
 import { LanguageProvider, useLanguage } from "./LanguageContext";
 import LanguageSelection from "./screens/LanguageSelection";
-
-const Tab = createBottomTabNavigator();
 import Settings from "./screens/Settings";
-import MedicalRegistration from "./screens/MedicalRegistration";
+import MedicalRegistration from "./screens/Registration/MedicalRegistration";
 import { RegistrationProvider } from "./RegistrationContext";
-import CaseSubmission from "./screens/CaseSubmission";
-import CaseHistory from "./screens/CaseHistory";
-import CaseReadOnly from "./screens/CaseReadOnly";
+import CaseSubmission from "./screens/Cases/CaseSubmission";
+import CaseHistory from "./screens/Cases/CaseHistory";
+import CaseResponse from "./screens/Cases/CaseResponse";
+
+
+const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 export default function App() {
   return (
     <AuthProvider>
@@ -174,8 +174,8 @@ export const HomePage = () => {
           options={{ headerLeft: () => null }}
         />
         <Stack.Screen
-          name="CaseInformation"
-          component={CaseInformation}
+          name="caseReply"
+          component={caseReply}
           options={{ headerLeft: () => null }}
         />
          <Stack.Screen
@@ -189,8 +189,8 @@ export const HomePage = () => {
           options={{ headerLeft: () => null }}
         />
         <Stack.Screen
-          name="CaseReadOnly"
-          component={CaseReadOnly}
+          name="CaseResponse"
+          component={CaseResponse}
           options={{ headerLeft: () => null }}
         />
     </Stack.Navigator>

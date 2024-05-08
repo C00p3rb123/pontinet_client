@@ -6,11 +6,11 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React, { useState } from "react";
-import { caseUrgencyStyle } from "../utils/colours";
-import { convertTime } from "../utils/formatting";
-import { Colours } from "../utils/colours";
+import { caseUrgencyStyle } from "../../utils/colours";
+import { convertTime } from "../../utils/formatting";
+import { Colours } from "../../utils/colours";
 import { useNavigation } from "@react-navigation/native";
-import { useLanguage } from "../LanguageContext";
+import { useLanguage } from "../../LanguageContext";
 
 const CaseCard = ({ caseDetails }) => {
   const caseColour = caseUrgencyStyle(caseDetails.patientInformation.referralDate);
@@ -69,7 +69,7 @@ const CaseCard = ({ caseDetails }) => {
                 <TouchableOpacity
                   style={styles.button}
                   onPress={() => {
-                    navigation.navigate("CaseInformation", caseDetails);
+                    navigation.navigate("CaseReply", caseDetails);
                     setExpanded(!expanded)
                   }}
                 >

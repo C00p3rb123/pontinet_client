@@ -4,18 +4,14 @@ import {
   View,
   SafeAreaView,
   Image,
-  Dimensions,
-  Keyboard,
   ScrollView,
 } from "react-native";
-import React, { useEffect, useState } from "react";
-import { Colours } from "../utils/colours";
-import ClinicRegistrationForm from "../components/ClinicRegistrationForm";
-import { useLanguage } from "../LanguageContext";
-import { RegistrationProvider } from "../RegistrationContext";
+import React from "react";
+import { Colours } from "../../utils/colours";
+import ClinicRegistrationForm from "../../components/Forms/RegistrationForms/ClinicRegistrationForm";
+import { useLanguage } from "../../LanguageContext";
 
 const ClinicRegistration = () => {
-  const screenHeight = Dimensions.get("window").height;
   const { translation } = useLanguage();
 
   return (
@@ -24,7 +20,7 @@ const ClinicRegistration = () => {
         contentContainerStyle={styles.scrollView}
         contentInset={styles.inset}
       >
-        <Image source={require("../assets/clinic.png")} />
+        <Image source={require("../../assets/clinic.png")} />
         <Text style={styles.headerText}>
           {translation.screens.unAuthScreens.clinicRegistration.clinicDetails}
         </Text>

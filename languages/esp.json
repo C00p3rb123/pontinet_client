@@ -76,7 +76,7 @@
                 "day": "hace día/s",
                 "openCase": "Caso abierto"
             },
-            "caseInformation": {
+            "caseReply": {
                 "title": "Caso abierto",
                 "case": "Caso",
                 "patientInformation": "Información para pacientes",
@@ -108,7 +108,7 @@
                 "adviceGiven": "Consejos dados",
                 "reopenCase": "Reabrir el caso"
             }         ,
-            "caseReadOnly": {
+            "caseResponse": {
                 "return": "Volver al panel de control"
             }       
         }

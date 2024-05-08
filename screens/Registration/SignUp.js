@@ -9,14 +9,12 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React, { useEffect, useState } from "react";
-import SignUpForm from "../components/SignUpForm";
-import { Colours } from "../utils/colours";
+import SignUpForm from "../../components/Forms/RegistrationForms/SignUpForm";
+import { Colours } from "../../utils/colours";
 import { useNavigation } from "@react-navigation/native";
-import { useLanguage } from "../LanguageContext";
-import { RegistrationProvider } from "../RegistrationContext";
+import { useLanguage } from "../../LanguageContext";
 
 const SignUp = () => {
-  const navigation = useNavigation();
   const screenHeight = Dimensions.get("window").height;
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
   const { translation } = useLanguage();
@@ -45,7 +43,7 @@ const SignUp = () => {
     <SafeAreaView>
       <View style={[styles.container, { height: screenHeight }]}>
         {!isKeyboardVisible && (
-          <Image source={require("../assets/medical_professionals.png")} />
+          <Image source={require("../../assets/medical_professionals.png")} />
         )}
         <Text style={styles.headerText}>
           {translation.screens.unAuthScreens.signup.accountDetails}

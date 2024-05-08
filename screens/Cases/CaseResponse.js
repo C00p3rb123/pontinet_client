@@ -3,45 +3,33 @@ import {
     Text,
     View,
     SafeAreaView,
-    Dimensions,
-    Image,
     TouchableOpacity,
-    Alert
   } from "react-native";
   import React, { useState } from "react";
-  import { Colours } from "../utils/colours";
-  import PatientInformationCard from "../components/PatientInformationCard";
-  import PageTitle from "../components/PageTitle";
-  import { useLanguage } from "../LanguageContext";
-  import CaseResponseCard from "../components/CaseResponseCard";
+  import { Colours } from "../../utils/colours";
+  import PatientInformationCard from "../../components/Cards/PatientInformationCard";
+  import PageTitle from "../../components/PageTitle";
+  import { useLanguage } from "../../LanguageContext";
+  import CaseInputCard from "../../components/Cards/CaseInputCard";
   import { ScrollView } from "react-native-gesture-handler";
-  import axios from "axios";
-  import { useAuth } from "../AuthContext";
   import { useNavigation } from "@react-navigation/native";
-  import { useImage } from "../hooks/useImage";
-  import { useDocuments } from "../hooks/useDocuments";
-  
-  const CaseReadOnly = ({ route }) => {
+   
+  const CaseResponse = ({ route }) => {
     const caseDetails = route.params;
  
     const [error, setError] = useState(false);
     const { translation } = useLanguage();
     const navigation = useNavigation();
-    const { image } = useImage();
-    const [imageSelected, setImageSelected] = useState(false);
-    const [documentSelected, isDocumentSelected] = useState()
-    const { selectDocument, document } = useDocuments();
-    const { user } = useAuth();
 
     const titles = [
-        `${translation.screens.authScreens.caseInformation.diagnosticImpression}`,
-        `${translation.screens.authScreens.caseInformation.onSiteProcedure}`,
-        `${translation.screens.authScreens.caseInformation.onSiteMedication}`,
-        `${translation.screens.authScreens.caseInformation.other}`,
-        `${translation.screens.authScreens.caseInformation.generalIndications}`,
-        `${translation.screens.authScreens.caseInformation.medication}`,
-        `${translation.screens.authScreens.caseInformation.referral}`,
-        `${translation.screens.authScreens.caseInformation.other}`,
+        `${translation.screens.authScreens.caseReply.diagnosticImpression}`,
+        `${translation.screens.authScreens.caseReply.onSiteProcedure}`,
+        `${translation.screens.authScreens.caseReply.onSiteMedication}`,
+        `${translation.screens.authScreens.caseReply.other}`,
+        `${translation.screens.authScreens.caseReply.generalIndications}`,
+        `${translation.screens.authScreens.caseReply.medication}`,
+        `${translation.screens.authScreens.caseReply.referral}`,
+        `${translation.screens.authScreens.caseReply.other}`,
         
     ]
     const information = 
@@ -60,15 +48,15 @@ import {
         <View>
           <View style={styles.header}>
             <PageTitle
-              title={translation.screens.authScreens.caseInformation.title}
+              title={translation.screens.authScreens.caseReply.title}
             />
             <Text style={{ paddingLeft: 15, fontWeight: "300", fontSize: 18 }}>
-              {translation.screens.authScreens.caseInformation.case} -{" "}
+              {translation.screens.authScreens.caseReply.case} -{" "}
               {caseDetails.patientInformation.illnessDescription.segment}
             </Text>
           </View>
           <ScrollView contentContainerStyle={{ paddingBottom: 160 }}>
-            <View style={{ ...styles.caseInformation }}>
+            <View style={{ ...styles.caseReply }}>
               <View style={styles.paitnentInformation}>
                 <PatientInformationCard caseDetails={caseDetails} />
               </View>
@@ -81,12 +69,12 @@ import {
                     marginTop: 20,
                   }}
                 >
-                  {translation.screens.authScreens.caseInformation.dischargeInstructions}
+                  {translation.screens.authScreens.caseReply.dischargeInstructions}
                 </Text>
                 {titles.map((title, i) => {
                   if (i <= 2) {
                     return (
-                      <CaseResponseCard
+                      <CaseInputCard
                         key={title+i}
                         title={title}
                         readOnly={true}
@@ -104,12 +92,12 @@ import {
                     marginTop: 20,
                   }}
                 >
-                  {translation.screens.authScreens.caseInformation.dischargeInstructions}
+                  {translation.screens.authScreens.caseReply.dischargeInstructions}
                 </Text>
                 {titles.map((title, i) => {
                   if (i > 2) {
                     return (
-                      <CaseResponseCard
+                      <CaseInputCard
                         key={title+i}
                         title={title}
                         readOnly={true}
@@ -124,7 +112,7 @@ import {
                 style={{ ...styles.button, marginTop: 30, alignSelf: "center" }}
                 onPress={() => navigation.navigate("Dashboard")}
               >
-                <Text style={styles.buttonText}>{translation.screens.authScreens.caseReadOnly.return}</Text>
+                <Text style={styles.buttonText}>{translation.screens.authScreens.caseResponse.return}</Text>
               </TouchableOpacity>
               {error && <Error message={error}/>}
             </View>
@@ -134,14 +122,14 @@ import {
     );
   };
   
-  export default CaseReadOnly;
+  export default CaseResponse;
   
   const styles = StyleSheet.create({
     header: {
       gap: 15,
       justifyContent: "center",
     },
-    caseInformation: {
+    caseReply: {
       backgroundColor: Colours.pontinetCaseBackground,
       alignItems: "flex-start",
       paddingHorizontal: 10,

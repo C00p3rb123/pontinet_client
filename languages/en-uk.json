@@ -77,7 +77,7 @@
                 "openCase": "Open Case",
                 "noCases": "No cases to display"
             },
-            "caseInformation": {
+            "caseReply": {
                 "title": "Open Case",
                 "case": "Case",
                 "patientInformation": "Patient Information",
@@ -110,7 +110,7 @@
                 "adviceGiven": "Advice given",
                 "reopenCase": "Re-open case"
             },
-            "caseReadOnly": {
+            "caseResponse": {
                 "return": "Return to dashboard"
             }      
         }

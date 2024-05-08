@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, SafeAreaView, Image, Dimensions, Keyboard, TouchableOpacity } from "react-native";
 import React, { useEffect, useState } from "react";
-import LoginForm from "../components/LoginForm";
+import LoginForm from "../components/Forms/LoginForm";
 import { Colours } from "../utils/colours";
 import { useNavigation } from '@react-navigation/native';
 import { useAuth } from "../AuthContext";
