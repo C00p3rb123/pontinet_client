@@ -63,7 +63,7 @@ const ClinicRegistrationForm = () => {
       clearRegistration();
       navigation.navigate("Login");
     } catch (err) {
-      setClinicError(`${translation.screens.unAuthScreens.clinicRegistration.formIncomplete}`);
+      setClinicError(err.response.data.message);
     }
   };
 
