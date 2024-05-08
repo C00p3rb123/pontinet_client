@@ -3,10 +3,10 @@
     "screens": {
         "unAuthScreens": {
             "general": {
-                "email": "Email",
+                "email": "Correo electrónico",
                 "password": "Contraseña",
                 "emailPlaceholder": "Introduzca la dirección de correo electrónico",
-                "passwordPalceholder": "Introducir la contraseña",
+                "passwordPlaceholder": "Introducir la contraseña",
                 "and": "y",
                 "button": "Confirme",
                 "selectOption": "Seleccione una opción",
@@ -50,7 +50,9 @@
                 "registrationId": "ID de registro",
                 "registrationCouncil": "Consejo de Registro",
                 "whatsAppMobileNumber": "Número de móvil de WhatsApp",
-                "whatsAppDescription": "Asegúrese de que este número esté conectado a una cuenta de WhatsApp"
+                "whatsAppDescription": "Asegúrese de que este número esté conectado a una cuenta de WhatsApp",
+                "formIncomplete": "Formulario incompleto",
+                "fillOutFields": "Rellene todos los campos"
             }
         },
         "authScreens": {
@@ -74,7 +76,11 @@
                 "hour": "hace hora/s",
                 "hourSingle": "hace hora",
                 "day": "hace día/s",
-                "openCase": "Caso abierto"
+                "openCase": "Caso abierto",
+                "segmentDetails": "Detalles del segmento",
+                "mechanismDetails": "Detalles del mecanismo",
+                "gp": "Médico generalista",
+                "practice": "Práctica"
             },
             "caseReply": {
                 "title": "Caso abierto",
@@ -92,8 +98,13 @@
                 "generalIndications": "Indicaciones generales",
                 "medication": "Medicación",
                 "referral": "Remisión/seguimiento",
-                "other":  "Otros"
-
+                "other":  "Otros",
+                "segment": "Segmento",
+                "addImage": "Añadir imagen",
+                "addReport": "Add report",
+                "camera": "Añadir informe",
+                "submitCase": "Presentar caso",
+                "viewImage": "Ver la imagen"
             },
             "caseSubmission": {
                 "title": "Caso presentado",
@@ -106,7 +117,9 @@
             "caseHistory": {
                 "title": "Historia de un caso",
                 "adviceGiven": "Consejos dados",
-                "reopenCase": "Reabrir el caso"
+                "reopenCase": "Reabrir el caso",
+                "incorrectPermissions": "Permisos incorrectos",
+                "contact": "Póngase en contacto con el servicio de asistencia de Pontinet para reabrir el caso."
             }         ,
             "caseResponse": {
                 "return": "Volver al panel de control"

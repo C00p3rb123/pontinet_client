@@ -50,18 +50,18 @@ const CaseCard = ({ caseDetails }) => {
         {expanded && (
           <View style={styles.expanded}>
             <View>
-              <Text style={styles.header}>Segment Details</Text>
+              <Text style={styles.header}>{translation.screens.authScreens.caseSelection.segmentDetails}</Text>
               <Text>
                 {
                   caseDetails.patientInformation.illnessDescription
                     .segment_details
                 }
               </Text>
-              <Text style={styles.header}>Mechanism Details</Text>
+              <Text style={styles.header}>{translation.screens.authScreens.caseSelection.mechanismDetails}</Text>
               <Text>{caseDetails.patientInformation.illnessDescription.mechanism_details}</Text>
-              <Text style={styles.header}>General Practioner</Text>
+              <Text style={styles.header}>{translation.screens.authScreens.caseSelection.gp}</Text>
               <Text>{caseDetails.patientInformation.gp}</Text>
-              <Text style={styles.header}>Practice</Text>
+              <Text style={styles.header}>{translation.screens.authScreens.caseSelection.practice}</Text>
               <Text>{caseDetails.patientInformation.clinic}</Text>
             </View>
             <View>
