@@ -53,17 +53,17 @@ const ClinicRegistrationForm = () => {
   const onSubmit = async () => {
     setClinicError('')
     if (!clinicName || (states.length && !clinicState) || (cities.length && !clinicCity)) {
-      console.log(clinicCity)
-      Alert.alert(`${translation.screens.unAuthScreens.clearRegistration.formIncomplete}`);
+    
+      Alert.alert(`${translation.screens.unAuthScreens.clinicRegistration.formIncomplete}`);
       return;
     }
-
+    
     try {
       await sendRegistrationDetails();
       clearRegistration();
       navigation.navigate("Login");
     } catch (err) {
-      setClinicError(`${translation.screens.unAuthScreens.clearRegistration.formIncomplete}`);
+      setClinicError(`${translation.screens.unAuthScreens.clinicRegistration.formIncomplete}`);
     }
   };
 

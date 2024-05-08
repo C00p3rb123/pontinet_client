@@ -33,7 +33,7 @@ const MedicalRegistrationForm = () => {
       !registrationCouncil ||
       !whatsAppMobileNumber
     ) {
-      Alert.alert("Form Incomplete", "Please fill out all the fields.");
+      Alert.alert(translation.screens.unAuthScreens.medicalRegistration.formIncomplete, translation.screens.unAuthScreens.medicalRegistration.fillOutFields);
       return;
     }
 

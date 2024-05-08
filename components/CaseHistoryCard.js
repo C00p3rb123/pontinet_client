@@ -55,7 +55,7 @@ import {
                 } }>
                     <Text>{translation.screens.authScreens.caseHistory.adviceGiven}</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button} onPress={() => Alert.alert(`Incorrect permissions`, `Please contact Pontinet Support to re-open case`, [], { cancelable: true })}>
+                <TouchableOpacity style={styles.button} onPress={() => Alert.alert(translation.screens.authScreens.caseHistory.incorrectPermissions, translation.screens.authScreens.caseHistory.contact, [], { cancelable: true })}>
                     <Text>{translation.screens.authScreens.caseHistory.reopenCase}</Text>
                 </TouchableOpacity>
             </View>

@@ -49,7 +49,7 @@ const LoginForm = ({handleSubmit}) => {
   return (
     <View style={styles.container}>
         <View>
-            <Text style={styles.formText}>Email</Text>
+            <Text style={styles.formText}>{translation.screens.unAuthScreens.general.email}</Text>
             <TextInput style={{ borderWidth: 1, padding: 15, borderRadius: 10, borderColor: Colours.pontinetInputContainer}} onChangeText={setEmail} placeholder={translation.screens.unAuthScreens.general.emailPlaceholder}/>
         </View>
         <View>
