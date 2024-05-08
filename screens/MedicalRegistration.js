@@ -1,3 +1,4 @@
+import React from "react";
 import {
   StyleSheet,
   Text,
@@ -5,31 +6,49 @@ import {
   SafeAreaView,
   Image,
   Dimensions,
-  Keyboard,
-  ScrollView,
+  Platform,
+  UIManager,
+  LayoutAnimation,
 } from "react-native";
-import React, { useEffect, useState } from "react";
-import { Colours } from "../utils/colours";
-import MedicalRegistrationForm from "../components/MedicalRegistrationForm";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { useNavigation } from "@react-navigation/native";
 import { useLanguage } from "../LanguageContext";
-import { RegistrationProvider } from "../RegistrationContext";
+import MedicalRegistrationForm from "../components/MedicalRegistrationForm";
+import { Colours } from "../utils/colours";
+
+if (
+  Platform.OS === "android" &&
+  UIManager.setLayoutAnimationEnabledExperimental
+) {
+  UIManager.setLayoutAnimationEnabledExperimental(true);
+}
 
 const MedicalRegistration = () => {
-  const screenHeight = Dimensions.get("window").height;
   const { translation } = useLanguage();
   const navigation = useNavigation();
+
   const handleFormSubmit = () => {
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     navigation.navigate("ClinicRegistration");
   };
 
   return (
-    <SafeAreaView>
-      <ScrollView
+    <SafeAreaView style={{ flex: 1 }}>
+      <KeyboardAwareScrollView
         contentContainerStyle={styles.scrollView}
-        contentInset={styles.inset}
+        enableResetScrollToCoords={false}
+        scrollEnabled={true}
+        extraHeight={150}
+        extraScrollHeight={200}
+        enableOnAndroid={true}
+        enableAutomaticScroll={Platform.OS === "ios"}
+        keyboardOpeningTime={0}
+        keyboardShouldPersistTaps="handled"
       >
-        <Image source={require("../assets/Medical_registration.png")} />
+        <Image
+          source={require("../assets/Medical_registration.png")}
+          style={styles.image}
+        />
         <Text style={styles.headerText}>
           {translation.screens.unAuthScreens.medicalRegistration.header}
         </Text>
@@ -39,7 +58,7 @@ const MedicalRegistration = () => {
         <View style={styles.form}>
           <MedicalRegistrationForm onSubmit={handleFormSubmit} />
         </View>
-      </ScrollView>
+      </KeyboardAwareScrollView>
     </SafeAreaView>
   );
 };
@@ -47,11 +66,16 @@ const MedicalRegistration = () => {
 export default MedicalRegistration;
 
 const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-  },
   scrollView: {
+    flexGrow: 1,
+    justifyContent: "center",
     alignItems: "center",
+    paddingVertical: 20, // Ensures padding at the bottom when scrolled
+  },
+  image: {
+    width: 250,
+    height: 250,
+    marginBottom: 20, // Adds space below the image for better visual separation
   },
   headerText: {
     color: Colours.pontinetPrimary,
@@ -60,7 +84,7 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     paddingBottom: 15,
     textAlign: "center",
-    paddingHorizontal: 8
+    paddingHorizontal: 8,
   },
   subHeaderText: {
     color: Colours.pontinetSeconday,
@@ -71,9 +95,5 @@ const styles = StyleSheet.create({
   form: {
     width: "80%",
     paddingVertical: 20,
-  },
-  inset: {
-    top: 0,
-    bottom: 10,
   },
 });

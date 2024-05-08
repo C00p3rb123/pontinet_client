@@ -54,13 +54,17 @@ export const AuthProvider = ({children}) => {
                 process.env.EXPO_PUBLIC_TOKEN_KEY,
                 response.data.token
             );  
-            setAuthState({
+            await setAuthState({
                 token: response.data.token,
                 authenticated: true,                
             });
-            const userName = await axios.get(process.env.EXPO_PUBLIC_USER_URL);
-            setUser(userName.data.name);               
-            return response;
+            const userDetails = await axios.get(process.env.EXPO_PUBLIC_USER_URL);
+            await setUser({
+                name: userDetails.data.name,
+                clinic: userDetails.data.clinic,
+                country: userDetails.data.country
+            });                   
+           
         } catch (err) {
             console.log(err);
             throw new Error("Unable to login");
