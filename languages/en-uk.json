@@ -50,7 +50,9 @@
               "registrationId": "Registration ID",
               "registrationCouncil": "Registration Council",
               "whatsAppMobileNumber": "WhatsApp Mobile Number",
-              "whatsAppDescription": "Please ensure that this number is connected to a WhatsApp account"
+              "whatsAppDescription": "Please ensure that this number is connected to a WhatsApp account",
+              "formIncomplete": "Form incomplete",
+              "fillOutFields": "Please fill out all the fields"
             }
         },
         "authScreens": {
@@ -75,7 +77,11 @@
                 "hourSingle": "hour ago" ,
                 "day": "day/s ago",
                 "openCase": "Open Case",
-                "noCases": "No cases to display"
+                "noCases": "No cases to display",
+                "segmentDetails": "Segment details",
+                "mechanismDetails": "Mechanism Details",
+                "gp": "General Practioner",
+                "practice": "Practice"
             },
             "caseInformation": {
                 "title": "Open Case",
@@ -93,9 +99,13 @@
                 "generalIndications": "General Indications",
                 "medication": "Medication",
                 "referral": "Referral/Follow up",
-                "other":  "Other"
-
-
+                "other":  "Other",
+                "segment": "Segment",
+                "addImage": "Add image",
+                "addReport": "Add report",
+                "camera": "Camera",
+                "submitCase": "Submit Case",
+                "viewImage": "View image"
             },
             "caseSubmission": {
                 "title": "Case Submitted",
@@ -108,7 +118,10 @@
             "caseHistory": {
                 "title": "Case History",
                 "adviceGiven": "Advice given",
-                "reopenCase": "Re-open case"
+                "reopenCase": "Re-open case",
+                "incorrectPermissions": "Incorrect permissions",
+                "contact": "Please contact Pontinet support to re-open case"
+
             },
             "caseReadOnly": {
                 "return": "Return to dashboard"

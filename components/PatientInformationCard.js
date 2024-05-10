@@ -19,7 +19,7 @@ const PatientInformationCard = ({caseDetails}) => {
           {isExpaned && (
             <View style={styles.column}>
               <Text style={styles.subTitle}>
-                Segment:{" "}
+              {translation.screens.authScreens.caseInformation.segment}:{" "}
                 {caseDetails.patientInformation.illnessDescription.segment}
               </Text>
               <Text style={styles.information}>
@@ -28,14 +28,14 @@ const PatientInformationCard = ({caseDetails}) => {
                     .segment_details
                 } {" "}
               </Text>
-              <Text style={styles.subTitle}>Mechanism Details</Text>
+              <Text style={styles.subTitle}>{translation.screens.authScreens.caseSelection.mechanismDetails}</Text>
               <Text style={styles.information}>
               {
                   caseDetails.patientInformation.illnessDescription
                     .mechanism_details
                 }
               </Text>
-              <Text style={styles.subTitle}>General Practioner</Text>
+              <Text style={styles.subTitle}>{translation.screens.authScreens.caseSelection.gp}</Text>
               <Text style={styles.information}>
                 {caseDetails.patientInformation.gp}
               </Text>

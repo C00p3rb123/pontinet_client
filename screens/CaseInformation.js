@@ -155,7 +155,7 @@ const CaseInformation = ({ route }) => {
                 }
                 
               })}
-              <View><CaseResponseCard title={`Other`} onChangeText={setAddtionalDischargeInstructions} /></View>
+              <View><CaseResponseCard title={translation.screens.authScreens.caseInformation.other} onChangeText={setAddtionalDischargeInstructions} /></View>
               <Text
                 style={{
                   fontWeight: "bold",
@@ -178,7 +178,7 @@ const CaseInformation = ({ route }) => {
                 }
                 
               })}
-              <View><CaseResponseCard title={`Other`} onChangeText={setAddtionalDischargeInstructions} /></View>
+              <View><CaseResponseCard title={translation.screens.authScreens.caseInformation.other} onChangeText={setAddtionalDischargeInstructions} /></View>
             </View>
             {image && (
               <View>
@@ -196,7 +196,7 @@ const CaseInformation = ({ route }) => {
                       }}
                     ></Image>
                   ) : (
-                    <Text style={styles.buttonText}>View Image</Text>
+                    <Text style={styles.buttonText}>{translation.screens.authScreens.caseInformation.viewImage}</Text>
                   )}
                 </TouchableOpacity>
               </View>
@@ -212,7 +212,7 @@ const CaseInformation = ({ route }) => {
                     justifyContent: "center",
                   }}
                 >
-                  <Text style={styles.buttonText}>Add Image</Text>
+                  <Text style={styles.buttonText}>{translation.screens.authScreens.caseInformation.addImage}</Text>
                   <Image
                     style={{
                       marginStart: 5,
@@ -233,7 +233,7 @@ const CaseInformation = ({ route }) => {
                     justifyContent: "center",
                   }}
                 >
-                  <Text style={styles.buttonText}>Add Report</Text>
+                  <Text style={styles.buttonText}>{translation.screens.authScreens.caseInformation.addReport}</Text>
                   <Image
                     style={{
                       marginStart: 5,
@@ -255,7 +255,7 @@ const CaseInformation = ({ route }) => {
                     justifyContent: "center",
                   }}
                 >
-                  <Text style={styles.buttonText}>Camera</Text>
+                  <Text style={styles.buttonText}>{translation.screens.authScreens.caseInformation.camera}</Text>
                   <Image
                     style={{
                       marginStart: 7,
@@ -273,7 +273,7 @@ const CaseInformation = ({ route }) => {
               style={{ ...styles.button, marginTop: 30, alignSelf: "center" }}
               onPress={onSubmit}
             >
-              <Text style={styles.buttonText}>Submit Case</Text>
+              <Text style={styles.buttonText}>{translation.screens.authScreens.caseInformation.submitCase}</Text>
             </TouchableOpacity>
             {error && <Error message={error}/>}
           </View>
