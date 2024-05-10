@@ -153,7 +153,7 @@ const CaseReply = ({ route }) => {
                 }
                 
               })}
-              <View><CaseInputCard title={translation.screens.authScreens.caseInformation.other} onChangeText={setAddtionalDischargeInstructions} /></View>
+              <View><CaseInputCard title={translation.screens.authScreens.caseReply.other} onChangeText={setAddtionalDischargeInstructions} /></View>
               <Text
                 style={{
                   fontWeight: "bold",
@@ -176,7 +176,7 @@ const CaseReply = ({ route }) => {
                 }
                 
               })}
-              <View><CaseInputCard title={translation.screens.authScreens.caseInformation.other} onChangeText={setAddtionalDischargeInstructions} /></View>
+              <View><CaseInputCard title={translation.screens.authScreens.caseReply.other} onChangeText={setAddtionalDischargeInstructions} /></View>
             </View>
             {image && (
               <View>
@@ -194,7 +194,7 @@ const CaseReply = ({ route }) => {
                       }}
                     ></Image>
                   ) : (
-                    <Text style={styles.buttonText}>{translation.screens.authScreens.caseInformation.viewImage}</Text>
+                    <Text style={styles.buttonText}>{translation.screens.authScreens.caseReply.viewImage}</Text>
                   )}
                 </TouchableOpacity>
               </View>
@@ -210,7 +210,7 @@ const CaseReply = ({ route }) => {
                     justifyContent: "center",
                   }}
                 >
-                  <Text style={styles.buttonText}>{translation.screens.authScreens.caseInformation.addImage}</Text>
+                  <Text style={styles.buttonText}>{translation.screens.authScreens.caseReply.addImage}</Text>
                   <Image
                     style={{
                       marginStart: 5,
@@ -231,7 +231,7 @@ const CaseReply = ({ route }) => {
                     justifyContent: "center",
                   }}
                 >
-                  <Text style={styles.buttonText}>{translation.screens.authScreens.caseInformation.addReport}</Text>
+                  <Text style={styles.buttonText}>{translation.screens.authScreens.caseReply.addReport}</Text>
                   <Image
                     style={{
                       marginStart: 5,
@@ -253,7 +253,7 @@ const CaseReply = ({ route }) => {
                     justifyContent: "center",
                   }}
                 >
-                  <Text style={styles.buttonText}>{translation.screens.authScreens.caseInformation.camera}</Text>
+                  <Text style={styles.buttonText}>{translation.screens.authScreens.caseReply.camera}</Text>
                   <Image
                     style={{
                       marginStart: 7,
@@ -271,7 +271,7 @@ const CaseReply = ({ route }) => {
               style={{ ...styles.button, marginTop: 30, alignSelf: "center" }}
               onPress={onSubmit}
             >
-              <Text style={styles.buttonText}>{translation.screens.authScreens.caseInformation.submitCase}</Text>
+              <Text style={styles.buttonText}>{translation.screens.authScreens.caseReply.submitCase}</Text>
             </TouchableOpacity>
             {error && <Error message={error}/>}
           </View>

@@ -64,8 +64,7 @@ export const convertTime = (submittedDate) => {
 
   const current = Date.now();
   const dateSubmitted = new Date(submittedDate).getTime();
-  const difference = current - dateSubmitted;
-  
+  const difference = current - dateSubmitted;  
   
   if (difference >= day) {
     const differenceInDays = Math.round(difference / (1000 * 3600 * 24));
