@@ -13,8 +13,8 @@ import { useNavigation } from "@react-navigation/native";
 import { useLanguage } from "../../LanguageContext";
 
 const CaseCard = ({ caseDetails }) => {
-  const caseColour = caseUrgencyStyle(caseDetails.patientInformation.referralDate);
-  const formattedCreatedAt = convertTime(caseDetails.patientInformation.referralDate);
+  const caseColour = caseUrgencyStyle(caseDetails.patientInformation.createdAt);
+  const formattedCreatedAt = convertTime(caseDetails.patientInformation.createdAt);
   const [expanded, setExpanded] = useState(false);
   const navigation = useNavigation();
   const { translation } = useLanguage();
@@ -54,11 +54,11 @@ const CaseCard = ({ caseDetails }) => {
               <Text>
                 {
                   caseDetails.patientInformation.illnessDescription
-                    .segment_details
+                    .segmentDetails
                 }
               </Text>
               <Text style={styles.header}>{translation.screens.authScreens.caseSelection.mechanismDetails}</Text>
-              <Text>{caseDetails.patientInformation.illnessDescription.mechanism_details}</Text>
+              <Text>{caseDetails.patientInformation.illnessDescription.mechanismDetails}</Text>
               <Text style={styles.header}>{translation.screens.authScreens.caseSelection.gp}</Text>
               <Text>{caseDetails.patientInformation.gp}</Text>
               <Text style={styles.header}>{translation.screens.authScreens.caseSelection.practice}</Text>
