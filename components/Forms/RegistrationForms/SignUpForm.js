@@ -5,13 +5,13 @@ import {
   View,
   TouchableOpacity,
 } from "react-native";
-import React, { useMemo, useState } from "react";
-import { emailValidator, passwordValidator } from "../utils/formatting";
-import Error from "./Error";
-import { Colours } from "../utils/colours";
+import React, { useState } from "react";
+import { emailValidator, passwordValidator } from "../../../utils/formatting";
+import Error from "../../Error";
+import { Colours } from "../../../utils/colours";
 import CheckBox from "expo-checkbox";
-import { useLanguage } from "../LanguageContext";
-import { useRegistration } from "../RegistrationContext";
+import { useLanguage } from "../../../LanguageContext";
+import { useRegistration } from "../../../RegistrationContext";
 import { useNavigation } from "@react-navigation/native";
 import { Linking } from "react-native";
 

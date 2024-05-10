@@ -7,11 +7,10 @@ import {
     Alert,
   } from "react-native";
   import React, { useState } from "react";
-  import { caseUrgencyStyle } from "../utils/colours";
-  import { convertTime } from "../utils/formatting";
-  import { Colours } from "../utils/colours";
+  import { convertTime } from "../../utils/formatting";
+  import { Colours } from "../../utils/colours";
   import { useNavigation } from '@react-navigation/native';
-  import { useLanguage } from "../LanguageContext";
+  import { useLanguage } from "../../LanguageContext";
 
   //caseDetails: 
 
@@ -50,7 +49,7 @@ import {
           {expanded && (
             <View style={styles.expanded} >
                 <TouchableOpacity style={styles.button} onPress={() =>{
-                  navigation.navigate("CaseReadOnly", caseDetails);
+                  navigation.navigate("CaseResponse", caseDetails);
                   setExpanded(!expanded);
                 } }>
                     <Text>{translation.screens.authScreens.caseHistory.adviceGiven}</Text>

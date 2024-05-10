@@ -82,7 +82,7 @@
                 "gp": "Médico generalista",
                 "practice": "Práctica"
             },
-            "caseInformation": {
+            "caseReply": {
                 "title": "Caso abierto",
                 "case": "Caso",
                 "patientInformation": "Información para pacientes",
@@ -121,7 +121,7 @@
                 "incorrectPermissions": "Permisos incorrectos",
                 "contact": "Póngase en contacto con el servicio de asistencia de Pontinet para reabrir el caso."
             }         ,
-            "caseReadOnly": {
+            "caseResponse": {
                 "return": "Volver al panel de control"
             }       
         }

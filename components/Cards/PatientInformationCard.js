@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, TouchableWithoutFeedback } from "react-native";
 import React, { useState } from "react";
-import { convertDate } from "../utils/formatting";
-import { useLanguage } from "../LanguageContext";
+import { convertDate } from "../../utils/formatting";
+import { useLanguage } from "../../LanguageContext";
 
 const PatientInformationCard = ({caseDetails}) => {
   const [isExpaned, setIsExpanded] = useState(false);
@@ -11,15 +11,15 @@ const PatientInformationCard = ({caseDetails}) => {
     <TouchableWithoutFeedback onPress={() => setIsExpanded(!isExpaned)}>
       <View style={styles.patientInformation}>
         <View style={styles.column}>
-          <Text style={styles.title}>{translation.screens.authScreens.caseInformation.patientInformation}</Text>
+          <Text style={styles.title}>{translation.screens.authScreens.caseReply.patientInformation}</Text>
           <Text style={styles.date}>
-            <Text style={styles.title}>{translation.screens.authScreens.caseInformation.referralDate}</Text>
+            <Text style={styles.title}>{translation.screens.authScreens.caseReply.referralDate}</Text>
             {date}
           </Text>
           {isExpaned && (
             <View style={styles.column}>
               <Text style={styles.subTitle}>
-              {translation.screens.authScreens.caseInformation.segment}:{" "}
+              {translation.screens.authScreens.caseReply.segment}:{" "}
                 {caseDetails.patientInformation.illnessDescription.segment}
               </Text>
               <Text style={styles.information}>

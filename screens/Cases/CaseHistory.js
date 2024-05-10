@@ -8,12 +8,11 @@ import {
     RefreshControl,
   } from "react-native";
   import React, {useCallback}  from "react";
-  import CaseHistoryCard from "../components/CaseHistoryCard";
-  import { useFetchCases } from "../hooks/useFetchCases";
-  import Loader from "../components/Loader";
-  import PageTitle from "../components/PageTitle";
-  import { useLanguage } from "../LanguageContext";
-  import { Colours } from "../utils/colours";
+  import CaseHistoryCard from "../../components/Cards/CaseHistoryCard";
+  import { useFetchCases } from "../../hooks/useFetchCases";
+  import Loader from "../../components/Loader";
+  import PageTitle from "../../components/PageTitle";
+  import { useLanguage } from "../../LanguageContext";
   import { useFocusEffect } from '@react-navigation/native';
   
   const CaseHistory = () => {

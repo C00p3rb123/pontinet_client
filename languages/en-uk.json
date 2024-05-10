@@ -83,7 +83,7 @@
                 "gp": "General Practioner",
                 "practice": "Practice"
             },
-            "caseInformation": {
+            "caseReply": {
                 "title": "Open Case",
                 "case": "Case",
                 "patientInformation": "Patient Information",
@@ -123,7 +123,7 @@
                 "contact": "Please contact Pontinet support to re-open case"
 
             },
-            "caseReadOnly": {
+            "caseResponse": {
                 "return": "Return to dashboard"
             }      
         }

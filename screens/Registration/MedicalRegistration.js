@@ -12,9 +12,9 @@ import {
 } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { useNavigation } from "@react-navigation/native";
-import { useLanguage } from "../LanguageContext";
-import MedicalRegistrationForm from "../components/MedicalRegistrationForm";
-import { Colours } from "../utils/colours";
+import { useLanguage } from "../../LanguageContext";
+import MedicalRegistrationForm from "../../components/Forms/RegistrationForms/MedicalRegistrationForm";
+import { Colours } from "../../utils/colours";
 
 if (
   Platform.OS === "android" &&
@@ -46,7 +46,7 @@ const MedicalRegistration = () => {
         keyboardShouldPersistTaps="handled"
       >
         <Image
-          source={require("../assets/Medical_registration.png")}
+          source={require("../../assets/Medical_registration.png")}
           style={styles.image}
         />
         <Text style={styles.headerText}>

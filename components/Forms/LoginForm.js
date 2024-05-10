@@ -6,10 +6,10 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React, { useState } from "react";
-import { emailValidator, passwordValidator } from "../utils/formatting";
-import Error from "./Error";
-import { Colours } from "../utils/colours";
-import { useLanguage } from "../LanguageContext";
+import { emailValidator, passwordValidator } from "../../utils/formatting";
+import Error from "../Error";
+import { Colours } from "../../utils/colours";
+import { useLanguage } from "../../LanguageContext";
 
 /**
  *

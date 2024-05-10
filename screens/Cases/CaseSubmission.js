@@ -8,9 +8,9 @@ import {
   Image,
 } from "react-native";
 import React from "react";
-import { Colours } from "../utils/colours";
-import PageTitle from "../components/PageTitle";
-import { useLanguage } from "../LanguageContext";
+import { Colours } from "../../utils/colours";
+import PageTitle from "../../components/PageTitle";
+import { useLanguage } from "../../LanguageContext";
 
 import { useNavigation } from "@react-navigation/native";
 
@@ -29,7 +29,7 @@ const CaseSubmission = ({ route }) => {
             showBackButton={false}
           />
           <Text style={{ paddingLeft: 15, fontWeight: "300", fontSize: 18 }}>
-            {translation.screens.authScreens.caseInformation.case} - {subtitle}
+            {translation.screens.authScreens.caseReply.case} - {subtitle}
           </Text>
         </View>
 
@@ -76,7 +76,7 @@ const CaseSubmission = ({ route }) => {
                     height: 45,
                     width: 45,
                   }}
-                  source={require("../assets/home.png")}
+                  source={require("../../assets/home.png")}
                 />
                 <Text style={styles.buttonText}>
                   {translation.screens.authScreens.caseSubmission.return}
@@ -88,7 +88,7 @@ const CaseSubmission = ({ route }) => {
                     height: 20,
                     width: 20,
                   }}
-                  source={require("../assets/rightarrow.png")}
+                  source={require("../../assets/rightarrow.png")}
                 />
               </View>
             </TouchableOpacity>
@@ -113,7 +113,7 @@ const CaseSubmission = ({ route }) => {
                     height: 45,
                     width: 45,
                   }}
-                  source={require("../assets/newcase2.png")}
+                  source={require("../../assets/newcase2.png")}
                 />
                 <Text style={styles.buttonText}>
                   {translation.screens.authScreens.caseSubmission.moreCases}
@@ -125,7 +125,7 @@ const CaseSubmission = ({ route }) => {
                     height: 20,
                     width: 20,
                   }}
-                  source={require("../assets/rightarrow.png")}
+                  source={require("../../assets/rightarrow.png")}
                 />
               </View>
             </TouchableOpacity>
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     gap: 15,
     justifyContent: "center",
   },
-  caseInformation: {
+  caseReply: {
     backgroundColor: Colours.pontinetCaseBackground,
     alignItems: "flex-start",
     paddingHorizontal: 10,

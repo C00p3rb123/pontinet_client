@@ -1,8 +1,6 @@
 import { StyleSheet, Text, View, TextInput } from "react-native";
 import React from "react";
-import { Colours } from "../utils/colours";
-
-const CaseResponseCard = ({ title, onChangeText, readOnly = false, caseDetails=null }) => {
+const CaseInputCard = ({ title, onChangeText, readOnly = false, caseDetails=null }) => {
   return (
     <View style={styles.paitnentInformation}>
       <Text style={styles.title}>{title}</Text>
@@ -12,7 +10,7 @@ const CaseResponseCard = ({ title, onChangeText, readOnly = false, caseDetails=n
   );
 };
 
-export default CaseResponseCard;
+export default CaseInputCard;
 
 const styles = StyleSheet.create({
   paitnentInformation: {

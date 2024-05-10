@@ -3,26 +3,24 @@ import {
   Text,
   View,
   SafeAreaView,
-  Dimensions,
   Image,
   TouchableOpacity,
   Alert
 } from "react-native";
 import React, { useState } from "react";
-import { Colours } from "../utils/colours";
-import PatientInformationCard from "../components/PatientInformationCard";
-import PageTitle from "../components/PageTitle";
-import { useLanguage } from "../LanguageContext";
-import CaseResponseCard from "../components/CaseResponseCard";
+import { Colours } from "../../utils/colours";
+import PatientInformationCard from "../../components/Cards/PatientInformationCard";
+import PageTitle from "../../components/PageTitle";
+import { useLanguage } from "../../LanguageContext";
+import CaseInputCard from "../../components/Cards/CaseInputCard";
 import { ScrollView } from "react-native-gesture-handler";
 import axios from "axios";
-import { useAuth } from "../AuthContext";
+import { useAuth } from "../../AuthContext";
 import { useNavigation } from "@react-navigation/native";
-import { useImage } from "../hooks/useImage";
-import { useDocuments } from "../hooks/useDocuments";
+import { useImage } from "../../hooks/useImage";
+import { useDocuments } from "../../hooks/useDocuments";
 
-const CaseInformation = ({ route }) => {
-  const screenHeight = Dimensions.get("window").height;
+const CaseReply = ({ route }) => {
   const caseDetails = route.params;
 
   const notApplicable = `N/A`;
@@ -44,12 +42,12 @@ const CaseInformation = ({ route }) => {
   const { user } = useAuth();
 
   const titles = [
-    `${translation.screens.authScreens.caseInformation.diagnosticImpression}`,
-    `${translation.screens.authScreens.caseInformation.onSiteProcedure}`,
-    `${translation.screens.authScreens.caseInformation.onSiteMedication}`,
-    `${translation.screens.authScreens.caseInformation.generalIndications}`,
-    `${translation.screens.authScreens.caseInformation.medication}`,
-    `${translation.screens.authScreens.caseInformation.referral}`,
+    `${translation.screens.authScreens.caseReply.diagnosticImpression}`,
+    `${translation.screens.authScreens.caseReply.onSiteProcedure}`,
+    `${translation.screens.authScreens.caseReply.onSiteMedication}`,
+    `${translation.screens.authScreens.caseReply.generalIndications}`,
+    `${translation.screens.authScreens.caseReply.medication}`,
+    `${translation.screens.authScreens.caseReply.referral}`,
     
   ];
 
@@ -64,8 +62,8 @@ const CaseInformation = ({ route }) => {
 
   const onSubmit = async () => {
     Alert.alert(
-      `${translation.screens.authScreens.caseInformation.confirmSubmission}`,
-      `${translation.screens.authScreens.caseInformation.confirmation}`,
+      `${translation.screens.authScreens.caseReply.confirmSubmission}`,
+      `${translation.screens.authScreens.caseReply.confirmation}`,
       [
         {
           text: `${translation.screens.authScreens.general.cancel}`,
@@ -120,15 +118,15 @@ const CaseInformation = ({ route }) => {
       <View>
         <View style={styles.header}>
           <PageTitle
-            title={translation.screens.authScreens.caseInformation.title}
+            title={translation.screens.authScreens.caseReply.title}
           />
           <Text style={{ paddingLeft: 15, fontWeight: "300", fontSize: 18 }}>
-            {translation.screens.authScreens.caseInformation.case} -{" "}
+            {translation.screens.authScreens.caseReply.case} -{" "}
             {caseDetails.patientInformation.illnessDescription.segment}
           </Text>
         </View>
         <ScrollView contentContainerStyle={{ paddingBottom: 160 }}>
-          <View style={{ ...styles.caseInformation }}>
+          <View style={{ ...styles.caseReply }}>
             <View style={styles.paitnentInformation}>
                 <PatientInformationCard caseDetails={caseDetails} />
             </View>
@@ -141,12 +139,12 @@ const CaseInformation = ({ route }) => {
                   marginTop: 20,
                 }}
               >
-                {translation.screens.authScreens.caseInformation.generalInstructions}
+                {translation.screens.authScreens.caseReply.generalInstructions}
               </Text>
               {titles.map((title, i) => {
                 if (i <= 2) {
                   return (
-                    <CaseResponseCard
+                    <CaseInputCard
                       key={title}
                       title={title}
                       onChangeText={setters[i]}
@@ -155,7 +153,7 @@ const CaseInformation = ({ route }) => {
                 }
                 
               })}
-              <View><CaseResponseCard title={translation.screens.authScreens.caseInformation.other} onChangeText={setAddtionalDischargeInstructions} /></View>
+              <View><CaseInputCard title={translation.screens.authScreens.caseReply.other} onChangeText={setAddtionalDischargeInstructions} /></View>
               <Text
                 style={{
                   fontWeight: "bold",
@@ -164,12 +162,12 @@ const CaseInformation = ({ route }) => {
                   marginTop: 20,
                 }}
               >
-                {translation.screens.authScreens.caseInformation.dischargeInstructions}
+                {translation.screens.authScreens.caseReply.dischargeInstructions}
               </Text>
               {titles.map((title, i) => {
                 if (i > 2) {
                   return (
-                    <CaseResponseCard
+                    <CaseInputCard
                       key={title}
                       title={title}
                       onChangeText={setters[i]}
@@ -178,7 +176,7 @@ const CaseInformation = ({ route }) => {
                 }
                 
               })}
-              <View><CaseResponseCard title={translation.screens.authScreens.caseInformation.other} onChangeText={setAddtionalDischargeInstructions} /></View>
+              <View><CaseInputCard title={translation.screens.authScreens.caseReply.other} onChangeText={setAddtionalDischargeInstructions} /></View>
             </View>
             {image && (
               <View>
@@ -196,7 +194,7 @@ const CaseInformation = ({ route }) => {
                       }}
                     ></Image>
                   ) : (
-                    <Text style={styles.buttonText}>{translation.screens.authScreens.caseInformation.viewImage}</Text>
+                    <Text style={styles.buttonText}>{translation.screens.authScreens.caseReply.viewImage}</Text>
                   )}
                 </TouchableOpacity>
               </View>
@@ -212,7 +210,7 @@ const CaseInformation = ({ route }) => {
                     justifyContent: "center",
                   }}
                 >
-                  <Text style={styles.buttonText}>{translation.screens.authScreens.caseInformation.addImage}</Text>
+                  <Text style={styles.buttonText}>{translation.screens.authScreens.caseReply.addImage}</Text>
                   <Image
                     style={{
                       marginStart: 5,
@@ -220,7 +218,7 @@ const CaseInformation = ({ route }) => {
                       width: 15,
                       marginTop: 0,
                     }}
-                    source={require("../assets/Addsign.png")}
+                    source={require("../../assets/Addsign.png")}
                   />
                 </View>
               </TouchableOpacity>
@@ -233,7 +231,7 @@ const CaseInformation = ({ route }) => {
                     justifyContent: "center",
                   }}
                 >
-                  <Text style={styles.buttonText}>{translation.screens.authScreens.caseInformation.addReport}</Text>
+                  <Text style={styles.buttonText}>{translation.screens.authScreens.caseReply.addReport}</Text>
                   <Image
                     style={{
                       marginStart: 5,
@@ -241,7 +239,7 @@ const CaseInformation = ({ route }) => {
                       width: 15,
                       marginTop: 0,
                     }}
-                    source={require("../assets/Addsign.png")}
+                    source={require("../../assets/Addsign.png")}
                   />
                 </View>
               </TouchableOpacity>
@@ -255,7 +253,7 @@ const CaseInformation = ({ route }) => {
                     justifyContent: "center",
                   }}
                 >
-                  <Text style={styles.buttonText}>{translation.screens.authScreens.caseInformation.camera}</Text>
+                  <Text style={styles.buttonText}>{translation.screens.authScreens.caseReply.camera}</Text>
                   <Image
                     style={{
                       marginStart: 7,
@@ -263,7 +261,7 @@ const CaseInformation = ({ route }) => {
                       width: 25,
                       marginTop: 0,
                     }}
-                    source={require("../assets/camera.png")}
+                    source={require("../../assets/camera.png")}
                   />
                 </View>
               </TouchableOpacity>
@@ -273,7 +271,7 @@ const CaseInformation = ({ route }) => {
               style={{ ...styles.button, marginTop: 30, alignSelf: "center" }}
               onPress={onSubmit}
             >
-              <Text style={styles.buttonText}>{translation.screens.authScreens.caseInformation.submitCase}</Text>
+              <Text style={styles.buttonText}>{translation.screens.authScreens.caseReply.submitCase}</Text>
             </TouchableOpacity>
             {error && <Error message={error}/>}
           </View>
@@ -283,14 +281,14 @@ const CaseInformation = ({ route }) => {
   );
 };
 
-export default CaseInformation;
+export default CaseReply;
 
 const styles = StyleSheet.create({
   header: {
     gap: 15,
     justifyContent: "center",
   },
-  caseInformation: {
+  caseReply: {
     backgroundColor: Colours.pontinetCaseBackground,
     alignItems: "flex-start",
     paddingHorizontal: 10,
