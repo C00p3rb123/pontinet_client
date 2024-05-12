@@ -25,14 +25,14 @@ const PatientInformationCard = ({caseDetails}) => {
               <Text style={styles.information}>
               {
                   caseDetails.patientInformation.illnessDescription
-                    .segment_details
+                    .segmentDetails
                 } {" "}
               </Text>
               <Text style={styles.subTitle}>{translation.screens.authScreens.caseSelection.mechanismDetails}</Text>
               <Text style={styles.information}>
               {
                   caseDetails.patientInformation.illnessDescription
-                    .mechanism_details
+                    .mechanismDetails
                 }
               </Text>
               <Text style={styles.subTitle}>{translation.screens.authScreens.caseSelection.gp}</Text>
