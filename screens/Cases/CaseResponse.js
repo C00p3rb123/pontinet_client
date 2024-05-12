@@ -72,7 +72,7 @@ import {
                   {translation.screens.authScreens.caseReply.dischargeInstructions}
                 </Text>
                 {titles.map((title, i) => {
-                  if (i <= 2) {
+                  if (i <= 3) {
                     return (
                       <CaseInputCard
                         key={title+i}
@@ -95,7 +95,7 @@ import {
                   {translation.screens.authScreens.caseReply.dischargeInstructions}
                 </Text>
                 {titles.map((title, i) => {
-                  if (i > 2) {
+                  if (i > 3) {
                     return (
                       <CaseInputCard
                         key={title+i}
