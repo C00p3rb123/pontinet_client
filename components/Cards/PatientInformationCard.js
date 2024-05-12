@@ -5,7 +5,7 @@ import { useLanguage } from "../../LanguageContext";
 
 const PatientInformationCard = ({caseDetails}) => {
   const [isExpaned, setIsExpanded] = useState(false);
-  const date = convertDate(caseDetails.patientInformation.referralDate);
+  const date = convertDate(caseDetails.createdAt);
   const {translation} = useLanguage()
   return (
     <TouchableWithoutFeedback onPress={() => setIsExpanded(!isExpaned)}>
