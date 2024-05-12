@@ -8,7 +8,7 @@ import SignUp from "./screens/Registration/SignUp";
 import Dashboard from "./screens/Dashboard";
 import ClinicRegistration from "./screens/Registration/ClinicRegistration";
 import CaseSelecton from "./screens/Cases/CaseSelection";
-import caseReply from "./screens/Cases/CaseReply";
+import CaseReply from "./screens/Cases/CaseReply";
 import { StyleSheet, Image, Platform } from "react-native";
 import { AuthProvider, useAuth } from "./AuthContext";
 import UnAuthHeader from "./components/Headers/UnAuthHeader";
@@ -174,8 +174,8 @@ export const HomePage = () => {
           options={{ headerLeft: () => null }}
         />
         <Stack.Screen
-          name="caseReply"
-          component={caseReply}
+          name="CaseReply"
+          component={CaseReply}
           options={{ headerLeft: () => null }}
         />
          <Stack.Screen

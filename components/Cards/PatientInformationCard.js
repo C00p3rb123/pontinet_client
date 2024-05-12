@@ -19,7 +19,7 @@ const PatientInformationCard = ({caseDetails}) => {
           {isExpaned && (
             <View style={styles.column}>
               <Text style={styles.subTitle}>
-              {translation.screens.authScreens.caseInformation.segment}:{" "}
+              {translation.screens.authScreens.caseReply.segment}:{" "}
                 {caseDetails.patientInformation.illnessDescription.segment}
               </Text>
               <Text style={styles.information}>

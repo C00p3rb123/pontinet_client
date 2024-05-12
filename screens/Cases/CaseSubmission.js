@@ -29,7 +29,7 @@ const CaseSubmission = ({ route }) => {
             showBackButton={false}
           />
           <Text style={{ paddingLeft: 15, fontWeight: "300", fontSize: 18 }}>
-            {translation.screens.authScreens.caseInformation.case} - {subtitle}
+            {translation.screens.authScreens.caseReply.case} - {subtitle}
           </Text>
         </View>
 
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     gap: 15,
     justifyContent: "center",
   },
-  caseInformation: {
+  caseReply: {
     backgroundColor: Colours.pontinetCaseBackground,
     alignItems: "flex-start",
     paddingHorizontal: 10,

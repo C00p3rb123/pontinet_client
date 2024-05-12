@@ -13,8 +13,8 @@ import { useNavigation } from "@react-navigation/native";
 import { useLanguage } from "../../LanguageContext";
 
 const CaseCard = ({ caseDetails }) => {
-  const caseColour = caseUrgencyStyle(caseDetails.patientInformation.createdAt);
-  const formattedCreatedAt = convertTime(caseDetails.patientInformation.createdAt);
+  const caseColour = caseUrgencyStyle(caseDetails.createdAt);
+  const formattedCreatedAt = convertTime(caseDetails.createdAt);
   const [expanded, setExpanded] = useState(false);
   const navigation = useNavigation();
   const { translation } = useLanguage();
