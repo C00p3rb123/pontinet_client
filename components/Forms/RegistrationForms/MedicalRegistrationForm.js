@@ -12,8 +12,10 @@ import { useLanguage } from "../../../LanguageContext";
 import { useRegistration } from "../../../RegistrationContext";
 import { useNavigation } from "@react-navigation/native";
 
+// Component for medical registration form
 const MedicalRegistrationForm = () => {
   const navigation = useNavigation();
+  // State variables for form inputs
   const [drName, setDrName] = useState("");
   const [specialisation, setSpecialisation] = useState("");
   const [subSpecialisation, setSubSpecialisation] = useState("");
@@ -23,6 +25,7 @@ const MedicalRegistrationForm = () => {
   const { translation } = useLanguage();
   const { registrationDetails, setRegistrationDetails } = useRegistration();
 
+  // Handle form submission
   const handleSubmit = () => {
     if (
       !drName ||
@@ -32,7 +35,10 @@ const MedicalRegistrationForm = () => {
       !registrationCouncil ||
       !whatsAppMobileNumber
     ) {
-      Alert.alert(translation.screens.unAuthScreens.medicalRegistration.formIncomplete, translation.screens.unAuthScreens.medicalRegistration.fillOutFields);
+      Alert.alert(
+        translation.screens.unAuthScreens.medicalRegistration.formIncomplete,
+        translation.screens.unAuthScreens.medicalRegistration.fillOutFields
+      );
       return;
     }
 

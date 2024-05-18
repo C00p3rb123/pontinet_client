@@ -14,6 +14,8 @@ import { useNavigation } from "@react-navigation/native";
 import CountryFlag from "react-native-country-flag";
 import { useAuth } from "../AuthContext";
 
+//Component to display the language selection screen.
+//Allows the user to select between English and Spanish.
 const LanguageSelection = () => {
   const { manageTranslation, translation } = useLanguage();
   const screenHeight = Dimensions.get("window").height;
@@ -21,10 +23,13 @@ const LanguageSelection = () => {
   const english = "en";
   const spanish = "esp";
   const { authState } = useAuth();
-
+  // Handle language selection.
+  //Set the selected language and navigate to the appropriate screen based on authentication state.
   const onSubmit = (language) => {
     manageTranslation(language);
-    authState.authenticated ? navigation.navigate("Settings"): navigation.navigate("Login");
+    authState.authenticated
+      ? navigation.navigate("Settings")
+      : navigation.navigate("Login");
   };
   return (
     <SafeAreaView>
@@ -90,10 +95,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 10,
-    gap: 4
+    gap: 4,
   },
   topContainer: {
     alignItems: "center",
-    flex: 1
+    flex: 1,
   },
 });

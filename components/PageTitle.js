@@ -3,6 +3,7 @@ import React from "react";
 import { Colours } from "../utils/colours";
 import { useNavigation } from "@react-navigation/native";
 
+//PageTitle component to display the title of a page with an optional back button.
 const PageTitle = ({ title, showBackButton = true }) => {
   const navigation = useNavigation();
   return (

@@ -28,7 +28,7 @@ const LoginForm = ({ handleSubmit }) => {
   };
 
   /**
-   *
+   * Handles form submission. Validates email and password, sets error messages if validation fails, and calls handleSubmit if validation succeeds.
    * @returns
    */
   const onSubmit = async () => {
@@ -52,12 +52,27 @@ const LoginForm = ({ handleSubmit }) => {
 
   return (
     <View style={styles.container}>
-        <View>
-            <Text style={styles.formText}>{translation.screens.unAuthScreens.general.email}</Text>
-            <TextInput style={{ borderWidth: 1, padding: 15, borderRadius: 10, borderColor: Colours.pontinetInputContainer}} onChangeText={setEmail} placeholder={translation.screens.unAuthScreens.general.emailPlaceholder}/>
-        </View>
-        <View>
-        <Text style={styles.formText}>{translation.screens.unAuthScreens.general.password}</Text>
+      <View>
+        <Text style={styles.formText}>
+          {translation.screens.unAuthScreens.general.email}
+        </Text>
+        <TextInput
+          style={{
+            borderWidth: 1,
+            padding: 15,
+            borderRadius: 10,
+            borderColor: Colours.pontinetInputContainer,
+          }}
+          onChangeText={setEmail}
+          placeholder={
+            translation.screens.unAuthScreens.general.emailPlaceholder
+          }
+        />
+      </View>
+      <View>
+        <Text style={styles.formText}>
+          {translation.screens.unAuthScreens.general.password}
+        </Text>
         <TextInput
           secureTextEntry={true}
           style={{

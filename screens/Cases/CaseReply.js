@@ -5,7 +5,7 @@ import {
   SafeAreaView,
   Image,
   TouchableOpacity,
-  Alert
+  Alert,
 } from "react-native";
 import React, { useState } from "react";
 import { Colours } from "../../utils/colours";
@@ -19,28 +19,32 @@ import { useAuth } from "../../AuthContext";
 import { useNavigation } from "@react-navigation/native";
 import { useImage } from "../../hooks/useImage";
 import { useDocuments } from "../../hooks/useDocuments";
-
+//Component to handle case reply.
+//Allows the user to fill in and submit case details, along with optional image and document uploads.
 const CaseReply = ({ route }) => {
   const caseDetails = route.params;
 
   const notApplicable = `N/A`;
-  const [diagnosticImpression, setDiagnosticImpression] = useState(notApplicable);
+  const [diagnosticImpression, setDiagnosticImpression] =
+    useState(notApplicable);
   const [onSiteProcedure, setOnSitreProcedue] = useState(notApplicable);
   const [onSiteMedication, setOnSiteMedication] = useState(notApplicable);
   const [generalIndications, setGeneralIndications] = useState(notApplicable);
   const [medication, setMedication] = useState(notApplicable);
   const [referral, setReferral] = useState(notApplicable);
-  const [addtionalGeneralInstructions, setAddtionalGeneralInstructions] = useState(notApplicable);
-  const [addtionalDischargeInstructions, setAddtionalDischargeInstructions] = useState(notApplicable);
+  const [addtionalGeneralInstructions, setAddtionalGeneralInstructions] =
+    useState(notApplicable);
+  const [addtionalDischargeInstructions, setAddtionalDischargeInstructions] =
+    useState(notApplicable);
   const [error, setError] = useState(false);
   const { translation } = useLanguage();
   const navigation = useNavigation();
   const { pickImage, image } = useImage();
   const [imageSelected, setImageSelected] = useState(false);
-  const [documentSelected, isDocumentSelected] = useState()
+  const [documentSelected, isDocumentSelected] = useState();
   const { selectDocument, document } = useDocuments();
   const { user } = useAuth();
-
+  // Titles for input fields
   const titles = [
     `${translation.screens.authScreens.caseReply.diagnosticImpression}`,
     `${translation.screens.authScreens.caseReply.onSiteProcedure}`,
@@ -48,9 +52,8 @@ const CaseReply = ({ route }) => {
     `${translation.screens.authScreens.caseReply.generalIndications}`,
     `${translation.screens.authScreens.caseReply.medication}`,
     `${translation.screens.authScreens.caseReply.referral}`,
-    
   ];
-
+  // Corresponding setters for input fields
   const setters = [
     setDiagnosticImpression,
     setOnSitreProcedue,
@@ -59,7 +62,8 @@ const CaseReply = ({ route }) => {
     setMedication,
     setReferral,
   ];
-
+  //Handles the form submission.
+  //Validates and sends the case reply data to the server.
   const onSubmit = async () => {
     Alert.alert(
       `${translation.screens.authScreens.caseReply.confirmSubmission}`,
@@ -67,8 +71,8 @@ const CaseReply = ({ route }) => {
       [
         {
           text: `${translation.screens.authScreens.general.cancel}`,
-          style: 'cancel',
-          onPress: () => console.log('Submission canceled'),
+          style: "cancel",
+          onPress: () => console.log("Submission canceled"),
         },
         {
           text: `${translation.screens.authScreens.general.submit}`,
@@ -88,12 +92,12 @@ const CaseReply = ({ route }) => {
                 other: addtionalDischargeInstructions,
               },
               specialist: {
-                name: user.name
-              }
+                name: user.name,
+              },
             };
-            
+
             try {
-              console.log(caseDetails)
+              console.log(caseDetails);
               const response = await axios.post(
                 `${process.env.EXPO_PUBLIC_CASES_URL}/send`,
                 data
@@ -109,7 +113,7 @@ const CaseReply = ({ route }) => {
           },
         },
       ],
-      { cancelable: true, onDismiss: () => console.log('Alert dismissed') }
+      { cancelable: true, onDismiss: () => console.log("Alert dismissed") }
     );
   };
   //TODO A MODAL TO CONFIRM
@@ -117,9 +121,7 @@ const CaseReply = ({ route }) => {
     <SafeAreaView>
       <View>
         <View style={styles.header}>
-          <PageTitle
-            title={translation.screens.authScreens.caseReply.title}
-          />
+          <PageTitle title={translation.screens.authScreens.caseReply.title} />
           <Text style={{ paddingLeft: 15, fontWeight: "300", fontSize: 18 }}>
             {translation.screens.authScreens.caseReply.case} -{" "}
             {caseDetails.patientInformation.illnessDescription.segment}
@@ -128,7 +130,7 @@ const CaseReply = ({ route }) => {
         <ScrollView contentContainerStyle={{ paddingBottom: 160 }}>
           <View style={{ ...styles.caseReply }}>
             <View style={styles.paitnentInformation}>
-                <PatientInformationCard caseDetails={caseDetails} />
+              <PatientInformationCard caseDetails={caseDetails} />
             </View>
             <View style={{ width: "100%" }}>
               <Text
@@ -151,9 +153,13 @@ const CaseReply = ({ route }) => {
                     />
                   );
                 }
-                
               })}
-              <View><CaseInputCard title={translation.screens.authScreens.caseReply.other} onChangeText={setAddtionalDischargeInstructions} /></View>
+              <View>
+                <CaseInputCard
+                  title={translation.screens.authScreens.caseReply.other}
+                  onChangeText={setAddtionalDischargeInstructions}
+                />
+              </View>
               <Text
                 style={{
                   fontWeight: "bold",
@@ -162,7 +168,10 @@ const CaseReply = ({ route }) => {
                   marginTop: 20,
                 }}
               >
-                {translation.screens.authScreens.caseReply.dischargeInstructions}
+                {
+                  translation.screens.authScreens.caseReply
+                    .dischargeInstructions
+                }
               </Text>
               {titles.map((title, i) => {
                 if (i > 2) {
@@ -174,9 +183,13 @@ const CaseReply = ({ route }) => {
                     />
                   );
                 }
-                
               })}
-              <View><CaseInputCard title={translation.screens.authScreens.caseReply.other} onChangeText={setAddtionalDischargeInstructions} /></View>
+              <View>
+                <CaseInputCard
+                  title={translation.screens.authScreens.caseReply.other}
+                  onChangeText={setAddtionalDischargeInstructions}
+                />
+              </View>
             </View>
             {image && (
               <View>
@@ -194,12 +207,14 @@ const CaseReply = ({ route }) => {
                       }}
                     ></Image>
                   ) : (
-                    <Text style={styles.buttonText}>{translation.screens.authScreens.caseReply.viewImage}</Text>
+                    <Text style={styles.buttonText}>
+                      {translation.screens.authScreens.caseReply.viewImage}
+                    </Text>
                   )}
                 </TouchableOpacity>
               </View>
             )}
-            
+
             <View style={styles.additionalButtons}>
               <TouchableOpacity style={styles.button} onPress={pickImage}>
                 <View
@@ -210,7 +225,9 @@ const CaseReply = ({ route }) => {
                     justifyContent: "center",
                   }}
                 >
-                  <Text style={styles.buttonText}>{translation.screens.authScreens.caseReply.addImage}</Text>
+                  <Text style={styles.buttonText}>
+                    {translation.screens.authScreens.caseReply.addImage}
+                  </Text>
                   <Image
                     style={{
                       marginStart: 5,
@@ -231,7 +248,9 @@ const CaseReply = ({ route }) => {
                     justifyContent: "center",
                   }}
                 >
-                  <Text style={styles.buttonText}>{translation.screens.authScreens.caseReply.addReport}</Text>
+                  <Text style={styles.buttonText}>
+                    {translation.screens.authScreens.caseReply.addReport}
+                  </Text>
                   <Image
                     style={{
                       marginStart: 5,
@@ -253,7 +272,9 @@ const CaseReply = ({ route }) => {
                     justifyContent: "center",
                   }}
                 >
-                  <Text style={styles.buttonText}>{translation.screens.authScreens.caseReply.camera}</Text>
+                  <Text style={styles.buttonText}>
+                    {translation.screens.authScreens.caseReply.camera}
+                  </Text>
                   <Image
                     style={{
                       marginStart: 7,
@@ -271,9 +292,11 @@ const CaseReply = ({ route }) => {
               style={{ ...styles.button, marginTop: 30, alignSelf: "center" }}
               onPress={onSubmit}
             >
-              <Text style={styles.buttonText}>{translation.screens.authScreens.caseReply.submitCase}</Text>
+              <Text style={styles.buttonText}>
+                {translation.screens.authScreens.caseReply.submitCase}
+              </Text>
             </TouchableOpacity>
-            {error && <Error message={error}/>}
+            {error && <Error message={error} />}
           </View>
         </ScrollView>
       </View>
@@ -321,7 +344,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
     marginRight: 5,
     color: "white",
-    marginBottom: 20
+    marginBottom: 20,
   },
   buttonText: {
     color: "white",

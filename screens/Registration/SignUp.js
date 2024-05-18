@@ -14,6 +14,8 @@ import { Colours } from "../../utils/colours";
 import { useNavigation } from "@react-navigation/native";
 import { useLanguage } from "../../LanguageContext";
 
+//Component to display the sign-up screen.
+//Contains a form for user registration.
 const SignUp = () => {
   const screenHeight = Dimensions.get("window").height;
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
