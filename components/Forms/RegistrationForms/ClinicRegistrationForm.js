@@ -50,6 +50,10 @@ const ClinicRegistrationForm = () => {
     }
   }, [clinicState]);
   // Handle form submission
+  // This function validates the form inputs and submits the registration details.
+  // If any required field is missing, it shows an alert message.
+  // On successful submission, it clears the registration details and navigates to the login screen.
+  // If there's an error during submission, it sets an error message.
   const onSubmit = async () => {
     setClinicError("");
     if (

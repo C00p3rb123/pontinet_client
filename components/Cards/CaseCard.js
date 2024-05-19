@@ -1,3 +1,4 @@
+// Component to display case details in the CaseSelection screen
 import {
   StyleSheet,
   Text,

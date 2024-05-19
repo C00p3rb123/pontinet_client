@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useLanguage } from "../LanguageContext";
 
-//Custom hook to fetch and manage country, state, and city data.
+// Custom hook to fetch and manage country, state, and city data.
+// Used in the ClinicRegistrationForm component.
 export const useCountries = () => {
   const [countries, setCountries] = useState([]);
   const [states, setStates] = useState([]);
@@ -25,6 +26,9 @@ export const useCountries = () => {
       );
       const result = response.data;
       const tempData = result.map((country) => {
+        // The object contains 'label' for display and 'value' for internal use
+        // 'label' is what will be shown in the dropdown menu
+        // 'value' is the actual value that will be used in the form submission
         return { label: country.name, value: country.name, iso: country.iso2 };
       });
       setCountries(tempData);

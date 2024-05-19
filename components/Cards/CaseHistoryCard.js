@@ -1,3 +1,5 @@
+// Component to display case history details on the CaseHistory screen
+// Serves the purpose of showing detailed information about past cases and provides options for further actions.
 import {
   StyleSheet,
   Text,
@@ -16,7 +18,6 @@ import { useLanguage } from "../../LanguageContext";
 
 // Component to display case history details
 const CaseHistoryCard = ({ caseDetails }) => {
-  // Format the last updated time of the case
   const formattedCreatedAt = convertTime(caseDetails.updatedAt);
   // State to handle expanded view
   const [expanded, setExpanded] = useState(false);

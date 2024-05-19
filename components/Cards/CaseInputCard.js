@@ -1,6 +1,9 @@
 import { StyleSheet, Text, View, TextInput } from "react-native";
 import React from "react";
 // Component to display input or read-only case details
+// This component is used on the CaseReply and CaseResponse screens.
+// It serves to display input fields for case details when editing or
+// readonly fields when viewing existing case details.
 const CaseInputCard = ({
   title,
   onChangeText,

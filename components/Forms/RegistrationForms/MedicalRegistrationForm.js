@@ -26,6 +26,9 @@ const MedicalRegistrationForm = () => {
   const { registrationDetails, setRegistrationDetails } = useRegistration();
 
   // Handle form submission
+  // This function validates the form inputs, ensuring all required fields are filled.
+  // If any field is missing, it shows an alert message.
+  // On successful validation, it updates the registration details in context and navigates to the next screen.
   const handleSubmit = () => {
     if (
       !drName ||

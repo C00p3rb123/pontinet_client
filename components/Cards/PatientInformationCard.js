@@ -4,9 +4,11 @@ import { convertDate } from "../../utils/formatting";
 import { useLanguage } from "../../LanguageContext";
 
 // Component to display patient information with expandable details
+// This component is used on the CaseReply and CaseResponse screens.
+// It displays key patient information and allows the user to expand for more details.
 const PatientInformationCard = ({ caseDetails }) => {
   const [isExpaned, setIsExpanded] = useState(false);
-  // Format the referral date
+
   const date = convertDate(caseDetails.patientInformation.referralDate);
   const { translation } = useLanguage();
   return (

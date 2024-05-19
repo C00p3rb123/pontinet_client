@@ -29,6 +29,10 @@ const SignUpForm = () => {
   //EG on the signup form - once clicked the registrationDetails email and password values are updated.
 
   // Handle form submission
+  // This function validates the email and password fields using custom validators.
+  // It also checks if the terms and conditions checkbox is selected.
+  // If any validation fails, an error message is set.
+  // If all validations pass, the registration details are updated and the user is navigated to the next screen.
   const onSubmit = async () => {
     const isEmail = emailValidator(email);
     const isPassword = passwordValidator(password);

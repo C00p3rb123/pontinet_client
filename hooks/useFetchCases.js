@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useAuth } from "../AuthContext";
-//Custom hook to fetch cases from a given URL.
+// Custom hook to fetch cases from a given URL for Pontinet's case management system.
+// Used to retrieve and manage new medical cases that have been sent from the Pontinet chatbot.
 export const useFetchCases = (url) => {
   const [data, setData] = useState("");
   const [isLoading, setIsLoading] = useState(true);

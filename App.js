@@ -127,6 +127,8 @@ export const Layout = () => {
 };
 //Navigation bar component for authenticated users.
 //Provides bottom tab navigation with icons.
+// The authenticated workflow is incorporated by checking if the user is authenticated using `authState.authenticated`.
+// If authenticated, the NavigationBar component is rendered, providing access to home and settings pages.
 export const NavigationBar = () => {
   return (
     <Tab.Navigator
