@@ -15,7 +15,9 @@ import { useRegistration } from "../../../RegistrationContext";
 import { useNavigation } from "@react-navigation/native";
 import { Linking } from "react-native";
 
+// Component for sign-up form
 const SignUpForm = () => {
+  // State variables for form inputs and error messages
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState();
@@ -26,6 +28,11 @@ const SignUpForm = () => {
   //ONCE the button is clicked changed the registrationDetails corresponding values.
   //EG on the signup form - once clicked the registrationDetails email and password values are updated.
 
+  // Handle form submission
+  // This function validates the email and password fields using custom validators.
+  // It also checks if the terms and conditions checkbox is selected.
+  // If any validation fails, an error message is set.
+  // If all validations pass, the registration details are updated and the user is navigated to the next screen.
   const onSubmit = async () => {
     const isEmail = emailValidator(email);
     const isPassword = passwordValidator(password);
@@ -53,17 +60,15 @@ const SignUpForm = () => {
     navigation.navigate("MedicalRegistration");
   };
 
-  // Dummy handlers for your links
+  // Handlers for links
   const handleTermsOfServicePress = () => {
     Linking.openURL("https://pontinet.com/terms/");
     console.log("Terms of Service Pressed");
-    // Implement your navigation or link handling logic here
   };
 
   const handlePrivacyPolicyPress = () => {
     Linking.openURL("https://pontinet.com/privacy/");
     console.log("Privacy Policy Pressed");
-    // Implement your navigation or link handling logic here
   };
 
   return (

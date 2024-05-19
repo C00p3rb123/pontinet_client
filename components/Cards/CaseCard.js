@@ -1,3 +1,4 @@
+// Component to display case details in the CaseSelection screen
 import {
   StyleSheet,
   Text,
@@ -13,6 +14,7 @@ import { useNavigation } from "@react-navigation/native";
 import { useLanguage } from "../../LanguageContext";
 import ImageView from "react-native-image-viewing";
 
+// Component to display case details
 const CaseCard = ({ caseDetails }) => {
   const caseColour = caseUrgencyStyle(caseDetails.createdAt);
   const formattedCreatedAt = convertTime(caseDetails.createdAt);
@@ -48,7 +50,8 @@ const CaseCard = ({ caseDetails }) => {
           <ImageView images={images} visible={isVisible} onRequestClose={() => setIsVisible(false)} />
         </View>
         <Text style={styles.description}>
-          {caseDetails.patientInformation.age} yrs old | {caseDetails.patientInformation.illnessDescription.segment} |{" "}
+          {caseDetails.patientInformation.age} yrs old |{" "}
+          {caseDetails.patientInformation.illnessDescription.segment} |{" "}
           {caseDetails.patientInformation.illnessDescription.mechanism}
         </Text>
         <Text>
@@ -61,18 +64,31 @@ const CaseCard = ({ caseDetails }) => {
         {expanded && (
           <View style={styles.expanded}>
             <View>
-              <Text style={styles.header}>{translation.screens.authScreens.caseSelection.segmentDetails}</Text>
+              <Text style={styles.header}>
+                {translation.screens.authScreens.caseSelection.segmentDetails}
+              </Text>
               <Text>
                 {
                   caseDetails.patientInformation.illnessDescription
                     .segmentDetails
                 }
               </Text>
-              <Text style={styles.header}>{translation.screens.authScreens.caseSelection.mechanismDetails}</Text>
-              <Text>{caseDetails.patientInformation.illnessDescription.mechanismDetails}</Text>
-              <Text style={styles.header}>{translation.screens.authScreens.caseSelection.gp}</Text>
+              <Text style={styles.header}>
+                {translation.screens.authScreens.caseSelection.mechanismDetails}
+              </Text>
+              <Text>
+                {
+                  caseDetails.patientInformation.illnessDescription
+                    .mechanismDetails
+                }
+              </Text>
+              <Text style={styles.header}>
+                {translation.screens.authScreens.caseSelection.gp}
+              </Text>
               <Text>{caseDetails.patientInformation.gp}</Text>
-              <Text style={styles.header}>{translation.screens.authScreens.caseSelection.practice}</Text>
+              <Text style={styles.header}>
+                {translation.screens.authScreens.caseSelection.practice}
+              </Text>
               <Text>{caseDetails.patientInformation.clinic}</Text>
             </View>
             <View style={styles.buttonRow}>
@@ -92,10 +108,12 @@ const CaseCard = ({ caseDetails }) => {
                   style={styles.button}
                   onPress={() => {
                     navigation.navigate("CaseReply", caseDetails);
-                    setExpanded(!expanded)
+                    setExpanded(!expanded);
                   }}
                 >
-                  <Text style={styles.buttonText}>{translation.screens.authScreens.caseSelection.openCase}</Text>
+                  <Text style={styles.buttonText}>
+                    {translation.screens.authScreens.caseSelection.openCase}
+                  </Text>
                 </TouchableOpacity>
               </View>
             </View>

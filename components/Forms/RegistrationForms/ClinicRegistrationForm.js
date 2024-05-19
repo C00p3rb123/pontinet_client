@@ -15,13 +15,16 @@ import { useRegistration } from "../../../RegistrationContext";
 import { useNavigation } from "@react-navigation/native";
 import { useCountries } from "../../../hooks/useCountries";
 
+// Component for clinic registration form
 const ClinicRegistrationForm = () => {
+  // State variables for form inputs and errors
   const [clinicName, setClinicName] = useState("");
   const [clinicCountry, setClinicCountry] = useState("");
   const [clinicState, setClinicState] = useState("");
   const [clinicCity, setClinicCity] = useState("");
   const { translation } = useLanguage();
   const [clinicError, setClinicError] = useState("");
+  // Registration context to manage registration details
   const {
     registrationDetails,
     setRegistrationDetails,
@@ -29,9 +32,10 @@ const ClinicRegistrationForm = () => {
     clearRegistration,
   } = useRegistration();
   const navigation = useNavigation();
+  // Hooks to fetch country, state, and city data
   const { countries, states, cities, fetchStatesData, fetchCitiesData, error } =
     useCountries();
-
+  // Fetch states when country is selected
   useEffect(() => {
     if (clinicCountry) {
       fetchStatesData(clinicCountry);
@@ -39,21 +43,30 @@ const ClinicRegistrationForm = () => {
       setClinicState("");
     }
   }, [clinicCountry]);
-
+  // Fetch cities when state is selected
   useEffect(() => {
     if (clinicState) {
       fetchCitiesData(clinicState);
     }
   }, [clinicState]);
-
+  // Handle form submission
+  // This function validates the form inputs and submits the registration details.
+  // If any required field is missing, it shows an alert message.
+  // On successful submission, it clears the registration details and navigates to the login screen.
+  // If there's an error during submission, it sets an error message.
   const onSubmit = async () => {
-    setClinicError('')
-    if (!clinicName || (states.length && !clinicState) || (cities.length && !clinicCity)) {
-    
-      Alert.alert(`${translation.screens.unAuthScreens.clinicRegistration.formIncomplete}`);
+    setClinicError("");
+    if (
+      !clinicName ||
+      (states.length && !clinicState) ||
+      (cities.length && !clinicCity)
+    ) {
+      Alert.alert(
+        `${translation.screens.unAuthScreens.clinicRegistration.formIncomplete}`
+      );
       return;
     }
-    
+
     try {
       await sendRegistrationDetails();
       clearRegistration();

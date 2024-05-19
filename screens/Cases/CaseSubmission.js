@@ -13,7 +13,8 @@ import PageTitle from "../../components/PageTitle";
 import { useLanguage } from "../../LanguageContext";
 
 import { useNavigation } from "@react-navigation/native";
-
+//Component to display the case submission confirmation screen.
+// Provides options to return to the dashboard or view more cases.
 const CaseSubmission = ({ route }) => {
   const screenHeight = Dimensions.get("window").height;
   const subtitle = route.params;

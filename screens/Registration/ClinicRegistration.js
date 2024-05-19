@@ -11,6 +11,8 @@ import { Colours } from "../../utils/colours";
 import ClinicRegistrationForm from "../../components/Forms/RegistrationForms/ClinicRegistrationForm";
 import { useLanguage } from "../../LanguageContext";
 
+//Component to display the clinic registration screen.
+//Contains a form for clinic registration details.
 const ClinicRegistration = () => {
   const { translation } = useLanguage();
 

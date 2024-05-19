@@ -1,23 +1,21 @@
-import { StyleSheet, View, Image } from 'react-native'
-import React from 'react'
+import { StyleSheet, View, Image } from "react-native";
+import React from "react";
 
+// Component for unauthenticated header
 const UnAuthHeader = () => {
   return (
-   
-       <View style={styles.container}>
-            <Image source={require('../../assets/pontinet_logo.png')}>
-            </Image>
-        </View>    
-  )
-}
+    <View style={styles.container}>
+      <Image source={require("../../assets/pontinet_logo.png")}></Image>
+    </View>
+  );
+};
 
-export default UnAuthHeader
+export default UnAuthHeader;
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingTop:10
-  }
-  
-})
+    justifyContent: "center",
+    alignItems: "center",
+    paddingTop: 10,
+  },
+});

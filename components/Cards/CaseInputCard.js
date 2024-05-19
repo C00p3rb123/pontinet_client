@@ -1,11 +1,23 @@
 import { StyleSheet, Text, View, TextInput } from "react-native";
 import React from "react";
-const CaseInputCard = ({ title, onChangeText, readOnly = false, caseDetails=null }) => {
+// Component to display input or read-only case details
+// This component is used on the CaseReply and CaseResponse screens.
+//it provides input fields for the case form and read only fields for case history
+const CaseInputCard = ({
+  title,
+  onChangeText,
+  readOnly = false,
+  caseDetails = null,
+}) => {
   return (
     <View style={styles.paitnentInformation}>
       <Text style={styles.title}>{title}</Text>
-      {!readOnly && <TextInput style={styles.response} onChangeText={onChangeText} />}
-      {readOnly && caseDetails &&<Text style={styles.readOnly}>{caseDetails}</Text>}
+      {!readOnly && (
+        <TextInput style={styles.response} onChangeText={onChangeText} />
+      )}
+      {readOnly && caseDetails && (
+        <Text style={styles.readOnly}>{caseDetails}</Text>
+      )}
     </View>
   );
 };
@@ -40,8 +52,8 @@ const styles = StyleSheet.create({
     marginStart: 12,
     minHeight: 40,
     marginEnd: 12,
-    textAlign: 'left',
-    paddingLeft: 10
+    textAlign: "left",
+    paddingLeft: 10,
   },
   readOnly: {
     marginBottom: 16,
@@ -49,8 +61,8 @@ const styles = StyleSheet.create({
     marginStart: 12,
     minHeight: 40,
     marginEnd: 12,
-    textAlign: 'left',
+    textAlign: "left",
     paddingLeft: 10,
-    fontSize: 16
-  }
+    fontSize: 16,
+  },
 });

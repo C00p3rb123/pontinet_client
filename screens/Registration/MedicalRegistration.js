@@ -16,6 +16,7 @@ import { useLanguage } from "../../LanguageContext";
 import MedicalRegistrationForm from "../../components/Forms/RegistrationForms/MedicalRegistrationForm";
 import { Colours } from "../../utils/colours";
 
+// Enable layout animation for Android
 if (
   Platform.OS === "android" &&
   UIManager.setLayoutAnimationEnabledExperimental
@@ -23,6 +24,8 @@ if (
   UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
+//Component to display the medical registration screen.
+//Contains a form for medical registration details.
 const MedicalRegistration = () => {
   const { translation } = useLanguage();
   const navigation = useNavigation();

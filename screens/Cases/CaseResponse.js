@@ -1,47 +1,50 @@
 import {
-    StyleSheet,
-    Text,
-    View,
-    SafeAreaView,
-    TouchableOpacity,
-  } from "react-native";
-  import React, { useState } from "react";
-  import { Colours } from "../../utils/colours";
-  import PatientInformationCard from "../../components/Cards/PatientInformationCard";
-  import PageTitle from "../../components/PageTitle";
-  import { useLanguage } from "../../LanguageContext";
-  import CaseInputCard from "../../components/Cards/CaseInputCard";
-  import { ScrollView } from "react-native-gesture-handler";
-  import { useNavigation } from "@react-navigation/native";
-   
-  const CaseResponse = ({ route }) => {
-    const caseDetails = route.params;
- 
-    const [error, setError] = useState(false);
-    const { translation } = useLanguage();
-    const navigation = useNavigation();
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  TouchableOpacity,
+} from "react-native";
+import React, { useState } from "react";
+import { Colours } from "../../utils/colours";
+import PatientInformationCard from "../../components/Cards/PatientInformationCard";
+import PageTitle from "../../components/PageTitle";
+import { useLanguage } from "../../LanguageContext";
+import CaseInputCard from "../../components/Cards/CaseInputCard";
+import { ScrollView } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
 
-    const titles = [
-        `${translation.screens.authScreens.caseReply.diagnosticImpression}`,
-        `${translation.screens.authScreens.caseReply.onSiteProcedure}`,
-        `${translation.screens.authScreens.caseReply.onSiteMedication}`,
-        `${translation.screens.authScreens.caseReply.other}`,
-        `${translation.screens.authScreens.caseReply.generalIndications}`,
-        `${translation.screens.authScreens.caseReply.medication}`,
-        `${translation.screens.authScreens.caseReply.referral}`,
-        `${translation.screens.authScreens.caseReply.other}`,
-        
-    ]
-    const information = 
-    [caseDetails.specialistResponse.generalInstructions.diagnosticImpression,
-      caseDetails.specialistResponse.generalInstructions.onSiteProcedure,
-      caseDetails.specialistResponse.generalInstructions.onSiteMedication,
-      caseDetails.specialistResponse.generalInstructions.other,
-      caseDetails.specialistResponse.dischargeInstructions.generalIndications,
-      caseDetails.specialistResponse.dischargeInstructions.medication,
-      caseDetails.specialistResponse.dischargeInstructions.referral,
-      caseDetails.specialistResponse.dischargeInstructions.other,
-    ]
+//Component to display the case response details.
+//Shows patient information and the response details provided by the specialist.
+
+const CaseResponse = ({ route }) => {
+  const caseDetails = route.params;
+
+  const [error, setError] = useState(false);
+  const { translation } = useLanguage();
+  const navigation = useNavigation();
+  // Titles for input fields
+  const titles = [
+    `${translation.screens.authScreens.caseReply.diagnosticImpression}`,
+    `${translation.screens.authScreens.caseReply.onSiteProcedure}`,
+    `${translation.screens.authScreens.caseReply.onSiteMedication}`,
+    `${translation.screens.authScreens.caseReply.other}`,
+    `${translation.screens.authScreens.caseReply.generalIndications}`,
+    `${translation.screens.authScreens.caseReply.medication}`,
+    `${translation.screens.authScreens.caseReply.referral}`,
+    `${translation.screens.authScreens.caseReply.other}`,
+  ];
+  // Corresponding information for the input fields
+  const information = [
+    caseDetails.specialistResponse.generalInstructions.diagnosticImpression,
+    caseDetails.specialistResponse.generalInstructions.onSiteProcedure,
+    caseDetails.specialistResponse.generalInstructions.onSiteMedication,
+    caseDetails.specialistResponse.generalInstructions.other,
+    caseDetails.specialistResponse.dischargeInstructions.generalIndications,
+    caseDetails.specialistResponse.dischargeInstructions.medication,
+    caseDetails.specialistResponse.dischargeInstructions.referral,
+    caseDetails.specialistResponse.dischargeInstructions.other,
+  ];
 
     return (
       <SafeAreaView>
