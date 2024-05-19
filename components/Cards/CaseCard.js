@@ -92,7 +92,8 @@ const CaseCard = ({ caseDetails }) => {
               <Text>{caseDetails.patientInformation.clinic}</Text>
             </View>
             <View style={styles.buttonRow}>
-            <View>
+
+            {caseDetails.patientInformation.extraInformation &&  <View>
                 <TouchableOpacity
                   style={styles.button}
                   onPress={() => {
@@ -102,7 +103,7 @@ const CaseCard = ({ caseDetails }) => {
                 >
                   <Text style={styles.buttonText}>{translation.screens.authScreens.caseSelection.openImage}</Text>
                 </TouchableOpacity>
-              </View>
+              </View> }
               <View>
                 <TouchableOpacity
                   style={styles.button}
