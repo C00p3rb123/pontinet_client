@@ -77,6 +77,7 @@
                 "hourSingle": "hace hora",
                 "day": "hace día/s",
                 "openCase": "Caso abierto",
+                "openImage": "Abrir imagen",
                 "segmentDetails": "Detalles del segmento",
                 "mechanismDetails": "Detalles del mecanismo",
                 "gp": "Médico generalista",
@@ -101,7 +102,7 @@
                 "other":  "Otros",
                 "segment": "Segmento",
                 "addImage": "Añadir imagen",
-                "addReport": "Add report",
+                "addReport": "Añadir informe",
                 "camera": "Añadir informe",
                 "submitCase": "Presentar caso",
                 "viewImage": "Ver la imagen"
