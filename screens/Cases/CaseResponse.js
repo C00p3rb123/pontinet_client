@@ -46,134 +46,131 @@ const CaseResponse = ({ route }) => {
     caseDetails.specialistResponse.dischargeInstructions.other,
   ];
 
-  return (
-    <SafeAreaView>
-      <View>
-        <View style={styles.header}>
-          <PageTitle title={translation.screens.authScreens.caseReply.title} />
-          <Text style={{ paddingLeft: 15, fontWeight: "300", fontSize: 18 }}>
-            {translation.screens.authScreens.caseReply.case} -{" "}
-            {caseDetails.patientInformation.illnessDescription.segment}
-          </Text>
-        </View>
-        <ScrollView contentContainerStyle={{ paddingBottom: 160 }}>
-          <View style={{ ...styles.caseReply }}>
-            <View style={styles.paitnentInformation}>
-              <PatientInformationCard caseDetails={caseDetails} />
-            </View>
-            <View style={{ width: "100%" }}>
-              <Text
-                style={{
-                  fontWeight: "bold",
-                  color: "black",
-                  fontSize: 18,
-                  marginTop: 20,
-                }}
-              >
-                {
-                  translation.screens.authScreens.caseReply
-                    .dischargeInstructions
-                }
-              </Text>
-              {titles.map((title, i) => {
-                if (i <= 2) {
-                  return (
-                    <CaseInputCard
-                      key={title + i}
-                      title={title}
-                      readOnly={true}
-                      caseDetails={information[i]}
-                    />
-                  );
-                }
-              })}
-              <Text
-                style={{
-                  fontWeight: "bold",
-                  color: "black",
-                  fontSize: 18,
-                  marginTop: 20,
-                }}
-              >
-                {
-                  translation.screens.authScreens.caseReply
-                    .dischargeInstructions
-                }
-              </Text>
-              {titles.map((title, i) => {
-                if (i > 2) {
-                  return (
-                    <CaseInputCard
-                      key={title + i}
-                      title={title}
-                      readOnly={true}
-                      caseDetails={information[i]}
-                    />
-                  );
-                }
-              })}
-            </View>
-            <TouchableOpacity
-              style={{ ...styles.button, marginTop: 30, alignSelf: "center" }}
-              onPress={() => navigation.navigate("Dashboard")}
-            >
-              <Text style={styles.buttonText}>
-                {translation.screens.authScreens.caseResponse.return}
-              </Text>
-            </TouchableOpacity>
-            {error && <Error message={error} />}
+    return (
+      <SafeAreaView>
+        <View>
+          <View style={styles.header}>
+            <PageTitle
+              title={translation.screens.authScreens.caseReply.title}
+            />
+            <Text style={{ paddingLeft: 15, fontWeight: "300", fontSize: 18 }}>
+              {translation.screens.authScreens.caseReply.case} -{" "}
+              {caseDetails.patientInformation.illnessDescription.segment}
+            </Text>
           </View>
-        </ScrollView>
-      </View>
-    </SafeAreaView>
-  );
-};
-
-export default CaseResponse;
-
-const styles = StyleSheet.create({
-  header: {
-    gap: 15,
-    justifyContent: "center",
-  },
-  caseReply: {
-    backgroundColor: Colours.pontinetCaseBackground,
-    alignItems: "flex-start",
-    paddingHorizontal: 10,
-  },
-  paitnentInformation: {
-    backgroundColor: "white",
-    marginTop: 20,
-    borderRadius: 10,
-    flexDirection: "row",
-    shadowOffset: { width: 1, height: 4 },
-    shadowOpacity: 0.5,
-    shadowRadius: 3,
-    shadowColor: "#171717",
-  },
-  additionalButtons: {
-    display: "flex",
-    flexDirection: "row",
-    width: "100%",
-    justifyContent: "space-around",
-    alignContent: "center",
-    gap: 30,
-    marginTop: 30,
-    flexWrap: "wrap",
-  },
-  button: {
-    backgroundColor: Colours.pontinetPrimary,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 45,
-    alignSelf: "flex-end",
-    marginRight: 5,
-    color: "white",
-    marginBottom: 20,
-  },
-  buttonText: {
-    color: "white",
-    textAlign: "center",
-    fontSize: 20,
-  },
-});
+          <ScrollView contentContainerStyle={{ paddingBottom: 160 }}>
+            <View style={{ ...styles.caseReply }}>
+              <View style={styles.paitnentInformation}>
+                <PatientInformationCard caseDetails={caseDetails} />
+              </View>
+              <View style={{ width: "100%" }}>
+                <Text
+                  style={{
+                    fontWeight: "bold",
+                    color: "black",
+                    fontSize: 18,
+                    marginTop: 20,
+                  }}
+                >
+                  {translation.screens.authScreens.caseReply.dischargeInstructions}
+                </Text>
+                {titles.map((title, i) => {
+                  if (i <= 3) {
+                    return (
+                      <CaseInputCard
+                        key={title+i}
+                        title={title}
+                        readOnly={true}
+                        caseDetails={information[i]}                        
+                      />
+                    );
+                  }
+                  
+                })}
+                <Text
+                  style={{
+                    fontWeight: "bold",
+                    color: "black",
+                    fontSize: 18,
+                    marginTop: 20,
+                  }}
+                >
+                  {translation.screens.authScreens.caseReply.dischargeInstructions}
+                </Text>
+                {titles.map((title, i) => {
+                  if (i > 3) {
+                    return (
+                      <CaseInputCard
+                        key={title+i}
+                        title={title}
+                        readOnly={true}
+                        caseDetails={information[i]}
+                      />
+                    );
+                  }
+                  
+                })}
+                 </View>              
+              <TouchableOpacity
+                style={{ ...styles.button, marginTop: 30, alignSelf: "center" }}
+                onPress={() => navigation.navigate("Dashboard")}
+              >
+                <Text style={styles.buttonText}>{translation.screens.authScreens.caseResponse.return}</Text>
+              </TouchableOpacity>
+              {error && <Error message={error}/>}
+            </View>
+          </ScrollView>
+        </View>
+      </SafeAreaView>
+    );
+  };
+  
+  export default CaseResponse;
+  
+  const styles = StyleSheet.create({
+    header: {
+      gap: 15,
+      justifyContent: "center",
+    },
+    caseReply: {
+      backgroundColor: Colours.pontinetCaseBackground,
+      alignItems: "flex-start",
+      paddingHorizontal: 10,
+    },
+    paitnentInformation: {
+      backgroundColor: "white",
+      marginTop: 20,
+      borderRadius: 10,
+      flexDirection: "row",
+      shadowOffset: { width: 1, height: 4 },
+      shadowOpacity: 0.5,
+      shadowRadius: 3,
+      shadowColor: "#171717",
+    },
+    additionalButtons: {
+      display: "flex",
+      flexDirection: "row",
+      width: "100%",
+      justifyContent: "space-around",
+      alignContent: "center",
+      gap: 30,
+      marginTop: 30,
+      flexWrap: "wrap",
+    },
+    button: {
+      backgroundColor: Colours.pontinetPrimary,
+      paddingVertical: 10,
+      paddingHorizontal: 20,
+      borderRadius: 45,
+      alignSelf: "flex-end",
+      marginRight: 5,
+      color: "white",
+      marginBottom: 20
+    },
+    buttonText: {
+      color: "white",
+      textAlign: "center",
+      fontSize: 20,
+    },
+  });
+  

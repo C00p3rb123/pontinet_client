@@ -8,9 +8,8 @@ import { useLanguage } from "../../LanguageContext";
 // It displays key patient information and allows the user to expand for more details.
 const PatientInformationCard = ({ caseDetails }) => {
   const [isExpaned, setIsExpanded] = useState(false);
-
-  const date = convertDate(caseDetails.patientInformation.referralDate);
-  const { translation } = useLanguage();
+  const date = convertDate(caseDetails.createdAt);
+  const {translation} = useLanguage()
   return (
     <TouchableWithoutFeedback onPress={() => setIsExpanded(!isExpaned)}>
       <View style={styles.patientInformation}>
@@ -33,7 +32,7 @@ const PatientInformationCard = ({ caseDetails }) => {
               <Text style={styles.information}>
                 {
                   caseDetails.patientInformation.illnessDescription
-                    .segment_details
+                    .segmentDetails
                 }{" "}
               </Text>
               <Text style={styles.subTitle}>
@@ -42,7 +41,7 @@ const PatientInformationCard = ({ caseDetails }) => {
               <Text style={styles.information}>
                 {
                   caseDetails.patientInformation.illnessDescription
-                    .mechanism_details
+                    .mechanismDetails
                 }
               </Text>
               <Text style={styles.subTitle}>

@@ -77,6 +77,7 @@
                 "hourSingle": "hour ago" ,
                 "day": "day/s ago",
                 "openCase": "Open Case",
+                "openImage": "Open Image",
                 "noCases": "No cases to display",
                 "segmentDetails": "Segment details",
                 "mechanismDetails": "Mechanism Details",

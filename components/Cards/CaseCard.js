@@ -12,6 +12,7 @@ import { convertTime } from "../../utils/formatting";
 import { Colours } from "../../utils/colours";
 import { useNavigation } from "@react-navigation/native";
 import { useLanguage } from "../../LanguageContext";
+import ImageView from "react-native-image-viewing";
 
 // Component to display case details
 const CaseCard = ({ caseDetails }) => {
@@ -20,7 +21,14 @@ const CaseCard = ({ caseDetails }) => {
   const [expanded, setExpanded] = useState(false);
   const navigation = useNavigation();
   const { translation } = useLanguage();
+  const [isVisible, setIsVisible] = useState(false);
 
+
+  const images = [
+    {
+      uri: caseDetails.patientInformation.extraInformation ? caseDetails.patientInformation.extraInformation : ""
+    }
+  ]
   return (
     <TouchableWithoutFeedback onPress={() => setExpanded(!expanded)}>
       <View
@@ -38,6 +46,9 @@ const CaseCard = ({ caseDetails }) => {
         ]}
         key={Date.now()}
       >
+        <View>
+          <ImageView images={images} visible={isVisible} onRequestClose={() => setIsVisible(false)} />
+        </View>
         <Text style={styles.description}>
           {caseDetails.patientInformation.age} yrs old |{" "}
           {caseDetails.patientInformation.illnessDescription.segment} |{" "}
@@ -80,7 +91,18 @@ const CaseCard = ({ caseDetails }) => {
               </Text>
               <Text>{caseDetails.patientInformation.clinic}</Text>
             </View>
+            <View style={styles.buttonRow}>
             <View>
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={() => {
+                    setIsVisible(true)
+                    setExpanded(!expanded)
+                  }}
+                >
+                  <Text style={styles.buttonText}>{translation.screens.authScreens.caseSelection.openImage}</Text>
+                </TouchableOpacity>
+              </View>
               <View>
                 <TouchableOpacity
                   style={styles.button}
@@ -130,4 +152,8 @@ const styles = StyleSheet.create({
   header: {
     fontWeight: "bold",
   },
+  buttonRow: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end'
+    }
 });
