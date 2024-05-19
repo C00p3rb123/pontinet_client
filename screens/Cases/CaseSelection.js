@@ -21,6 +21,8 @@ const CaseSelecton = () => {
   const { isLoading, data, refresh, onRefresh, getCases} = useFetchCases(url);
   const {translation } = useLanguage();
 
+  console.log(data)
+
   useFocusEffect(useCallback(() => {
     getCases();
   }, []))

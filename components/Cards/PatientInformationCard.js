@@ -5,7 +5,7 @@ import { useLanguage } from "../../LanguageContext";
 
 const PatientInformationCard = ({caseDetails}) => {
   const [isExpaned, setIsExpanded] = useState(false);
-  const date = convertDate(caseDetails.patientInformation.referralDate);
+  const date = convertDate(caseDetails.createdAt);
   const {translation} = useLanguage()
   return (
     <TouchableWithoutFeedback onPress={() => setIsExpanded(!isExpaned)}>
@@ -25,14 +25,14 @@ const PatientInformationCard = ({caseDetails}) => {
               <Text style={styles.information}>
               {
                   caseDetails.patientInformation.illnessDescription
-                    .segment_details
+                    .segmentDetails
                 } {" "}
               </Text>
               <Text style={styles.subTitle}>{translation.screens.authScreens.caseSelection.mechanismDetails}</Text>
               <Text style={styles.information}>
               {
                   caseDetails.patientInformation.illnessDescription
-                    .mechanism_details
+                    .mechanismDetails
                 }
               </Text>
               <Text style={styles.subTitle}>{translation.screens.authScreens.caseSelection.gp}</Text>
